@@ -1,0 +1,62 @@
+.stream {
+	height: 200px;
+	overflow: scroll;
+}
+.headers{
+	text-align: center;
+}
+.odd{
+    border:1px solid #dddddd;
+    background: #90CECD  repeat-x left top;
+}
+.thumb-wrap{
+	padding: 12px;
+	overflow:hidden;
+}
+.x-item-over{
+    border:1px solid #000;
+}
+.thumb-wrap .time-ago{
+    position: absolute;
+	font-size:10px;
+	color:gray;
+    right: .5em;
+    margin:-12px 0 0 0;
+}
+.img{
+	float:left;
+	padding:5px ;
+}
+.pri{
+  	border:1px solid #dddddd;
+    background: #b4df5b  repeat-x left top;
+}
+.pan{
+  	border:1px solid #dddddd;
+    background: #76B1ED repeat-x left top;
+}
+.prd{
+  	border:1px solid #dddddd;
+    background: #FFFFB2 repeat-x left top;
+}
+.alianza{
+	border:1px solid #dddddd;
+    background: #90CECD repeat-x left top;
+}
+.name{
+    position: absolute;
+    top: .01em;
+    right: .5em;
+    height: 1.5em;
+    background: rgba(255,255,255,.7);
+}
+.candidato{
+	border:1px solid #dddddd;
+    background: #efefef url(over.gif) repeat-x left top;
+    /*padding: 4px;*/
+	overflow:hidden;
+	margin:0 5px 0 0;
+}
+.negative{
+	color :red;
+}
