@@ -119,7 +119,7 @@ Ext.onReady(function(){
 					switch(o.track_k){
 						case '@EPN':
 							var num = 0;
-							num = o.no_twits - countEpn;							
+							num = (o.no_twits * 1) - (countEpn * 1);		
 							if (num > 0){
 								Ext.fly('epn').update(num+' nuevos');
 								Ext.fly('epn').on('click',function(){
@@ -135,12 +135,12 @@ Ext.onReady(function(){
 						break;
 						case '@G_quadri':break;
 							var num = 0;
-							num = o.no_twits - countGquadri;							
+							num = (o.no_twits * 1) - (countGquadri * 1);							
 							if (num > 0){
 								Ext.fly('gqu').update(num+' nuevos');
 								Ext.fly('gqu').on('click',function(){
 									storeGquadri.load({
-										params:{type:1,typec:0},
+										params:{type:1,typec:3},
 										callback: function(records, operation, success) {			        
 											countEpn = Ext.decode(operation.response.responseText).count;
 											Ext.fly('gqu').update('0 nuevos');
@@ -150,12 +150,12 @@ Ext.onReady(function(){
 							}
 						case '@JosefinaVM':break;
 							var num = 0;
-							num = o.no_twits - countJvm;							
+							num = (o.no_twits * 1)  - (countJvm * 1);							
 							if (num > 0){
 								Ext.fly('jvm').update(num+' nuevos');
 								Ext.fly('jvm').on('click',function(){
 									storeJvm.load({
-										params:{type:1,typec:0},
+										params:{type:1,typec:1},
 										callback: function(records, operation, success) {			        
 											countEpn = Ext.decode(operation.response.responseText).count;
 											Ext.fly('jvm').update('0 nuevos');
@@ -165,12 +165,12 @@ Ext.onReady(function(){
 							}
 						case '@lopezobrador_':
 							var num = 0;
-							num = o.no_twits - countAmlo;							
+							num = (o.no_twits * 1) - (countAmlo * 1);							
 							if (num > 0){
 								Ext.fly('obr').update(num+' nuevos');
 								Ext.fly('obr').on('click',function(){
 									storeAmlo.load({
-										params:{type:1,typec:0},
+										params:{type:1,typec:2},
 										callback: function(records, operation, success) {			        
 											countEpn = Ext.decode(operation.response.responseText).count;
 											Ext.fly('obr').update('0 nuevos');
@@ -255,7 +255,7 @@ Ext.onReady(function(){
 						xtype:'timeline',
 						store:storeAmlo,
 						region:'center',
-						padding:'10px 0 0 0',
+						padding:'10px 0 0 0'
 					}]
 				},{
 					xtype:'container',
@@ -280,7 +280,7 @@ Ext.onReady(function(){
 						xtype:'timeline',
 						store:storeGquadri,
 						region:'center',
-						padding:'10px 0 0 0',
+						padding:'10px 0 0 0'
 					}]
 				},{
 					xtype:'container',
@@ -305,7 +305,7 @@ Ext.onReady(function(){
 						xtype:'timeline',
 						store:storeEpn,
 						region:'center',
-						padding:'10px 0 0 0',
+						padding:'10px 0 0 0'
 					}]
 				},{	
 					xtype:'container',
@@ -330,7 +330,7 @@ Ext.onReady(function(){
 					xtype:'timeline',
 					store:storeJvm,
 					region:'center',
-					padding:'10px 0 0 0',
+					padding:'10px 0 0 0'
 				}]
 			}]
 			},{
@@ -371,7 +371,7 @@ Ext.onReady(function(){
 			region:'south',
 			cls:'btn-primary',
 			html:'Powered by codetlan',
-			height:20,
+			height:20
 		}]
 	});
 });
