@@ -40,7 +40,7 @@ Ext.onReady(function(){
                             return Ext.Date.format(new Date(date), 'jS M \'y');
                         }
                     } catch (e) {
-                        return '';
+                        return 'aca';
                     }                
 			}}
 	    ],
