@@ -192,7 +192,7 @@ Ext.onReady(function(){
 								});
 							}
 						break;
-						case '@G_quadri':break;
+						case '@G_quadri':
 							var num = 0;
 							num = (o.no_twits * 1) - (countGquadri * 1);							
 							if (num > 0){
@@ -207,7 +207,8 @@ Ext.onReady(function(){
 									});
 								});
 							}
-						case '@JosefinaVM':break;
+						break;
+						case '@JosefinaVM':
 							var num = 0;
 							num = (o.no_twits * 1)  - (countJvm * 1);							
 							if (num > 0){
@@ -222,6 +223,7 @@ Ext.onReady(function(){
 									});
 								});
 							}
+						break;
 						case '@lopezobrador_':
 							var num = 0;
 							num = (o.no_twits * 1) - (countAmlo * 1);							
