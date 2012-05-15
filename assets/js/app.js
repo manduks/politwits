@@ -130,14 +130,31 @@ Ext.onReady(function(){
 							lat: o.geo_x,
 				        	lng: o.geo_y,
 							icon: icons[o.track_k],
-				        	title: o.tweet,
 				        	listeners: {
-					             		mouseover: function(e){
-											/*var content = '<strong>A info window!</strong><br/>That is bound to a marker';
+					             		click: function(e){
+											var css = '';
+											switch(o.track_k){
+													case '@EPN': css = 'pri';break;
+													case '@lopezobrador_': css = 'prd';break;
+													case '@G_quadri': css = 'alianza';break;
+													case '@JosefinaVM': css = 'pan';break;
+												}
+												
+											var content = [
+											'<div class="thumb-wrap '+css+' tipi">',
+												'<div style="clear: both;">',
+													'<div class="img">',
+								                		'<a href = "https://twitter.com/#!/'+o.screen_name+'" target = "_blank" ><img src="'+o.image+'" width="48" height="48"/></a>',
+													'</div>',
+										          	'<span>',
+										          		o.tweet,
+										          	'</span>',
+										        '</div>',
+									        '</div>'].join('');
 											var infowindow = new google.maps.InfoWindow({
 											    content: content
 											});
-											infowindow.open(map.gmap, marker);*/									
+											infowindow.open(map.gmap, marker);								
 						                }
 						         }
 						    });
