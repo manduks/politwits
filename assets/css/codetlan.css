@@ -86,3 +86,15 @@
 	width:100%;
 	font-size:15px;
 }
+.x-panel-body img {
+	max-width: none;
+}
+.tipi{
+	min-height: 60px;
+}
+.brand a{
+	color: #999999;
+}
+.brand a:hover {
+	text-decoration: none;
+}
