@@ -257,7 +257,7 @@ Ext.onReady(function(){
 			cls:'navbar-inner',
 			baseCls:'navbar navbar-fixed-top',
 			items:[
-				'<div class="brand">Politwits</div>','->',
+				'<div class="brand"><a href="https://twitter.com/#!/analitweets" target="_blank">@Analitweets</a></div>','->',
 				{
 					text:'<i class="icon-comment icon-white"></i>',
 					cls:'btn btn-primary',
