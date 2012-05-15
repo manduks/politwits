@@ -57,12 +57,7 @@ Ext.onReady(function(){
 	
 	//store Amlo
 	var storeAmlo = Ext.create('Ext.data.Store', {
-	    model: 'Tweet',
-		listeners:{
-			load:function(){
-				console.log(arguments);
-			}
-		}
+	    model: 'Tweet'
 	});	
 
 	//store EPN
@@ -83,16 +78,29 @@ Ext.onReady(function(){
 	
 	cargarStores=function(){
 		storeAmlo.load({
-			params:{type:1,	typec:2}
+			params:{type:1,	typec:2},
+			callback: function(records, operation, success) {			        
+				countAmlo = Ext.decode(operation.response.responseText).count;
+			}
 		});
 		storeEpn.load({
-			params:{type:1,typec:0}
+			params:{type:1,typec:0},
+			callback: function(records, operation, success) {			        
+				countEpn = Ext.decode(operation.response.responseText).count;
+			}
 		});
 		storeJvm.load({
-			params:{type:1,typec:1}
+			params:{type:1,typec:1},
+			callback: function(records, operation, success) {			        
+				countJvm = Ext.decode(operation.response.responseText).count;
+			}
+			
 		});
 		storeGquadri.load({
-			params:{type:1,typec:3}
+			params:{type:1,typec:3},
+			callback: function(records, operation, success) {			        
+				countGquadri = Ext.decode(operation.response.responseText).count;
+			}
 		});
 	};
 	
@@ -110,18 +118,65 @@ Ext.onReady(function(){
 				Ext.each(obj,function(o){
 					switch(o.track_k){
 						case '@EPN':
-							 
+							var num = 0;
+							num = o.no_twits - countEpn;							
+							if (num > 0){
+								Ext.fly('epn').update(num+' nuevos');
+								Ext.fly('epn').on('click',function(){
+									storeEpn.load({
+										params:{type:1,typec:0},
+										callback: function(records, operation, success) {			        
+											countEpn = Ext.decode(operation.response.responseText).count;
+											Ext.fly('epn').update('0 nuevos');
+										}
+									});
+								});
+							}
 						break;
 						case '@G_quadri':break;
-						case '@JosefinaVM':break;
-						case '@lopezobrador_':
-							var num = storeAmlo.proxy.reader.rawData.count;
-							console.log(num);
-							console.log(o.no_twits)
-							num = o.no_twits - num;
-							
+							var num = 0;
+							num = o.no_twits - countGquadri;							
 							if (num > 0){
-								alert("hay mas de amlo");
+								Ext.fly('gqu').update(num+' nuevos');
+								Ext.fly('gqu').on('click',function(){
+									storeGquadri.load({
+										params:{type:1,typec:0},
+										callback: function(records, operation, success) {			        
+											countEpn = Ext.decode(operation.response.responseText).count;
+											Ext.fly('gqu').update('0 nuevos');
+										}
+									});
+								});
+							}
+						case '@JosefinaVM':break;
+							var num = 0;
+							num = o.no_twits - countJvm;							
+							if (num > 0){
+								Ext.fly('jvm').update(num+' nuevos');
+								Ext.fly('jvm').on('click',function(){
+									storeJvm.load({
+										params:{type:1,typec:0},
+										callback: function(records, operation, success) {			        
+											countEpn = Ext.decode(operation.response.responseText).count;
+											Ext.fly('jvm').update('0 nuevos');
+										}
+									});
+								});
+							}
+						case '@lopezobrador_':
+							var num = 0;
+							num = o.no_twits - countAmlo;							
+							if (num > 0){
+								Ext.fly('obr').update(num+' nuevos');
+								Ext.fly('obr').on('click',function(){
+									storeAmlo.load({
+										params:{type:1,typec:0},
+										callback: function(records, operation, success) {			        
+											countEpn = Ext.decode(operation.response.responseText).count;
+											Ext.fly('obr').update('0 nuevos');
+										}
+									});
+								});
 							}							
 						break;
 					}
@@ -194,6 +249,7 @@ Ext.onReady(function(){
 			               			'<img src="https://twimg0-a.akamaihd.net/profile_images/508228230/foto_tw_normal.jpg"  width = 48px/>',
 								'</div>',
 				          		'<span class="label label-warning">@lopezobrador_</span>',
+								'<div id="obr" class ="btn btn-large loadmore">0 nuevos</div>',
 				        	'</div>'].join('')
 					},{
 						xtype:'timeline',
@@ -217,7 +273,8 @@ Ext.onReady(function(){
 								'<div class="img">',
 			               			'<img src="https://twimg0-a.akamaihd.net/profile_images/2031784254/GQ_NA_Recortado_normal.jpg" />',
 								'</div>',
-				          			'<span class="label">@g_quadri</span>',
+				          		'<span class="label">@g_quadri</span>',
+								'<div id="gqu" class ="btn btn-large loadmore">0 nuevos</div>',
 				        	'</div>'].join('')
 					},{
 						xtype:'timeline',
@@ -242,6 +299,7 @@ Ext.onReady(function(){
 			               			'<img src="https://twimg0-a.akamaihd.net/profile_images/1990796199/EPN_normal.jpg" />',
 								'</div>',
 				          		'<span class="label label-important">@EPN</span>',
+								'<div id="epn" class ="btn btn-large loadmore">0 nuevos</div>',
 				        	'</div>'].join('')
 					},{
 						xtype:'timeline',
@@ -265,7 +323,8 @@ Ext.onReady(function(){
 								'<div class="img">',
 		                			'<img src="https://twimg0-a.akamaihd.net/profile_images/2171219068/561240_10150799454499533_297028154532_9549761_222771239_n_normal.jpg" />',
 								'</div>',
-				          			'<span class="label label-info">@JosefinaVM</span>',
+				          		'<span class="label label-info">@JosefinaVM</span>',
+								'<div id="jvm" class ="btn btn-large loadmore">0 nuevos</div>',
 				        	'</div>'].join('')
 					},{
 					xtype:'timeline',
@@ -307,12 +366,12 @@ Ext.onReady(function(){
 						}]
 					}]
 			}]
-		}/*,{
+		},{
 			xtype:'container',
 			region:'south',
 			cls:'btn-primary',
 			html:'Powered by codetlan',
 			height:20,
-		}*/]
+		}]
 	});
 });

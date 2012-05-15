@@ -53,10 +53,16 @@
 .candidato{
 	border:1px solid #dddddd;
     background: #efefef repeat-x left top;
-    /*padding: 4px;*/
 	overflow:hidden;
 	margin:0 5px 0 0;
 }
 .negative{
 	color :red;
+}
+.loadmore{
+	height: 55px;
+	width:40%;
+	right: .5em;
+	font-size:15px;
+	position: absolute;
 }
