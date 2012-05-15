@@ -161,7 +161,7 @@ Ext.onReady(function(){
 					switch(o.track_k){
 						case '@EPN':
 							var num = 0;
-							num = (o.no_twits * 1) - (countEpn * 1);		
+							num = (o.no_twits * 1) - (countEpn * 1);
 							if (num > 0){
 								Ext.fly('epn').update(num+' nuevos');
 								Ext.fly('epn').on('click',function(){
@@ -184,7 +184,7 @@ Ext.onReady(function(){
 									storeGquadri.load({
 										params:{type:1,typec:3},
 										callback: function(records, operation, success) {			        
-											countEpn = Ext.decode(operation.response.responseText).count;
+											countGquadri = Ext.decode(operation.response.responseText).count;
 											Ext.fly('gqu').update('0 nuevos');
 										}
 									});
@@ -199,7 +199,7 @@ Ext.onReady(function(){
 									storeJvm.load({
 										params:{type:1,typec:1},
 										callback: function(records, operation, success) {			        
-											countEpn = Ext.decode(operation.response.responseText).count;
+											countJvm = Ext.decode(operation.response.responseText).count;
 											Ext.fly('jvm').update('0 nuevos');
 										}
 									});
@@ -214,7 +214,7 @@ Ext.onReady(function(){
 									storeAmlo.load({
 										params:{type:1,typec:2},
 										callback: function(records, operation, success) {			        
-											countEpn = Ext.decode(operation.response.responseText).count;
+											countAmlo = Ext.decode(operation.response.responseText).count;
 											Ext.fly('obr').update('0 nuevos');
 										}
 									});
@@ -249,7 +249,7 @@ Ext.onReady(function(){
 						p.items.items[1].getLayout().setActiveItem(0);
 					}
 				},{
-					text:'<i class="icon-signal icon-white"></i>',
+					text:'<i class="icon-globe icon-white"></i>',
 					cls:'btn btn-primary',
 					handler:function(btn){
 						var p = btn.up('container').up('container');
