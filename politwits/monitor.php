@@ -69,12 +69,14 @@
 
                     //if(!empty($tweet->user->id_str) && !empty($tweet->text) && $tweet->user->screen_name == 'hellreuter_' ){
                         $negative=$this->isNegative($tweet);
-                        $this->tweet($track,$tweet,$negative);
+                        $retweet=$this->isRetweet($tweet);
+                        $this->tweet($track,$tweet,$negative,$retweet);
                         $this->resumen($track,$negative);
                         $this->hashtags($track,$tweet);
                         $this->urls($track,$tweet);
-                        if($tweet->place->full_name!='')
-                            print_r($tweet);
+                        $this->retweets($track,$tweet);
+                        //if($tweet->retweet_count > 0)
+                        //    print_r($tweet);
                     }
                     flush();
                 }
@@ -95,6 +97,10 @@
                     break;
                 case 'um':
                     if(is_array($tweet->entities->user_mentions) && count($tweet->entities->user_mentions) == 1 )
+                        return true;
+                    break;
+                case 'rt':
+                    if($tweet->retweet_count > 0)
                         return true;
                     break;
             }
@@ -124,8 +130,15 @@
             return 0;
         }
 
+        //Valida si es un retweet
+        function isRetweet($tweet){
+            if($tweet->retweet_count>0)
+                return 1;
+            return 0;
+        }
+
         //Inserta el tweet que contiene el track
-        function tweet($track,$tweet,$negative){
+        function tweet($track,$tweet,$negative,$retweet){
 
             $this->ejecutar("
                 insert into twits (
@@ -139,6 +152,7 @@
                     geo_y,
                     screen_name,
                     image,
+                    retweet,
                     reply_to
                 )
                 values (
@@ -152,6 +166,7 @@
                     '".$tweet->geo->coordinates[1]."',
                     '".$tweet->user->screen_name."',
                     '".$tweet->user->profile_image_url."',
+                    $retweet,
                     '".$tweet->in_reply_to_user_id_str."'
                 )"
             );
@@ -210,6 +225,28 @@
                     else{
                         $this->ejecutar("insert into urls(track_k, url,total,date) values ('".$track."','".$v->expanded_url."',1,'".date('Y-m-d')."')");
                     }
+                }
+            }
+        }
+
+        //Asocia los retweets a un track e incrementa el numero de veces que ha sido utilizado por dia
+        function retweets($track,$tweet){
+
+            $util=New Util();
+
+            if($this->hasEntities($tweet,'rt')){
+
+                $tweet->retweeted_status->text=$util->filterSpecials($tweet->retweeted_status->text);
+
+                $result=$this->ejecutar("select retweet_k,total,date from retwits where track_k='".$track."' and retweet='".$tweet->retweeted_status->text."' and date='".date('Y-m-d')."'");
+
+                if(mysql_num_rows($result) > 0){
+
+                    $result = mysql_fetch_object($result);
+                    $this->ejecutar("update retwits set total = ".($result->total + 1)." where retweet_k = ".$result->retweet_k);
+                }
+                else{
+                    $this->ejecutar("insert into retwits(track_k, retweet,total,date) values ('".$track."','".$tweet->retweeted_status->text."',1,'".date('Y-m-d')."')");
                 }
             }
         }
