@@ -23,7 +23,7 @@
 
             $text="Tweets analizados: ".$data['analizados'].", ";
             $text.="Negativos: ".$data['negativos'].", ";
-            $text.="Hashtag: ".$data['hashtag'].", ";
+            $text.="Topic: ".$data['hashtag'].", ";
             $text.="Retweets: ".$data['retweets']." ";
             $text.="http://goo.gl/8Va2S ";
             $text.="#analitweets";
