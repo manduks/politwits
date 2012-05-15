@@ -17,7 +17,7 @@ Ext.define('Core.TimeLine', {
 		    '<tpl for=".">',				
 				'<div class="thumb-wrap {[xindex % 2 === 0 ? "even" : values.cls]} ">',
 				'<div class="img">',
-                	'<img src="{image}" />',
+                	'<img src="{image}" width="48" height="48"/>',
 				'</div>',
 				  '<div class = "time-ago">{date}</div>',
 		          '<span class="{[values.negative? "negative":"positive"]}">{tweet}</span>',
