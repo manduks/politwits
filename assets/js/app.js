@@ -1,5 +1,6 @@
 
 Ext.onReady(function(){
+	
 	Ext.define('Tweet', {
 	    extend: 'Ext.data.Model',
 	    fields: [
@@ -182,6 +183,7 @@ Ext.onReady(function(){
 							if (num > 0){
 								Ext.fly('epn').update(num+' nuevos');
 								Ext.fly('epn').on('click',function(){
+									Ext.get('epn').update('Cargando...');
 									storeEpn.load({
 										params:{type:1,typec:0},
 										callback: function(records, operation, success) {			        
@@ -198,6 +200,7 @@ Ext.onReady(function(){
 							if (num > 0){
 								Ext.fly('gqu').update(num+' nuevos');
 								Ext.fly('gqu').on('click',function(){
+									Ext.get('gqu').update('Cargando...');
 									storeGquadri.load({
 										params:{type:1,typec:3},
 										callback: function(records, operation, success) {			        
@@ -213,6 +216,7 @@ Ext.onReady(function(){
 							if (num > 0){
 								Ext.fly('jvm').update(num+' nuevos');
 								Ext.fly('jvm').on('click',function(){
+									Ext.get('jvm').update('Cargando...');
 									storeJvm.load({
 										params:{type:1,typec:1},
 										callback: function(records, operation, success) {			        
@@ -228,6 +232,7 @@ Ext.onReady(function(){
 							if (num > 0){
 								Ext.fly('obr').update(num+' nuevos');
 								Ext.fly('obr').on('click',function(){
+									Ext.get('obr').update('Cargando...');
 									storeAmlo.load({
 										params:{type:1,typec:2},
 										callback: function(records, operation, success) {			        
