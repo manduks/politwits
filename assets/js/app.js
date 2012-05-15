@@ -42,7 +42,7 @@ Ext.onReady(function(){
                             return Ext.Date.format(new Date(date), 'jS M \'y');
                         }
                     } catch (e) {
-                        return '';
+                        return 'aca';
                     }                
 			}}
 	    ],
@@ -293,7 +293,7 @@ Ext.onReady(function(){
 						html:[
 							'<div class="candidato">',
 								'<div class="img">',
-			               			'<img src="https://twimg0-a.akamaihd.net/profile_images/508228230/foto_tw_normal.jpg"  width = 48px/>',
+			               			'<img src="https://twimg0-a.akamaihd.net/profile_images/508228230/foto_tw_normal.jpg" />',
 								'</div>',
 				          		'<span class="label label-warning">@lopezobrador_</span>',
 								'<div id="obr" class ="btn  btn-info load">0 nuevos</div>',
