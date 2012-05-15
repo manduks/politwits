@@ -55,6 +55,10 @@
                         //La ubicacion en la que se encuentra
                         $tweet->place->full_name=$util->filterSpecials($tweet->place->full_name);
 
+                        //Las coordenadas donde se encuentra
+                        $tweet->geo->coordinates[0]=$util->filterSpecials($tweet->geo->coordinates[0]);
+                        $tweet->geo->coordinates[1]=$util->filterSpecials($tweet->geo->coordinates[1]);
+
                         //El nombre que muestra en twitter
                         $tweet->user->screen_name=$util->filterSpecials($tweet->user->screen_name);
 
@@ -69,7 +73,8 @@
                         $this->resumen($track,$negative);
                         $this->hashtags($track,$tweet);
                         $this->urls($track,$tweet);
-                        //print_r($tweet);
+                        if($tweet->place->full_name!='')
+                            print_r($tweet);
                     }
                     flush();
                 }
@@ -130,6 +135,8 @@
                     negative,
                     date,
                     location,
+                    geo_x,
+                    geo_y,
                     screen_name,
                     image,
                     reply_to
@@ -141,6 +148,8 @@
                     $negative,
                     '".date('Y-m-d H:i:s')."',
                     '".$tweet->place->full_name."',
+                    '".$tweet->geo->coordinates[0]."',
+                    '".$tweet->geo->coordinates[1]."',
                     '".$tweet->user->screen_name."',
                     '".$tweet->user->profile_image_url."',
                     '".$tweet->in_reply_to_user_id_str."'

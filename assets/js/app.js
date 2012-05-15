@@ -255,7 +255,7 @@ Ext.onReady(function(){
 						xtype:'timeline',
 						store:storeAmlo,
 						region:'center',
-						padding:'10px 0 0 0',
+						padding:'10px 0 0 0'
 					}]
 				},{
 					xtype:'container',
@@ -280,7 +280,7 @@ Ext.onReady(function(){
 						xtype:'timeline',
 						store:storeGquadri,
 						region:'center',
-						padding:'10px 0 0 0',
+						padding:'10px 0 0 0'
 					}]
 				},{
 					xtype:'container',
@@ -305,7 +305,7 @@ Ext.onReady(function(){
 						xtype:'timeline',
 						store:storeEpn,
 						region:'center',
-						padding:'10px 0 0 0',
+						padding:'10px 0 0 0'
 					}]
 				},{	
 					xtype:'container',
@@ -330,7 +330,7 @@ Ext.onReady(function(){
 					xtype:'timeline',
 					store:storeJvm,
 					region:'center',
-					padding:'10px 0 0 0',
+					padding:'10px 0 0 0'
 				}]
 			}]
 			},{
@@ -371,7 +371,7 @@ Ext.onReady(function(){
 			region:'south',
 			cls:'btn-primary',
 			html:'Powered by codetlan',
-			height:20,
+			height:20
 		}]
 	});
 });
