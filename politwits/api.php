@@ -23,8 +23,13 @@
 			echo json_encode($arr);
 		}
 		
-		function getStatsTrack($result){
-			
+		function getMapsMarkers(){
+			$arr = array(
+				"data"=>$this->getData("select * from twits where location != '' and DATE(date) = CURRENT_DATE"),
+				"success"=>true
+				);
+				
+			echo json_encode($arr);
 		}
 		
 		function getHowMany(){
@@ -51,6 +56,9 @@
 		break;
 		case '2':
 			$api->getStatsTrack($c[$candidato],$start,LIMIT);
+		break;
+		case '8':
+			$api->getMapsMarkers();
 		break;
 	}
 ?>
