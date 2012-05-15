@@ -10,6 +10,8 @@ Ext.onReady(function(){
 			{ name:'negative', type:'boolean'},
 			{ name:'image',type:'string'},
 			{ name:'time',mapping:'date'},
+			{ name:'geo_x',type:'string'},
+			{ name:'geo_y',type:'string'},
 			{ name:'cls',mapping:'track_k',convert:function(val,rec){
 				switch(val){
 					case '@EPN': return 'pri';
@@ -103,8 +105,48 @@ Ext.onReady(function(){
 			}
 		});
 	};
-	
 	cargarStores();
+	
+	ponerMarcadores = function(){
+		Ext.Ajax.request({
+		    url : 'politwits/api.php',
+			method:'GET',
+		    params: {
+		        type: 8
+		    },
+		    success: function(response){
+		    	var map = viewport.items.items[1].items.items[1],
+					obj = Ext.decode(response.responseText).data,
+					icons ={
+						'@lopezobrador_':'assets/img/tweet_prd.png',
+						'@JosefinaVM':'assets/img/tweet_pan.png',
+						'@EPN':'assets/img/tweet_pri.png',
+						'@G_quadri':'assets/img/tweet_alianza.png'
+					};
+					
+				Ext.each(obj,function(o){
+					if(o.geo_x !== "" ){
+						var marker = map.addMarker({
+							lat: o.geo_x,
+				        	lng: o.geo_y,
+							icon: icons[o.track_k],
+				        	title: o.tweet,
+				        	listeners: {
+					             		mouseover: function(e){
+											/*var content = '<strong>A info window!</strong><br/>That is bound to a marker';
+											var infowindow = new google.maps.InfoWindow({
+											    content: content
+											});
+											infowindow.open(map.gmap, marker);*/									
+						                }
+						         }
+						    });
+					}
+				});			
+			}
+		});
+	
+	};	
 	
 	setInterval(function(){
 		Ext.Ajax.request({
@@ -212,19 +254,24 @@ Ext.onReady(function(){
 					handler:function(btn){
 						var p = btn.up('container').up('container');
 						p.items.items[1].getLayout().setActiveItem(1);
+						ponerMarcadores();
 					}
 				},{
 						text:'<i class="icon-refresh icon-white"></i>',
 						cls:'btn btn-success',
 						handler:function(btn){
 							cargarStores();
+							Ext.fly('obr').update('0 nuevos');
+							Ext.fly('jvm').update('0 nuevos');
+							Ext.fly('gqu').update('0 nuevos');
+							Ext.fly('epn').update('0 nuevos');
 						}
 					}]
 		},{
 			xtype:'container',
 			layout:'card',	
 			region:'center',
-			activeItem:1,
+			activeItem:0,
 			items:[{
 				xtype:'container',
 				layout: {
@@ -336,23 +383,8 @@ Ext.onReady(function(){
 			},{
 				xtype:'gmappanel',
 				center: {
-					geoCodeAddr: '4 Yawkey Way, Boston, MA, 02215-3409, USA',
-				    marker: {title: 'Fenway Park'}
-				},
-				markers: [{
-					lat: 42.339641,
-					lng: -71.094224,
-					title: 'Boston Museum of Fine Arts',
-					listeners: {
-							click: function(e){
-				    			Ext.Msg.alert('It\'s fine', 'and it\'s art.');
-							}
-						}
-				    },{
-				    	lat: 42.339419,
-				       	lng: -71.09077,
-				        title: 'Northeastern University'
-				}]
+					geoCodeAddr: 'Mexico'
+				}
 			}]
 		}]
 	});
