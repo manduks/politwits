@@ -32,7 +32,7 @@
 }
 .pri{
   	border:1px solid #dddddd;
-    background: #e7f1d0  repeat-x left top;
+    background: #fde5e5  repeat-x left top;
 }
 .pan{
   	border:1px solid #dddddd;
@@ -59,6 +59,10 @@
 	overflow:hidden;
 	margin:0 5px 0 0;
 }
+.candidato img{
+	width: 48px;
+	height: 48px;
+}
 .badge-negative{
 	margin-right: 10px;
 }
@@ -69,12 +73,14 @@
 	font-size:15px;
 	position: absolute;
 }
-.retweet{
-    position: absolute;
-    font-size: 12px;
+.retweet a{
+	float: right;
+    font-size: 0.9em;
     color: gray;
-    right: .5em;
-    margin: 0 0 0 0;
+    margin: -20px 10px 0 0;
+}
+.retweet a:hover{
+	text-decoration: none;
 }
 .load{
 	width:100%;
