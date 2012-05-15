@@ -21,11 +21,18 @@
 			"success"=>true
 			);			
 			echo json_encode($arr);
-			//print_r($arr);
 		}
 		
 		function getStatsTrack($result){
 			
+		}
+		
+		function getHowMany(){
+			$arr = array(
+				"data"=>$this->getData("select * from tracks"),
+				"success"=>true
+				);
+			echo json_encode($arr);
 		}
     }
 
@@ -36,6 +43,9 @@
 	$start = $_GET['start'];
 	$c = array('@EPN','@josefinaVM','@lopezobrador_','@G_quadri');
 	switch($tipo){
+		case '0':
+			$api->getHowMany();
+		break;
 		case '1':
 			$api->getTrack($c[$candidato],$start,LIMIT);
 		break;

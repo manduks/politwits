@@ -57,7 +57,12 @@ Ext.onReady(function(){
 	
 	//store Amlo
 	var storeAmlo = Ext.create('Ext.data.Store', {
-	    model: 'Tweet'
+	    model: 'Tweet',
+		listeners:{
+			load:function(){
+				console.log(arguments);
+			}
+		}
 	});	
 
 	//store EPN
@@ -94,7 +99,35 @@ Ext.onReady(function(){
 	cargarStores();
 	
 	setInterval(function(){
-		cargarStores();
+		Ext.Ajax.request({
+		    url : 'politwits/api.php',
+			method:'GET',
+		    params: {
+		        type: 0
+		    },
+		    success: function(response){
+		       var obj = Ext.decode(response.responseText).data;
+				Ext.each(obj,function(o){
+					switch(o.track_k){
+						case '@EPN':
+							 
+						break;
+						case '@G_quadri':break;
+						case '@JosefinaVM':break;
+						case '@lopezobrador_':
+							var num = storeAmlo.proxy.reader.rawData.count;
+							console.log(num);
+							console.log(o.no_twits)
+							num = o.no_twits - num;
+							
+							if (num > 0){
+								alert("hay mas de amlo");
+							}							
+						break;
+					}
+				});
+		    }
+		});
 	},8000);
 	
 	var viewport = Ext.create('Ext.Viewport', {
@@ -274,12 +307,12 @@ Ext.onReady(function(){
 						}]
 					}]
 			}]
-		},{
+		}/*,{
 			xtype:'container',
 			region:'south',
 			cls:'btn-primary',
 			html:'Powered by codetlan',
 			height:20,
-		}]
+		}*/]
 	});
 });

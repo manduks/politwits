@@ -52,7 +52,7 @@
 }
 .candidato{
 	border:1px solid #dddddd;
-    background: #efefef url(over.gif) repeat-x left top;
+    background: #efefef repeat-x left top;
     /*padding: 4px;*/
 	overflow:hidden;
 	margin:0 5px 0 0;
