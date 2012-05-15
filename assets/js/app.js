@@ -224,7 +224,7 @@ Ext.onReady(function(){
 			xtype:'container',
 			layout:'card',	
 			region:'center',
-			activeItem:0,
+			activeItem:1,
 			items:[{
 				xtype:'container',
 				layout: {
@@ -242,20 +242,20 @@ Ext.onReady(function(){
 					items:[{
 						xtype:'container',
 						region:'north',					
-						height:60,
+						height:95,
 						html:[
 							'<div class="candidato">',
 								'<div class="img">',
 			               			'<img src="https://twimg0-a.akamaihd.net/profile_images/508228230/foto_tw_normal.jpg"  width = 48px/>',
 								'</div>',
 				          		'<span class="label label-warning">@lopezobrador_</span>',
-								'<div id="obr" class ="btn btn-large loadmore">0 nuevos</div>',
+								'<div id="obr" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
 					},{
 						xtype:'timeline',
 						store:storeAmlo,
 						region:'center',
-						padding:'10px 0 0 0',
+						padding:'10px 0 0 0'
 					}]
 				},{
 					xtype:'container',
@@ -267,20 +267,20 @@ Ext.onReady(function(){
 					items:[{
 						xtype:'container',
 						region:'north',
-						height:60,
+						height:95,
 						html:[
 							'<div class="candidato">',
 								'<div class="img">',
 			               			'<img src="https://twimg0-a.akamaihd.net/profile_images/2031784254/GQ_NA_Recortado_normal.jpg" />',
 								'</div>',
 				          		'<span class="label">@g_quadri</span>',
-								'<div id="gqu" class ="btn btn-large loadmore">0 nuevos</div>',
+								'<div id="gqu" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
 					},{
 						xtype:'timeline',
 						store:storeGquadri,
 						region:'center',
-						padding:'10px 0 0 0',
+						padding:'10px 0 0 0'
 					}]
 				},{
 					xtype:'container',
@@ -292,20 +292,20 @@ Ext.onReady(function(){
 					items:[{
 						xtype:'container',
 						region:'north',
-						height:60,
+						height:95,
 						html:[
 							'<div class="candidato">',
 								'<div class="img">',
 			               			'<img src="https://twimg0-a.akamaihd.net/profile_images/1990796199/EPN_normal.jpg" />',
 								'</div>',
 				          		'<span class="label label-important">@EPN</span>',
-								'<div id="epn" class ="btn btn-large loadmore">0 nuevos</div>',
+								'<div id="epn" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
 					},{
 						xtype:'timeline',
 						store:storeEpn,
 						region:'center',
-						padding:'10px 0 0 0',
+						padding:'10px 0 0 0'
 					}]
 				},{	
 					xtype:'container',
@@ -317,61 +317,43 @@ Ext.onReady(function(){
 					items:[{
 						xtype:'container',
 						region:'north',
-						height:60,
+						height:95,
 						html:[
 							'<div class="candidato">',
 								'<div class="img">',
 		                			'<img src="https://twimg0-a.akamaihd.net/profile_images/2171219068/561240_10150799454499533_297028154532_9549761_222771239_n_normal.jpg" />',
 								'</div>',
 				          		'<span class="label label-info">@JosefinaVM</span>',
-								'<div id="jvm" class ="btn btn-large loadmore">0 nuevos</div>',
+								'<div id="jvm" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
 					},{
 					xtype:'timeline',
 					store:storeJvm,
 					region:'center',
-					padding:'10px 0 0 0',
+					padding:'10px 0 0 0'
 				}]
 			}]
 			},{
-				xtype:'container',
-				layout: {
-		            type: 'hbox',
-					align:'stretch'
-		        },
-				defaults:{
-					xtype:'container',
-					flex:1,
-					layout: {
-		       			type: 'vbox',
-						padding:'5',
-			            align:'stretch'
-				    }
+				xtype:'gmappanel',
+				center: {
+					geoCodeAddr: '4 Yawkey Way, Boston, MA, 02215-3409, USA',
+				    marker: {title: 'Fenway Park'}
 				},
-				items:[{			           
-						items:[{
-							xtype:'timelinechart',
-							store:storeAmlo
-						},{
-							xtype:'timelinechart',
-							store:storeGquadri
-						}]
-			        },{
-						items:[{
-							xtype:'timelinechart',
-							store:storeEpn
-						},{
-							xtype:'timelinechart',
-							store:storeJvm
-						}]
-					}]
+				markers: [{
+					lat: 42.339641,
+					lng: -71.094224,
+					title: 'Boston Museum of Fine Arts',
+					listeners: {
+							click: function(e){
+				    			Ext.Msg.alert('It\'s fine', 'and it\'s art.');
+							}
+						}
+				    },{
+				    	lat: 42.339419,
+				       	lng: -71.09077,
+				        title: 'Northeastern University'
+				}]
 			}]
-		},{
-			xtype:'container',
-			region:'south',
-			cls:'btn-primary',
-			html:'Powered by codetlan',
-			height:20,
 		}]
 	});
 });

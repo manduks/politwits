@@ -41,7 +41,7 @@ Ext.define('Ext.ux.GMapPanel', {
         options = Ext.applyIf(options, {
             zoom: 14,
             center: center,
-            mapTypeId: google.maps.MapTypeId.HYBRID
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         });
         this.gmap = new google.maps.Map(this.body.dom, options);
         if (marker) {
