@@ -44,7 +44,6 @@ Ext.define('Ext.ux.GMapPanel', {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
         this.gmap = new google.maps.Map(this.body.dom, options);
-		console.log(this.body.dom);
         if (marker) {
             this.addMarker(Ext.applyIf(marker, {
                 position: center
