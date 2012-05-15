@@ -6,10 +6,10 @@
  * Time: 1:05 AM
  */
 
-    include("config.php");
-    include("libMySql.php");
-    include('tmhOAuth/tmhOAuth.php');
-    include("util.php");
+    include("/home/codetlan/system/config.php");
+    include("/home/codetlan/system/libMySql.php");
+    include("/home/codetlan/system/tmhOAuth/tmhOAuth.php");
+    include("/home/codetlan/system/util.php");
 
     class Bot extends libMySql{
 
