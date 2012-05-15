@@ -9,7 +9,7 @@
     include("config.php");
     include("libMySql.php");
     include("util.php");
-    //include("blacklist.php");
+    include("wordlist.php");
 
     class Monitor Extends LibMySql{
 
@@ -58,6 +58,9 @@
                         //El nombre que muestra en twitter
                         $tweet->user->screen_name=$util->filterSpecials($tweet->user->screen_name);
 
+                        //La imagen que tiene en el profile a la hora de twittear
+                        $tweet->user->profile_image_url=$util->filterSpecials($tweet->user->profile_image_url);
+
 
 
                     //if(!empty($tweet->user->id_str) && !empty($tweet->text) && $tweet->user->screen_name == 'hellreuter_' ){
@@ -73,10 +76,46 @@
             }
         }
 
+        //Valida que un tweet contenga hashtags (ht), urls (u), que sea un retweet (rt) o que tenga solo una mension (um)
+        function hasEntities($tweet,$entity){
+
+            switch($entity){
+                case 'ht':
+                    if( is_array($tweet->entities->hashtags) && count($tweet->entities->hashtags) > 0 )
+                        return true;
+                    break;
+                case 'u':
+                    if( is_array($tweet->entities->urls) && count($tweet->entities->urls) > 0 )
+                        return true;
+                    break;
+                case 'um':
+                    if(is_array($tweet->entities->user_mentions) && count($tweet->entities->user_mentions) == 1 )
+                        return true;
+                    break;
+            }
+            return false;
+
+        }
+
         //Este metodo se encarga de buscar las palabras dentro del tweet que coincidan con el blacklist para valorar
         //si este es negativo o no, los unicos tweet que son clasificados como negativos son los que solo tienen
         //UNA mencion de los tracks
         function isNegative($tweet){
+
+            global $blacklist;
+
+            $util=New Util();
+
+
+            if($this->hasEntities($tweet,'um')){
+
+                $data=explode(" ", $util->sanitize($tweet->text));
+
+                foreach($data as $k => $v){
+                    if (in_array($v, $blacklist))
+                        return 1;
+                }
+            }
             return 0;
         }
 
@@ -92,6 +131,7 @@
                     date,
                     location,
                     screen_name,
+                    image,
                     reply_to
                 )
                 values (
@@ -102,6 +142,7 @@
                     '".date('Y-m-d H:i:s')."',
                     '".$tweet->place->full_name."',
                     '".$tweet->user->screen_name."',
+                    '".$tweet->user->profile_image_url."',
                     '".$tweet->in_reply_to_user_id_str."'
                 )"
             );
@@ -113,28 +154,13 @@
             $result=$this->ejecutar("select no_twits,negatives from tracks where track_k='".$track."' and date='".date('Y-m-d')."'");
             if(mysql_num_rows($result) > 0){
                 $row=mysql_fetch_object($result);
-                $this->ejecutar("update tracks set no_twits=".($row->no_twits + 1).", negatives=".($row->negative + $negative)." where track_k='".$track."' and fecha='".date('Y-m-d')."'");
+                $this->ejecutar("update tracks set no_twits=".($row->no_twits + 1).", negatives=".($row->negatives + $negative)." where track_k = '".$track."' and date = '".date('Y-m-d')."'");
             }else{
                 $this->ejecutar('insert into tracks (track_k, no_twits,negatives,date) values ("'.$track.'",1,'.$negative.',"'.date("Y-m-d").'")');
             }
         }
 
-        //Valida que un tweet contenga hashtags (ht), urls (u) o que sea un retweet (rt)
-        function hasEntities($tweet,$entity){
 
-            switch($entity){
-                case 'ht':
-                    if( is_array($tweet->entities->hashtags) && count($tweet->entities->hashtags) > 0 )
-                        return true;
-                    break;
-                case 'u':
-                    if( is_array($tweet->entities->urls) && count($tweet->entities->urls) > 0 )
-                        return true;
-                    break;
-            }
-            return false;
-
-        }
 
         //Asocia los hashtags a un track e incrementa el numero de veces que ha sido utilizado por dia
         function hashtags($track,$tweet){

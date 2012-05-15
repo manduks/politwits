@@ -103,11 +103,20 @@
         //Valida los caracteres especiales y UTF8
         function filterSpecials($data){
 
-            if($this->isUTF8($data))
-                $data = utf8_decode($data);
+            if(!$this->isUTF8($data))
+                $data = utf8_encode($data);
             $data = htmlspecialchars($data, ENT_QUOTES);
 
             return $data;
         }
+
+        //convierte a minusculas y limpia de caracteres especiales
+        function sanitize($str){
+            $find    = array( 'á', 'é', 'í', 'ó', 'ú', 'Á', 'É', 'Í', 'Ó', 'Ú', 'ñ', 'Ñ' );
+            $replace = array( 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U', 'n', 'N' );
+            return  strtolower(preg_replace('/[^a-zA-Z0-9 ]/s', '',str_ireplace($find, $replace, preg_replace('/[^\w ]/', '', $str))));
+
+        }
+
     }
 ?>

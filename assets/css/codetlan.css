@@ -11,10 +11,11 @@
 }
 .thumb-wrap{
 	padding: 12px;
+	height: 110px;
 	overflow:hidden;
 }
 .x-item-over{
-    border:1px solid #000;
+/*    border:1px solid #000;*/
 }
 .thumb-wrap .time-ago{
     position: absolute;
@@ -25,23 +26,23 @@
 }
 .img{
 	float:left;
-	padding:5px ;
+	padding:5px;
 }
 .pri{
   	border:1px solid #dddddd;
-    background: #b4df5b  repeat-x left top;
+    background: #e7f1d0  repeat-x left top;
 }
 .pan{
   	border:1px solid #dddddd;
-    background: #76B1ED repeat-x left top;
+    background: #e0edfb repeat-x left top;
 }
 .prd{
   	border:1px solid #dddddd;
-    background: #FFFFB2 repeat-x left top;
+    background: #fbfbe7 repeat-x left top;
 }
 .alianza{
 	border:1px solid #dddddd;
-    background: #90CECD repeat-x left top;
+    background: #e4f3f3 repeat-x left top;
 }
 .name{
     position: absolute;
@@ -52,13 +53,19 @@
 }
 .candidato{
 	border:1px solid #dddddd;
-    background: #efefef url(over.gif) repeat-x left top;
-    /*padding: 4px;*/
+    background: #efefef repeat-x left top;
 	overflow:hidden;
 	margin:0 5px 0 0;
 }
 .negative{
 	color :red;
+}
+.loadmore{
+	height: 55px;
+	width:40%;
+	right: .5em;
+	font-size:15px;
+	position: absolute;
 }
 .retweet{
     position: absolute;

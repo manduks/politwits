@@ -23,17 +23,13 @@
                     $tracks = explode(',' , $args['track']);
                     if(count($tracks) <= count($accounts)){
 
-                        //Detiene todos los procesos corriendo que esten monitoreando los tracks
-                        exec("kill $(ps x | grep 'php monitor.php' | cut -f1 -d' ')");
-                        exec("kill $(ps x | grep 'php service.php' | cut -f1 -d' ')");
-
                         $command="";
 
                         foreach($tracks as $k => $v){
                             $account = $util->getValidAccount();
                             $command .= "php monitor.php --track=".$v." --user=".$account["USER"]." --pass=".$account["PASS"]." & sleep 1; ";
                         }
-                        $command .= "php service.php & sleep 1; ";
+
                         //echo $command;
                         exec($command);
                     }
