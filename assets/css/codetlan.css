@@ -11,7 +11,7 @@
 }
 .thumb-wrap{
 	padding: 2px 12px 12px 12px ;
-	height: 110px;
+	min-height: 110px;
 	overflow:hidden;
 	clear: both;
 }
