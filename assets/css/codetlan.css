@@ -60,3 +60,10 @@
 .negative{
 	color :red;
 }
+.retweet{
+    position: absolute;
+    font-size: 12px;
+    color: gray;
+    right: .5em;
+    margin: 0 0 0 0;
+}

@@ -21,6 +21,7 @@ Ext.define('Core.TimeLine', {
 				'</div>',
 				  '<div class = "time-ago">{date}</div>',
 		          '<span class="{[values.negative? "negative":"positive"]}">{tweet}</span>',
+                  '<a href = "http://twitter.com/home?status=RT @{screen_name}: {tweet}" target="_blank" class = "retweet">Retweet</a>',
 		        '</div>',
 		    '</tpl>'
 		),	
@@ -28,5 +29,12 @@ Ext.define('Core.TimeLine', {
         overItemCls: 'x-item-over',
         itemSelector: 'div.thumb-wrap',
 		emptyText: 'No images available'
+    },
+
+    getUrlRetweet : function(tweet){
+        console.info(tweet);
+        //var url = "http://twitter.com/home?status=";
+            //'encodeURIComponent(RetweetJS.prefix + origText +',
+        return "#";
     }
 });
