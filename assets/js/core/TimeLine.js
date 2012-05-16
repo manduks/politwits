@@ -47,8 +47,8 @@ Ext.define('Core.TimeLine', {
 
                 },
                 getRetweet : function (values) {
-                    var rt = 'RT@',
-                        tweet = values.tweet;
+                    var rt = 'RT @',
+                        tweet = values.tweet.replace(/#/g, "%23");
                     if (tweet.substring(0,2) !== "RT") {
                         tweet = rt + values.screen_name + ": " + tweet;
                     }
