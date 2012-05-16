@@ -24,7 +24,7 @@ Ext.define('Core.TimeLine', {
             '</div>',
             '<div style="clear: both">',
             '<div class="img">',
-            '<img src="{image}" width="48" height="48"/>',
+            '<a href = "https://twitter.com/#!/{screen_name}" target = "_blank" ><img src="{image}" width="48" height="48"/></a>',
             '</div>',
             '<span class="{[values.negative? "negative":"positive"]}">',
             '<tpl for="."> {[this.getUrls(values.tweet)]} </tpl>',
