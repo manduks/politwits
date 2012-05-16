@@ -63,5 +63,3 @@ Ext.define('Core.TimeLine', {
         emptyText:'No images available'
     }
 });
-
-//new Ext.XTemplate('<tpl for=".">{[this.foo(values)]}</tpl>', { foo: function(v){return 'bar = "' + v.bar + '"';}}).apply({bar:'bletch'})

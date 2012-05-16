@@ -16,7 +16,9 @@
         'burras',       'mierda',       'mierdas',      'ignorante',    'ignorantes',
         'idiota',       'idiotas',      'odio',         'repudio',      'repudiar',
         'rechazo',      'rechazos',     'rechazados',   'huevos',       'huevo',
-        'huevones',     'huevon'
+        'huevones',     'huevon',       'mamen',        'mames',        'mamar',
+        'mamones',      'mamada',       'mamon',        'coger',        'coge',
+        'asco'
     );
 
     $list = array(

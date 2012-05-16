@@ -46,7 +46,15 @@
 	$tipo = $_GET['type'];
 	$candidato = $_GET['typec'];
 	$start = $_GET['start'];
-	$c = array('@EPN','@josefinaVM','@lopezobrador_','@G_quadri');
+
+    if(!is_numeric($tipo))
+        $tipo=-1;
+    if(!is_numeric($candidato))
+        $candidato=-1;
+    if(!is_numeric($start))
+        $start=1;
+
+    $c = array('@EPN','@josefinaVM','@lopezobrador_','@G_quadri');
 	switch($tipo){
 		case '0':
 			$api->getHowMany();
