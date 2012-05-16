@@ -11,7 +11,7 @@
     class Api extends LibMySql{
 		
 		var $sqlTweets = "select * from twits where track_k= '@user' order by tweet_k desc ";
-		var $numTweets = "select no_twits from tracks where track_k='@user' ";
+		var $numTweets = "select no_twits from tracks where track_k='@user' and date=CURRENT_DATE";
 		
 
 		function getTrack($track,$start,$limit){
@@ -34,7 +34,7 @@
 		
 		function getHowMany(){
 			$arr = array(
-				"data"=>$this->getData("select * from tracks"),
+				"data"=>$this->getData("select * from tracks where date=CURRENT_DATE"),
 				"success"=>true
 				);
 			echo json_encode($arr);
