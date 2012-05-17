@@ -35,9 +35,9 @@
     background: #fde5e5  repeat-x left top;
 }
 .pan{
-     border:1px solid #dddddd;
-     background: #e0edfb repeat-x left top;
- }
+  	border:1px solid #dddddd;
+    background: #e0edfb repeat-x left top;
+}
 .prd{
   	border:1px solid #dddddd;
     background: #fbfbe7 repeat-x left top;
@@ -85,6 +85,24 @@
 .load{
 	width:100%;
 	font-size:15px;
+}
+.x-panel-body img {
+	max-width: none;
+}
+.tipi{
+	min-height: 60px;
+}
+.brand a{
+	color: #999999;
+}
+.brand a:hover {
+	text-decoration: none;
+}
+.logo{
+	position: fixed;
+	top: 7px;
+	right: 50%;
+	z-index: 99999;
 }
 .label-info-big {
     background-color: #3a87ad;

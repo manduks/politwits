@@ -42,8 +42,8 @@ Ext.onReady(function(){
                             return Ext.Date.format(new Date(date), 'jS M \'y');
                         }
                     } catch (e) {
-                        return 'aca';
-                    }
+                        return '';
+                    }                
 			}}
 	    ],
 		proxy: {
@@ -253,14 +253,31 @@ Ext.onReady(function(){
 							lat: o.geo_x,
 				        	lng: o.geo_y,
 							icon: icons[o.track_k],
-				        	title: o.tweet,
 				        	listeners: {
-					             		mouseover: function(e){
-											/*var content = '<strong>A info window!</strong><br/>That is bound to a marker';
+					             		click: function(e){
+											var css = '';
+											switch(o.track_k){
+													case '@EPN': css = 'pri';break;
+													case '@lopezobrador_': css = 'prd';break;
+													case '@G_quadri': css = 'alianza';break;
+													case '@JosefinaVM': css = 'pan';break;
+												}
+												
+											var content = [
+											'<div class="thumb-wrap '+css+' tipi">',
+												'<div style="clear: both;">',
+													'<div class="img">',
+								                		'<a href = "https://twitter.com/#!/'+o.screen_name+'" target = "_blank" ><img src="'+o.image+'" width="48" height="48"/></a>',
+													'</div>',
+										          	'<span>',
+										          		o.tweet,
+										          	'</span>',
+										        '</div>',
+									        '</div>'].join('');
 											var infowindow = new google.maps.InfoWindow({
 											    content: content
 											});
-											infowindow.open(map.gmap, marker);*/
+											infowindow.open(map.gmap, marker);								
 						                }
 						         }
 						    });
@@ -324,6 +341,7 @@ Ext.onReady(function(){
 							if (num > 0){
 								Ext.fly('epn').update(num+' nuevos');
 								Ext.fly('epn').on('click',function(){
+									Ext.get('epn').update('Cargando...');
 									storeEpn.load({
 										params:{type:1,typec:0},
 										callback: function(records, operation, success) {
@@ -334,12 +352,13 @@ Ext.onReady(function(){
 								});
 							}
 						break;
-						case '@G_quadri':break;
+						case '@G_quadri':
 							var num = 0;
 							num = (o.no_twits * 1) - (countGquadri * 1);
 							if (num > 0){
 								Ext.fly('gqu').update(num+' nuevos');
 								Ext.fly('gqu').on('click',function(){
+									Ext.get('gqu').update('Cargando...');
 									storeGquadri.load({
 										params:{type:1,typec:3},
 										callback: function(records, operation, success) {
@@ -349,12 +368,14 @@ Ext.onReady(function(){
 									});
 								});
 							}
-						case '@JosefinaVM':break;
+						break;
+						case '@JosefinaVM':
 							var num = 0;
 							num = (o.no_twits * 1)  - (countJvm * 1);
 							if (num > 0){
 								Ext.fly('jvm').update(num+' nuevos');
 								Ext.fly('jvm').on('click',function(){
+									Ext.get('jvm').update('Cargando...');
 									storeJvm.load({
 										params:{type:1,typec:1},
 										callback: function(records, operation, success) {
@@ -364,12 +385,14 @@ Ext.onReady(function(){
 									});
 								});
 							}
+						break;
 						case '@lopezobrador_':
 							var num = 0;
 							num = (o.no_twits * 1) - (countAmlo * 1);
 							if (num > 0){
 								Ext.fly('obr').update(num+' nuevos');
 								Ext.fly('obr').on('click',function(){
+									Ext.get('obr').update('Cargando...');
 									storeAmlo.load({
 										params:{type:1,typec:2},
 										callback: function(records, operation, success) {
@@ -399,7 +422,7 @@ Ext.onReady(function(){
 			cls:'navbar-inner',
 			baseCls:'navbar navbar-fixed-top',
 			items:[
-				'<div class="brand">Politwits</div>','->',
+				'<div class="brand"><a href="https://twitter.com/#!/analitweets" target="_blank">@Analitweets</a></div>','->',
 				{
 					text:'<i class="icon-comment icon-white"></i>',
 					cls:'btn btn-primary',

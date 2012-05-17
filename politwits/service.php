@@ -62,7 +62,7 @@
                 $proc=NULL;
                 sleep(2);
                 exec("ps x | grep 'php monitor.php'",$proc);
-                if(count($proc)==2)
+                if(count($proc) < 6)
                     $this->restart();
 
             }

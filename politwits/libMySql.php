@@ -15,7 +15,7 @@
                 exit();
             }
             if(!mysql_select_db(DATABASE,$link)){
-                echo "Error seleccionando la base de datos.";
+                echo "Error seleccionando la base de datos.".DATABASE;
                 exit();
             }
             return $link;
