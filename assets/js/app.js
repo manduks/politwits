@@ -43,7 +43,7 @@ Ext.onReady(function(){
                         }
                     } catch (e) {
                         return 'aca';
-                    }                
+                    }
 			}}
 	    ],
 		proxy: {
@@ -55,58 +55,181 @@ Ext.onReady(function(){
 			}
 		}
 	});
-	
-	
-	//store Amlo
+
+    Ext.define('TweetChart', {
+        extend: 'Ext.data.Model',
+        fields: [
+            {name: 'track_k', type: 'string'},
+            {name: 'time', type: 'date'},
+            {name: 'conteo', type: 'integer'}
+        ],
+        proxy:{
+            type: 'ajax',
+            url : 'politwits/api.php',
+            reader:{
+                type:'json',
+                root:'data'
+            }
+        }
+    });
+
+    Ext.define('PieChart', {
+        extend: 'Ext.data.Model',
+        fields: [
+            {name: 'name', type: 'string'},
+            {name: 'data', type: 'integer'}
+        ],
+        proxy:{
+            type: 'ajax',
+            url : 'politwits/api.php',
+            reader:{
+                type:'json',
+                root:'data'
+            }
+        }
+    });
+
+    Ext.define('TopHashtag',{
+        extend: 'Ext.data.Model',
+        fields: [
+            { name: 'hashtag_k', type: 'integer' },
+            { name: 'track_k', type: 'string' },
+            { name: 'hashtag', type: 'string' },
+            { name: 'total', type: 'integer' },
+            { name: 'date', type: 'date' }
+
+        ],
+        proxy:{
+            type: 'ajax',
+            url : 'politwits/api.php',
+            reader:{
+                type:'json',
+                root:'data'
+            }
+        }
+    });
+
+    Ext.define('TopRetweet',{
+        extend: 'Ext.data.Model',
+        fields: [
+            { name: 'retweet_k', type: 'integer' },
+            { name: 'track_k', type: 'string' },
+            { name: 'retweet', type: 'string' },
+            { name: 'total', type: 'integer' },
+            { name: 'date', type: 'date' }
+
+        ],
+        proxy:{
+            type: 'ajax',
+            url : 'politwits/api.php',
+            reader:{
+                type:'json',
+                root:'data'
+            }
+        }
+    });
+
+    Ext.define('TopUrl',{
+        extend: 'Ext.data.Model',
+        fields: [
+            { name: 'url_k', type: 'integer' },
+            { name: 'track_k', type: 'string' },
+            { name: 'url', type: 'string' },
+            { name: 'total', type: 'integer' },
+            { name: 'date', type: 'date' }
+
+        ],
+        proxy:{
+            type: 'ajax',
+            url : 'politwits/api.php',
+            reader:{
+                type:'json',
+                root:'data'
+            }
+        }
+    });
+
+    // Stores
+
+    var storeGraficaTweets = Ext.create('Ext.data.Store', {
+        model: 'TweetChart'
+    });
+
+    var storePieAmlo = Ext.create('Ext.data.Store',{
+        model: 'PieChart'
+    });
+
+    var storePieEpn = Ext.create('Ext.data.Store',{
+        model: 'PieChart'
+    });
+
+    var storePieJvm = Ext.create('Ext.data.Store',{
+        model: 'PieChart'
+    });
+
+    var storePieGquadri = Ext.create('Ext.data.Store',{
+        model: 'PieChart'
+    });
+
+    var storeTopHashtag = Ext.create('Ext.data.Store',{
+        model: 'TopHashtag'
+    });
+
+    var storeTopRetweet = Ext.create('Ext.data.Store',{
+        model: 'TopRetweet'
+    });
+
+    var storeTopUrl = Ext.create('Ext.data.Store',{
+        model: 'TopUrl'
+    });
+
 	var storeAmlo = Ext.create('Ext.data.Store', {
 	    model: 'Tweet'
-	});	
+	});
 
-	//store EPN
 	var storeEpn = Ext.create('Ext.data.Store', {
 	    model: 'Tweet'
-	});	
+	});
 
-	//store JVM
 	var storeJvm = Ext.create('Ext.data.Store', {
 	    model: 'Tweet'
-	});	
-	
-	//store JVM
+	});
+
 	var storeGquadri = Ext.create('Ext.data.Store', {
 	    model: 'Tweet'
-	});	
-	
-	
+	});
+
+
+
 	cargarStores=function(){
 		storeAmlo.load({
 			params:{type:1,	typec:2},
-			callback: function(records, operation, success) {			        
+			callback: function(records, operation, success) {
 				countAmlo = Ext.decode(operation.response.responseText).count;
 			}
 		});
 		storeEpn.load({
 			params:{type:1,typec:0},
-			callback: function(records, operation, success) {			        
+			callback: function(records, operation, success) {
 				countEpn = Ext.decode(operation.response.responseText).count;
 			}
 		});
 		storeJvm.load({
 			params:{type:1,typec:1},
-			callback: function(records, operation, success) {			        
+			callback: function(records, operation, success) {
 				countJvm = Ext.decode(operation.response.responseText).count;
 			}
-			
+
 		});
 		storeGquadri.load({
 			params:{type:1,typec:3},
-			callback: function(records, operation, success) {			        
+			callback: function(records, operation, success) {
 				countGquadri = Ext.decode(operation.response.responseText).count;
 			}
 		});
 	};
 	cargarStores();
-	
+
 	ponerMarcadores = function(){
 		Ext.Ajax.request({
 		    url : 'politwits/api.php',
@@ -123,7 +246,7 @@ Ext.onReady(function(){
 						'@EPN':'assets/img/tweet_pri.png',
 						'@G_quadri':'assets/img/tweet_alianza.png'
 					};
-					
+
 				Ext.each(obj,function(o){
 					if(o.geo_x !== "" ){
 						var marker = map.addMarker({
@@ -137,18 +260,54 @@ Ext.onReady(function(){
 											var infowindow = new google.maps.InfoWindow({
 											    content: content
 											});
-											infowindow.open(map.gmap, marker);*/									
+											infowindow.open(map.gmap, marker);*/
 						                }
 						         }
 						    });
 					}
-				});			
+				});
 			}
 		});
-	
-	};	
-	
-	setInterval(function(){
+
+	};
+
+    topLists = function(){
+        storeTopHashtag.load({
+            params:{type:3}
+        });
+        storeTopRetweet.load({
+            params:{type:4}
+        });
+        storeTopUrl.load({
+            params:{type:5}
+        });
+    };
+    topLists();
+
+    tweetCharts = function(){
+        storeGraficaTweets.load({
+            params:{type:6}
+        });
+    };
+    tweetCharts();
+
+    pieCharts = function(){
+        storePieAmlo.load({
+            params:{type:7, typec:2}
+        });
+        storePieEpn.load({
+            params:{type:7, typec:0}
+        });
+        storePieJvm.load({
+            params:{type:7, typec:1}
+        });
+        storePieGquadri.load({
+            params:{type:7, typec:3}
+        });
+    };
+    pieCharts();
+
+    setInterval(function(){
 		Ext.Ajax.request({
 		    url : 'politwits/api.php',
 			method:'GET',
@@ -167,7 +326,7 @@ Ext.onReady(function(){
 								Ext.fly('epn').on('click',function(){
 									storeEpn.load({
 										params:{type:1,typec:0},
-										callback: function(records, operation, success) {			        
+										callback: function(records, operation, success) {
 											countEpn = Ext.decode(operation.response.responseText).count;
 											Ext.fly('epn').update('0 nuevos');
 										}
@@ -177,13 +336,13 @@ Ext.onReady(function(){
 						break;
 						case '@G_quadri':break;
 							var num = 0;
-							num = (o.no_twits * 1) - (countGquadri * 1);							
+							num = (o.no_twits * 1) - (countGquadri * 1);
 							if (num > 0){
 								Ext.fly('gqu').update(num+' nuevos');
 								Ext.fly('gqu').on('click',function(){
 									storeGquadri.load({
 										params:{type:1,typec:3},
-										callback: function(records, operation, success) {			        
+										callback: function(records, operation, success) {
 											countGquadri = Ext.decode(operation.response.responseText).count;
 											Ext.fly('gqu').update('0 nuevos');
 										}
@@ -192,13 +351,13 @@ Ext.onReady(function(){
 							}
 						case '@JosefinaVM':break;
 							var num = 0;
-							num = (o.no_twits * 1)  - (countJvm * 1);							
+							num = (o.no_twits * 1)  - (countJvm * 1);
 							if (num > 0){
 								Ext.fly('jvm').update(num+' nuevos');
 								Ext.fly('jvm').on('click',function(){
 									storeJvm.load({
 										params:{type:1,typec:1},
-										callback: function(records, operation, success) {			        
+										callback: function(records, operation, success) {
 											countJvm = Ext.decode(operation.response.responseText).count;
 											Ext.fly('jvm').update('0 nuevos');
 										}
@@ -207,26 +366,26 @@ Ext.onReady(function(){
 							}
 						case '@lopezobrador_':
 							var num = 0;
-							num = (o.no_twits * 1) - (countAmlo * 1);							
+							num = (o.no_twits * 1) - (countAmlo * 1);
 							if (num > 0){
 								Ext.fly('obr').update(num+' nuevos');
 								Ext.fly('obr').on('click',function(){
 									storeAmlo.load({
 										params:{type:1,typec:2},
-										callback: function(records, operation, success) {			        
+										callback: function(records, operation, success) {
 											countAmlo = Ext.decode(operation.response.responseText).count;
 											Ext.fly('obr').update('0 nuevos');
 										}
 									});
 								});
-							}							
+							}
 						break;
 					}
 				});
 		    }
 		});
 	},8000);
-	
+
 	var viewport = Ext.create('Ext.Viewport', {
         layout: {
             type: 'border'
@@ -234,7 +393,7 @@ Ext.onReady(function(){
 		style:{
 			backgroundColor:'#FFF'
 		},
-        items: [{
+        items:  [{
 			xtype:'toolbar',
 			region:'north',
 			cls:'navbar-inner',
@@ -257,6 +416,23 @@ Ext.onReady(function(){
 						ponerMarcadores();
 					}
 				},{
+                    text:'<i class="icon-signal icon-white"></i>',
+                    cls:'btn btn-primary',
+                    handler:function(btn){
+                        var p = btn.up('container').up('container');
+                        p.items.items[1].getLayout().setActiveItem(3);
+                        tweetCharts();
+                        pieCharts();
+                    }
+                },{
+                    text:'<i class="icon-star icon-white"></i>',
+                    cls:'btn btn-primary',
+                    handler:function(btn){
+                        var p = btn.up('container').up('container');
+                        p.items.items[1].getLayout().setActiveItem(2);
+                        topLists();
+                    }
+                },{
 						text:'<i class="icon-refresh icon-white"></i>',
 						cls:'btn btn-success',
 						handler:function(btn){
@@ -269,7 +445,7 @@ Ext.onReady(function(){
 					}]
 		},{
 			xtype:'container',
-			layout:'card',	
+			layout:'card',
 			region:'center',
 			activeItem:0,
 			items:[{
@@ -284,11 +460,11 @@ Ext.onReady(function(){
 					layout:'border',
 					style:{
 						backgroundColor:'#FFF'
-					},					
+					},
 					flex:1,
 					items:[{
 						xtype:'container',
-						region:'north',					
+						region:'north',
 						height:95,
 						html:[
 							'<div class="candidato">',
@@ -354,7 +530,7 @@ Ext.onReady(function(){
 						region:'center',
 						padding:'10px 0 0 0'
 					}]
-				},{	
+				},{
 					xtype:'container',
 					layout:'border',
 					style:{
@@ -385,7 +561,139 @@ Ext.onReady(function(){
 				center: {
 					geoCodeAddr: 'Mexico'
 				}
-			}]
+			},{
+                xtype:'container',
+                flex: 1,
+                layout: {
+                    type: 'hbox',
+                    padding:'5',
+                    align:'stretch'
+                },
+                items:[{
+                    xtype:'container',
+                    flex: 1,
+                    layout:'border',
+                    style:{
+                        backgroundColor:'#FFF'
+                    },
+                    items:[{
+                        xtype:'container',
+                        region:'north',
+                        height:25,
+                        html:[
+                            '<div class="candidato"',
+                            '<span align="center">TOP HASHTAGS</span>',
+                            '</div>'].join('')
+                    },{
+                        xtype:'tophashtag',
+                        store:storeTopHashtag,
+                        region:'center',
+                        padding:'10px 0 0 0'
+                    }]
+                },{
+                    xtype:'container',
+                    layout:'border',
+                    style:{
+                        backgroundColor:'#FFF'
+                    },
+                    flex:1,
+                    items:[{
+                        xtype:'container',
+                        region:'north',
+                        height:25,
+                        html:[
+                            '<div class="candidato">',
+                            '<span align="center">TOP RETWEETS</span>',
+                            '</div>'].join('')
+                    },{
+                        xtype:'topretweet',
+                        store: storeTopRetweet,
+                        region:'center',
+                        padding:'10px 0 0 0'
+                    }]
+                },{
+                    xtype:'container',
+                    layout:'border',
+                    style:{
+                        backgroundColor:'#FFF'
+                    },
+                    flex:1,
+                    items:[{
+                        xtype:'container',
+                        region:'north',
+                        height:25,
+                        html:[
+                            '<div class="candidato">',
+                            '<span align="center">TOP URLS</span>',
+                            '</div>'].join('')
+                    },{
+                        xtype:'topurl',
+                        store:storeTopUrl,
+                        region:'center',
+                        padding:'10px 0 0 0'
+                    }]
+                }]
+
+            },{
+                xtype: 'container',
+                flex: 1,
+                layout: {
+                    type: 'vbox',
+                    padding: '5',
+                    align: 'stretch'
+                },
+                items: [{
+                    xtype: 'container',
+                    flex: 1,
+                    layout: {
+                        type: 'hbox',
+                        align: 'stretch'
+                    },
+                    items: [{
+                        xtype: 'timelinechart',
+                        flex: 1,
+                        layout: 'border',
+                        store: storeGraficaTweets
+                    },{
+                        xtype: 'piechart',
+                        flex: 1,
+                        layout: 'border',
+                        store: storePieEpn
+
+                    }]
+                },{
+                    xtype: 'container',
+                    flex: 1,
+                    layout: {
+                        type: 'hbox',
+                        align: 'stretch'
+                    },
+                    items: [{
+                        xtype: 'piechart',
+                        flex: 1,
+                        layout: 'border',
+                        store: storePieAmlo
+                    },{
+                        xtype: 'piechart',
+                        flex: 1,
+                        layout: 'border',
+                        store: storePieGquadri
+
+                    },{
+                        xtype: 'piechart',
+                        flex: 1,
+                        layout: 'border',
+                        store: storePieEpn
+
+                    },{
+                        xtype: 'piechart',
+                        flex: 1,
+                        layout: 'border',
+                       store: storePieJvm
+
+                    }]
+                }]
+            }]
 		}]
 	});
 });
