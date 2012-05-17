@@ -1,5 +1,6 @@
 
 Ext.onReady(function(){
+	
 	Ext.define('Tweet', {
 	    extend: 'Ext.data.Model',
 	    fields: [
