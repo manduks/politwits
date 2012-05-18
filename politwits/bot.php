@@ -52,6 +52,7 @@
                 $util->sendMail("miguel@codetlan.com",'Tweet ERROR',$tweet_text);
                 echo "ERROR";
             }
+            exit;
         }
 
         function getDataResumen(){
