@@ -13,7 +13,7 @@
 		var $sqlTweets = "select * from twits where track_k= '@user' order by tweet_k desc ";
 		var $numTweets = "select no_twits from tracks where track_k='@user' and date=CURRENT_DATE";
         var $sqlTotal = "select 'negativos' as name, negativos as data from(select track_k, negatives as negativos, (no_twits - negatives) as total from tracks where date=CURRENT_DATE and track_k='@user')as aux union
-select 'total', total from(select track_k, negatives as negativos, (no_twits - negatives) as total from tracks where date=CURRENT_DATE and track_k='@user') as aux1 ";
+                          select 'total', total from(select track_k, negatives as negativos, (no_twits - negatives) as total from tracks where date=CURRENT_DATE and track_k='@user') as aux1 ";
 
 		function getTrack($track,$start,$limit){
 		  $arr = array(
