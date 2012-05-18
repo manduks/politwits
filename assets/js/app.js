@@ -164,7 +164,7 @@ Ext.onReady(function(){
 			}
 		});
 	
-	};	
+	};
 	
 	setInterval(function(){
 		Ext.Ajax.request({
@@ -264,25 +264,25 @@ Ext.onReady(function(){
 			cls:'navbar-inner',
 			baseCls:'navbar navbar-fixed-top',
 			items:[
-				'<div class="brand"><a href="https://twitter.com/#!/analitweets" target="_blank">@Analitweets</a></div>','->',
+				'<div class="brand"><a href="https://twitter.com/#!/analitweets" target="_blank">@Analitweets</a></div>',
 				{
-					text:'<i class="icon-comment icon-white"></i>',
+					text:'<i class="icon-comment icon-white"></i> <span style="color:#FFFFFF;">Tweets</span>',
 					cls:'btn btn-primary',
 					handler:function(btn){
 						var p = btn.up('container').up('container');
 						p.items.items[1].getLayout().setActiveItem(0);
 					}
 				},{
-					text:'<i class="icon-globe icon-white"></i>',
-					cls:'btn btn-primary',
+					text:'<i class="icon-globe icon-white"></i> <span style="color:#FFFFFF;">Mapa</span>',
+					cls:'btn btn-success',
 					handler:function(btn){
 						var p = btn.up('container').up('container');
 						p.items.items[1].getLayout().setActiveItem(1);
 						ponerMarcadores();
 					}
 				},{
-						text:'<i class="icon-refresh icon-white"></i>',
-						cls:'btn btn-success',
+						text:'<i class="icon-refresh icon-white"></i> <span style="color:#FFFFFF;">Recargar</span>',
+						cls:'btn btn-warning',
 						handler:function(btn){
 							cargarStores();
 							Ext.fly('obr').update('0 nuevos');
@@ -290,7 +290,10 @@ Ext.onReady(function(){
 							Ext.fly('gqu').update('0 nuevos');
 							Ext.fly('epn').update('0 nuevos');
 						}
-					}]
+				},'->',
+                '<a href="https://twitter.com/share" class="twitter-share-button" style="margin-right: 60px;">Tweet</a><script></script>',
+                '<a href="https://twitter.com/Analitweets" class="twitter-follow-button" data-show-count="false" style="margin-right: 30px;">Follow @Analitweets</a><script></script>'
+                ]
 		},{
 			xtype:'container',
 			layout:'card',	
@@ -410,6 +413,33 @@ Ext.onReady(function(){
 					geoCodeAddr: 'Mexico'
 				}
 			}]
-		}]
-	});
+		}],
+        listeners:{
+            scope:this,
+            afterrender:function(c,o){
+                !function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (!d.getElementById(id)) {
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "//platform.twitter.com/widgets.js";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }
+                }(document, "script", "twitter-wjs");
+
+                !function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (!d.getElementById(id)) {
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "//platform.twitter.com/widgets.js";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }
+                }(document, "script", "twitter-wjs");
+            }
+        }
+	}
+
+
+    );
 });
