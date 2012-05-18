@@ -693,24 +693,24 @@ Ext.onReady(function(){
                         align: 'stretch'
                     },
                     items: [{
-                        xtype: 'piechart',
+                        xtype: 'barchart',
                         flex: 1,
                         layout: 'border',
                         store: storePieAmlo
                     },{
-                        xtype: 'piechart',
+                        xtype: 'barchart',
                         flex: 1,
                         layout: 'border',
                         store: storePieGquadri
 
                     },{
-                        xtype: 'piechart',
+                        xtype: 'barchart',
                         flex: 1,
                         layout: 'border',
                         store: storePieEpn
 
                     },{
-                        xtype: 'piechart',
+                        xtype: 'barchart',
                         flex: 1,
                         layout: 'border',
                        store: storePieJvm

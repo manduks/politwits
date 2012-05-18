@@ -14,16 +14,16 @@
 Ext.define('MyNamespace.PieChart', {
     extend: 'Ext.chart.Chart',
     xtype: 'piechart',
-    renderTo: Ext.getBody(),
-    width: 200,
-    height: 150,
-   // animate: true,
+   // renderTo: Ext.getBody(),
+    //width: 200,
+    //height: 150,
+    animate: true,
    // store: store,
     theme: 'Base:gradients',
     series: [{
         type: 'pie',
         angleField: 'data',
-        showInLegend: true,
+       // showInLegend: true,
         tips: {
             trackMouse: true,
             width: 140,
