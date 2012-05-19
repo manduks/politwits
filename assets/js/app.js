@@ -255,33 +255,38 @@ Ext.onReady(function(){
 				        	lng: o.geo_y,
 							icon: icons[o.track_k],
 				        	listeners: {
-					             		click: function(e){
-											var css = '';
-											switch(o.track_k){
-													case '@EPN': css = 'pri';break;
-													case '@lopezobrador_': css = 'prd';break;
-													case '@G_quadri': css = 'alianza';break;
-													case '@JosefinaVM': css = 'pan';break;
-												}
-												
-											var content = [
-											'<div class="thumb-wrap '+css+' tipi">',
-												'<div style="clear: both;">',
-													'<div class="img">',
-								                		'<a href = "https://twitter.com/#!/'+o.screen_name+'" target = "_blank" ><img src="'+o.image+'" width="48" height="48"/></a>',
-													'</div>',
-										          	'<span>',
-										          		o.tweet,
-										          	'</span>',
-										        '</div>',
-									        '</div>'].join('');
-											var infowindow = new google.maps.InfoWindow({
-											    content: content
-											});
-											infowindow.open(map.gmap, marker);								
-						                }
-						         }
-						    });
+                                click: function(e){
+                                    var css = '';
+                                    switch(o.track_k){
+                                            case '@EPN': css = 'pri';break;
+                                            case '@lopezobrador_': css = 'prd';break;
+                                            case '@G_quadri': css = 'alianza';break;
+                                            case '@JosefinaVM': css = 'pan';break;
+                                        }
+
+                                    var content = [
+                                    '<div class="thumb-wrap '+css+' tipi">',
+                                        '<div style="clear: both;">',
+                                            '<div class="img">',
+                                                '<a href = "https://twitter.com/#!/'+o.screen_name+'" target = "_blank" ><img src="'+o.image+'" width="48" height="48"/></a>',
+                                            '</div>',
+                                            '<span>',
+                                            renderTweet(o.tweet),
+                                            '</span>',
+                                        '</div>',
+                                    '</div>',
+                                    '<div class = "retweet">',
+                                        '<a href = "',
+                                        getRetweet(o),
+                                        '" target="_blank"><i class="icon-retweet"></i> Retweet</a>',
+                                    '</div>'].join('');
+                                    var infowindow = new google.maps.InfoWindow({
+                                        content: content
+                                    });
+                                    infowindow.open(map.gmap, marker);
+                                }
+						    }
+						});
 					}
 				});
 			}
@@ -409,6 +414,24 @@ Ext.onReady(function(){
 		    }
 		});
 	},8000);
+
+    renderTweet = function(tweet){
+        var urlRegex = /((https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig,
+            twRegex = /(@[-aA-zZ0-9_]*)/g,
+            text = tweet.replace(urlRegex, '<a href="$1" target="_blank" >$1</a>');
+
+        return text.replace(twRegex, '<a href="http://twitter.com/#!/$1" target="_blank" >$1</a>');
+    };
+
+    getRetweet = function (values) {
+        var rt = 'RT @',
+            tweet = values.tweet.replace(/#/g, "%23");
+        if (tweet.substring(0,2) !== "RT") {
+            tweet = rt + values.screen_name + ": " + tweet;
+        }
+
+        return "http://twitter.com/home?status=" + tweet;
+    };
 
 	var viewport = Ext.create('Ext.Viewport', {
         layout: {
