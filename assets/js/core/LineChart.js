@@ -1,0 +1,74 @@
+/**
+* Eduardo Caracas
+ * @class MyNamespace.PieChart
+ * @extends Ext.view.View
+ * The BarCharts
+ * @hellreuter_
+ */
+Ext.define('MyNamespace.LineChart', {
+    extend: 'Ext.chart.Chart',
+    xtype:'linechart',
+    config: {
+        animate: true,
+		flex:1,
+	    axes: [
+	        {
+				title: 'Tweets',
+	            type: 'Time',
+	            position: 'left',
+	            fields: ['time'],
+	            label: {
+	                renderer: Ext.util.Format.numberRenderer('0,0')
+	            },
+	            grid: true
+				
+	        },
+	        {
+				title: 'Time',
+	            type: 'Numeric',
+	            position: 'bottom',
+	            fields: ['conteo'],
+				groupBy: 'hour',
+			    dateFormat: 'ga'
+                //aggregateOp: 'sum'
+				//fromDate: new Date(),
+				//toDate: new Date().add(1)
+	        }
+	    ],
+	    series: [
+	        {
+	            type: 'line',
+	            highlight: {
+	                size: 7,
+	                radius: 7
+	            },
+	            axis: 'left',
+	            xField: 'conteo',
+	            yField: 'time'
+	            /*markerConfig: {
+	                type: 'cross',
+	                size: 4,
+	                radius: 4,
+	                'stroke-width': 0
+	            }*/
+	        }/*,
+	        {
+	            type: 'line',
+	            highlight: {
+	                size: 7,
+	                radius: 7
+	            },
+	            axis: 'left',
+	            //fill: true,
+	            xField: 'name',
+	            yField: 'data2',
+	            markerConfig: {
+	                type: 'circle',
+	                size: 4,
+	                radius: 4,
+	                'stroke-width': 0
+	            }
+	        }*/
+	    ]
+    }
+});

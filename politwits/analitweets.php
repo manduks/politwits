@@ -10,13 +10,13 @@
     include("libMySql.php");
     include("util.php");
 
-    class Politwits Extends LibMySql{
+    class Analitweets Extends LibMySql{
 
         function __construct($argv){
 
             global $accounts;
 
-            if(count($argv) == 2){
+            if(count($argv) == 3){
                 $util = new Util();
                 $args = $util->getArgs($argv);
                 if(array_key_exists('track',$args)){
@@ -47,5 +47,5 @@
     }
     
     //Se instancia la clase
-    $politwits= new Politwits($argv);
+    $analitweets= new Analitweets($argv);
 ?>

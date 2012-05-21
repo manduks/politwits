@@ -1,6 +1,9 @@
 
 Ext.onReady(function(){
-	
+
+    //--- Models ---
+
+    //Tweets Model
 	Ext.define('Tweet', {
 	    extend: 'Ext.data.Model',
 	    fields: [
@@ -56,29 +59,202 @@ Ext.onReady(function(){
 			}
 		}
 	});
-	
-	
-	//store Amlo
+
+    //TopHashtag Model
+    Ext.define('TopHashtag',{
+        extend: 'Ext.data.Model',
+        fields: [
+            { name: 'hashtag_k', type: 'integer' },
+            { name: 'track_k', type: 'string' },
+            { name: 'name', type: 'string', mapping:'hashtag' },
+            { name: 'data', type: 'integer', mapping:'total' },
+            { name: 'date', type: 'date' }
+
+        ],
+        proxy:{
+            type: 'ajax',
+            url : 'politwits/api.php',
+            reader:{
+                type:'json',
+                root:'data'
+            }
+        }
+    });
+
+    //TopRetweet Model
+    Ext.define('TopRetweet',{
+        extend: 'Ext.data.Model',
+        fields: [
+            { name: 'retweet_k', type: 'integer' },
+            { name: 'track_k', type: 'string' },
+            { name: 'name', type: 'string', mapping:'retweet' },
+            { name: 'data', type: 'integer', mapping: 'total' },
+            { name: 'date', type: 'date' }
+
+        ],
+        proxy:{
+            type: 'ajax',
+            url : 'politwits/api.php',
+            reader:{
+                type:'json',
+                root:'data'
+            }
+        }
+    });
+
+    //TopUrl Model
+    Ext.define('TopUrl',{
+        extend: 'Ext.data.Model',
+        fields: [
+            { name: 'url_k', type: 'integer' },
+            { name: 'track_k', type: 'string' },
+            { name: 'name', type: 'string', mapping: 'url' },
+            { name: 'data', type: 'integer', mapping: 'total' },
+            { name: 'date', type: 'date' }
+
+        ],
+        proxy:{
+            type: 'ajax',
+            url : 'politwits/api.php',
+            reader:{
+                type:'json',
+                root:'data'
+            }
+        }
+    });
+
+    //LineChart Model
+    Ext.define('LineChart', {
+        extend: 'Ext.data.Model',
+        fields: [
+            {name: 'track_k', type: 'string'},
+            {name: 'time', type: 'date'},
+            {name: 'conteo', type: 'integer'}
+        ],
+        proxy:{
+            type: 'ajax',
+            url : 'politwits/api.php',
+            reader:{
+                type:'json',
+                root:'data'
+            }
+        }
+    });
+
+    //PieChart Model
+    Ext.define('PieChart', {
+        extend: 'Ext.data.Model',
+        fields: [
+            {name: 'name', type: 'string'},
+            {name: 'data', type: 'integer'}
+        ],
+        proxy:{
+            type: 'ajax',
+            url : 'politwits/api.php',
+            reader:{
+                type:'json',
+                root:'data'
+            }
+        }
+    });
+
+    //BarChart Model
+    Ext.define('BarChart', {
+        extend: 'Ext.data.Model',
+        fields: [
+            {name: 'name', type: 'string'},
+            {name: 'data', type: 'integer'}
+        ],
+        proxy:{
+            type: 'ajax',
+            url : 'politwits/api.php',
+            reader:{
+                type:'json',
+                root:'data'
+            }
+        }
+    });
+
+    //--- Stores ---
+
+	//AMLO Store
 	var storeAmlo = Ext.create('Ext.data.Store', {
 	    model: 'Tweet'
 	});	
 
-	//store EPN
+	//EPN Store
 	var storeEpn = Ext.create('Ext.data.Store', {
 	    model: 'Tweet'
 	});	
 
-	//store JVM
+	//JVM Store
 	var storeJvm = Ext.create('Ext.data.Store', {
 	    model: 'Tweet'
 	});	
 	
-	//store JVM
+	//GQuadri Store
 	var storeGquadri = Ext.create('Ext.data.Store', {
 	    model: 'Tweet'
-	});	
+	});
+
+    //TopHashtag Store
+    var storeTopHashtag = Ext.create('Ext.data.Store',{
+        model: 'TopHashtag'
+    });
+
+    //TopRetweet Store
+    var storeTopRetweet = Ext.create('Ext.data.Store',{
+        model: 'TopRetweet'
+    });
+
+    //TopUrl Store
+    var storeTopUrl = Ext.create('Ext.data.Store',{
+        model: 'TopUrl'
+    });
+
+    //LineChart Store
+    var storeLineTweets = Ext.create('Ext.data.Store', {
+        model: 'LineChart'
+    });
+
+    //Top Hashtags PieChart Store
+    var storeTopHashtagsPie = Ext.create('Ext.data.Store',{
+        model: 'TopHashtag'
+    });
+
+    //Top Hashtags PieChart Store
+    var storeTopRetweetsPie = Ext.create('Ext.data.Store',{
+        model: 'TopRetweet'
+    });
+
+    //Top Hashtags PieChart Store
+    var storeTopUrlsPie = Ext.create('Ext.data.Store',{
+        model: 'TopUrl'
+    });
+
+    //BarChart AMLO Store
+    var storeBarAmlo = Ext.create('Ext.data.Store',{
+        model: 'BarChart'
+    });
+
+    //BarChart EPN Store
+    var storeBarEpn = Ext.create('Ext.data.Store',{
+        model: 'BarChart'
+    });
+
+    //BarChart JVM Store
+    var storeBarJvm = Ext.create('Ext.data.Store',{
+        model: 'BarChart'
+    });
+
+    //BarChart GQuadri Store
+    var storeBarGquadri = Ext.create('Ext.data.Store',{
+        model: 'BarChart'
+    });
 	
-	
+	// --- Loaders ---
+
+    //Tweets Loader
 	cargarStores=function(){
 		storeAmlo.load({
 			params:{type:1,	typec:2},
@@ -107,7 +283,8 @@ Ext.onReady(function(){
 		});
 	};
 	cargarStores();
-	
+
+    //Map Loader
 	ponerMarcadores = function(){
 		Ext.Ajax.request({
 		    url : 'politwits/api.php',
@@ -165,7 +342,60 @@ Ext.onReady(function(){
 		});
 	
 	};
-	
+
+    //TopList Loader
+    topLists = function(){
+        storeTopHashtagsPie.load({
+            params:{type:3}
+        });
+        storeTopRetweetsPie.load({
+            params:{type:4}
+        });
+        storeTopUrlsPie.load({
+            params:{type:5}
+        });
+        storeTopHashtag.load({
+            params:{type:3}
+        });
+        storeTopRetweet.load({
+            params:{type:4}
+        });
+        storeTopUrl.load({
+            params:{type:5}
+        });
+    };
+
+    //LineCharts Loader
+    lineCharts = function(){
+        storeLineTweets.load({
+            params:{type:6}
+        });
+    };
+
+    //PieCharts Loader
+    pieCharts = function(){
+        storePieTotal.load({
+            params:{type:7}
+        });
+    };
+
+    //BarCharts Loader
+    barCharts = function(){
+        storeBarAmlo.load({
+            params:{type:9, typec:2}
+        });
+        storeBarEpn.load({
+            params:{type:9, typec:0}
+        });
+        storeBarJvm.load({
+            params:{type:9, typec:1}
+        });
+        storeBarGquadri.load({
+            params:{type:9, typec:3}
+        });
+    };
+
+	//Update Interval
 	setInterval(function(){
 		Ext.Ajax.request({
 		    url : 'politwits/api.php',
@@ -281,6 +511,25 @@ Ext.onReady(function(){
 						ponerMarcadores();
 					}
 				},{
+                    text:'<i class="icon-star icon-white"></i> <span style="color:#FFFFFF;">Top</span>',
+                    cls:'btn btn-info',
+                    handler:function(btn){
+                        var p = btn.up('container').up('container');
+                        p.items.items[1].getLayout().setActiveItem(2);
+                        topLists();
+                    }
+                }/*,{
+                    text:'<i class="icon-signal icon-white"></i> <span style="color:#FFFFFF;">Graficas</span>',
+                    cls:'btn btn-danger',
+                    disabled: true,
+                    handler:function(btn){
+                        var p = btn.up('container').up('container');
+                        p.items.items[1].getLayout().setActiveItem(3);
+                        lineCharts();
+                        pieCharts();
+                        barCharts();
+                    }
+                }*/,{
 						text:'<i class="icon-refresh icon-white"></i> <span style="color:#FFFFFF;">Recargar</span>',
 						cls:'btn btn-warning',
 						handler:function(btn){
@@ -408,11 +657,162 @@ Ext.onReady(function(){
 				}]
 			}]
 			},{
-				xtype:'gmappanel',
+				xtype:'gmappanel', // <---  Map Section
 				center: {
 					geoCodeAddr: 'Mexico'
 				}
-			}]
+			},{
+                xtype:'container', // <--- TopLists Section Container
+                flex: 1,
+                layout: {
+                    type: 'hbox',
+                    padding:'5',
+                    align:'stretch'
+                },
+                items:[{
+                    xtype:'container',
+                    flex: 1,
+                    layout:'border',
+                    style:{
+                        backgroundColor:'#FFF',
+                        padding:'10px'
+                    },
+                    items:[{
+                        xtype:'container',
+                        region:'north',
+                        height:40,
+                        html:[
+                            '<div class="alert alert-success" style="text-align: center; font-weight: bold;">',
+                            'TOP HASHTAGS',
+                            '</div>'].join('')
+                    },{
+                        xtype:'piechart',
+                        region: 'center',
+                        store: storeTopHashtagsPie,
+                        theme: 'Green',
+                        gato: '#'
+                    },{
+                        xtype:'tophashtag',
+                        store:storeTopHashtag,
+                        //region: 'center',
+                        region:'south',
+                        padding:'10px 0 0 0'
+                    }]
+                },{
+                    xtype:'container',
+                    layout:'border',
+                    style:{
+                        backgroundColor:'#FFF',
+                        padding:'10px'
+                    },
+                    flex:1,
+                    items:[{
+                        xtype:'container',
+                        region:'north',
+                        height:40,
+                        html:[
+                            '<div class="alert alert-danger" style="text-align: center; font-weight: bold;">',
+                            'TOP RETWEETS',
+                            '</div>'].join('')
+                    },{
+                        xtype:'piechart',
+                        region: 'center',
+                        store: storeTopRetweetsPie,
+                        theme: 'Red'
+                    },{
+                        xtype:'topretweet',
+                        store: storeTopRetweet,
+                        //region:'center',
+                        region: 'south',
+                        padding:'10px 0 0 0'
+                    }]
+                },{
+                    xtype:'container',
+                    layout:'border',
+                    style:{
+                        backgroundColor:'#FFF',
+                        padding:'10px'
+                    },
+                    flex:1,
+                    items:[{
+                        xtype:'container',
+                        region:'north',
+                        height:40,
+                        html:[
+                            '<div class="alert alert-info" style="text-align: center; font-weight: bold;">',
+                            'TOP URLS',
+                            '</div>'].join('')
+                    },{
+                        xtype:'piechart',
+                        region: 'center',
+                        store: storeTopUrlsPie,
+                        theme: 'Blue'
+                    },{
+                        xtype:'topurl',
+                        store:storeTopUrl,
+                        //  region:'center',
+                        region:'south',
+                        padding:'10px 0 0 0'
+                    }]
+                }]
+            },{
+                xtype: 'container',//<--- Graphics Section Container
+                flex: 1,
+                layout: {
+                    type: 'vbox',
+                    padding: '5',
+                    align: 'stretch'
+                },
+                items: [{
+                    xtype: 'container',
+                    flex: 1,
+                    layout: {
+                        type: 'hbox',
+                        align: 'stretch'
+                    },
+                    items: [/*{
+                        xtype: 'linechart',
+                        flex: 1,
+                        layout: 'border',
+                        store: storeLineTweets
+                    },*//*{
+                     xtype: 'piechart',
+                     flex: 1,
+                     layout: 'border'
+                     //store: storePieTotal
+                    }*/]
+                }/*,{
+                    xtype: 'container',
+                    flex: 1,
+                    layout: {
+                        type: 'hbox',
+                        align: 'stretch'
+                    },
+                    items: [{
+                        xtype: 'barchart',
+                        flex: 1,
+                        layout: 'border',
+                        store: storeBarAmlo
+                    },{
+                        xtype: 'barchart',
+                        flex: 1,
+                        layout: 'border',
+                        store: storeBarGquadri
+
+                    },{
+                        xtype: 'barchart',
+                        flex: 1,
+                        layout: 'border',
+                        store: storeBarEpn
+
+                    },{
+                        xtype: 'barchart',
+                        flex: 1,
+                        layout: 'border',
+                        store: storeBarJvm
+                    }]
+                }*/]
+            }]
 		}],
         listeners:{
             scope:this,
