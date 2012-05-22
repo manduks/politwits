@@ -6,6 +6,10 @@
  * Time: 7:19 PM
  */
 
+    //define("PATH","/home/miguelsalasmx/public_html/politwits/politwits/");
+    //define("PATH","/home/codetlan/system/");
+    //define("PATH",str_replace("--path=","",$argv[4]));
+
     include("config.php");
     include("libMySql.php");
     include("util.php");
@@ -76,7 +80,7 @@
                         $this->urls($track,$tweet);
                         $this->retweets($track,$tweet);
                         //if($tweet->retweet_count > 0)
-                        //    print_r($tweet);
+                            //print_r($tweet);
                     }
                     flush();
                 }
@@ -126,6 +130,20 @@
                     if (in_array($v, $blacklist))
                         return 1;
                 }
+            }else{
+                $t=0;
+                foreach($tweet->entities->user_mentions as $k => $v){
+                    $v->screen_name=strtolower($v->screen_name);
+                    if($v->screen_name=="epn" || $v->screen_name=="lopezobrador_" || $v->screen_name=="g_quadri" || $v->screen_name=="josefinavm")
+                        $t++;
+                }
+                if($t==1){
+                    $data=explode(" ", $util->sanitize($tweet->text));
+                    foreach($data as $k => $v){
+                        if (in_array($v, $blacklist))
+                            return 1;
+                    }
+                }
             }
             return 0;
         }
@@ -142,6 +160,7 @@
 
             $this->ejecutar("
                 insert into twits (
+                    id_str,
                     track_k,
                     user_k,
                     tweet,
@@ -156,6 +175,7 @@
                     reply_to
                 )
                 values (
+                    '".$tweet->id_str."',
                     '$track',
                     '".$tweet->user->id_str."',
                     '".$tweet->text."',
@@ -192,12 +212,28 @@
             $util=New Util();
 
             if($this->hasEntities($tweet,'ht')){
+
+
                 foreach($tweet->entities->hashtags as $k => $v){
                     $v->text=$util->filterSpecials($v->text);
-                    $result=$this->ejecutar("select hashtag_k,total,date from hashtags where track_k='".$track."' and hashtag='".$v->text."' and date='".date('Y-m-d')."'");
+
+
+                    $result=$this->ejecutar("select hashtag_user_k,total,date from hashtags_users where track_k='".$track."' and hashtag='".$v->text."' and date='".date('Y-m-d')."' and id_str='".$tweet->user->id_str."'");
                     if(mysql_num_rows($result)>0){
                         $result=mysql_fetch_object($result);
-                        $this->ejecutar("update hashtags set total=".($result->total+1)." where hashtag_k=".$result->hashtag_k);
+                        $this->ejecutar("update hashtags_users set total=".($result->total+1)." where hashtag_user_k=".$result->hashtag_user_k);
+                        $total_users=0;
+                    }
+                    else{
+                        $this->ejecutar("insert into hashtags_users (track_k,id_str,screen_name,hashtag,total,date) values ('".$track."','".$tweet->user->id_str."','".$tweet->user->screen_name."','".htmlentities($v->text,ENT_QUOTES)."',1,'".date('Y-m-d')."')");
+                        $total_users=1;
+                    }
+
+
+                    $result=$this->ejecutar("select hashtag_k,users,total,date from hashtags where track_k='".$track."' and hashtag='".$v->text."' and date='".date('Y-m-d')."'");
+                    if(mysql_num_rows($result)>0){
+                        $result=mysql_fetch_object($result);
+                        $this->ejecutar("update hashtags set total=".($result->total+1).",users=".($result->users + $total_users)." where hashtag_k=".$result->hashtag_k);
                     }
                     else{
                         $this->ejecutar("insert into hashtags (track_k, hashtag,total,date) values ('".$track."','".htmlentities($v->text,ENT_QUOTES)."',1,'".date('Y-m-d')."')");
@@ -217,13 +253,15 @@
 
                     $v->expanded_url=$util->filterSpecials($v->expanded_url);
 
-                    $result=$this->ejecutar("select url_k,total,date from urls where track_k='".$track."' and url='".$v->expanded_url."' and date='".date('Y-m-d')."'");
-                    if(mysql_num_rows($result) > 0){
-                        $result = mysql_fetch_object($result);
-                        $this->ejecutar("update urls set total = ".($result->total+1)." where url_k = ".$result->url_k);
-                    }
-                    else{
-                        $this->ejecutar("insert into urls(track_k, url,total,date) values ('".$track."','".$v->expanded_url."',1,'".date('Y-m-d')."')");
+                    if($v->expanded_url!=''){
+                        $result=$this->ejecutar("select url_k,total,date from urls where track_k='".$track."' and url='".$v->expanded_url."' and date='".date('Y-m-d')."'");
+                        if(mysql_num_rows($result) > 0){
+                            $result = mysql_fetch_object($result);
+                            $this->ejecutar("update urls set total = ".($result->total+1)." where url_k = ".$result->url_k);
+                        }
+                        else{
+                            $this->ejecutar("insert into urls(track_k, url,total,date) values ('".$track."','".$v->expanded_url."',1,'".date('Y-m-d')."')");
+                        }
                     }
                 }
             }
@@ -243,10 +281,10 @@
                 if(mysql_num_rows($result) > 0){
 
                     $result = mysql_fetch_object($result);
-                    $this->ejecutar("update retwits set total = ".($result->total + 1)." where retweet_k = ".$result->retweet_k);
+                    $this->ejecutar("update retwits set total = ".($result->total + 1).",id_str='".$tweet->retweeted_status->id_str."' where retweet_k = ".$result->retweet_k);
                 }
                 else{
-                    $this->ejecutar("insert into retwits(track_k, retweet,total,date) values ('".$track."','".$tweet->retweeted_status->text."',1,'".date('Y-m-d')."')");
+                    $this->ejecutar("insert into retwits(track_k, id_str,retweet,total,date) values ('".$track."','".$tweet->retweeted_status->id_str."','".$tweet->retweeted_status->text."',1,'".date('Y-m-d')."')");
                 }
             }
         }

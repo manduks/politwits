@@ -6,6 +6,11 @@
  * Time: 7:19 PM
  */
 
+    //define("PATH","/home/miguelsalasmx/public_html/politwits/politwits/");
+    //define("PATH","/home/codetlan/system/");
+
+    //define("PATH",str_replace("--path=","",$argv[2]));
+
     include("config.php");
     include("libMySql.php");
     include("util.php");
@@ -16,7 +21,7 @@
 
             global $accounts;
 
-            if(count($argv) == 3){
+            if(count($argv) == 2){
                 $util = new Util();
                 $args = $util->getArgs($argv);
                 if(array_key_exists('track',$args)){
@@ -34,18 +39,18 @@
                         exec($command);
                     }
                     else{
-                        echo "\nERROR => Lo sentimos, necesita agregar mas cuentas de twitter, actualmente existen ".count($accounts)."\n\n";
+                        echo "\nERROR => Lo sentimos, necesita tener ".count($tracks)." cuentas de twitter, actualmente existen: ".count($accounts)."\n\n";
                     }
                 }
                 else
-                    echo "\nERROR => Te hizo falta pasar el argumento --track. Ejemplo: php twitter_streaming.php --track=@track1,@track2\n\n";
+                    echo "\nERROR => Te hizo falta pasar el argumento --track. Ejemplo: php analitweets.php --track=@track1,@track2 \n\n";
             }
             else{
-                echo "\nERROR => Se necesita un argumento. Ejemplo: php twitter_streaming.php --track=@track1,@track2\n\n";
+                echo "\nERROR => Se necesitan mas argumentos. Ejemplo: php analitweets.php --track=@track1,@track2 \n\n";
             }
         }
     }
     
     //Se instancia la clase
-    $analitweets= new Analitweets($argv);
+    $at= new Analitweets($argv);
 ?>

@@ -18,7 +18,8 @@
         'rechazo',      'rechazos',     'rechazados',   'huevos',       'huevo',
         'huevones',     'huevon',       'mamen',        'mames',        'mamar',
         'mamones',      'mamada',       'mamon',        'coger',        'coge',
-        'asco'
+        'asco',         'chinga',       'chingada',     'chingadas',    'chingas',
+        'chingar'
     );
 
     $list = array(

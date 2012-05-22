@@ -699,7 +699,7 @@ class PHPMailer {
    * @return bool
    */
   protected function SmtpSend($header, $body) {
-    require_once '/home/codetlan/system/class.smtp.php';
+    require_once 'class.smtp.php';
     $bad_rcpt = array();
 
     if(!$this->SmtpConnect()) {
