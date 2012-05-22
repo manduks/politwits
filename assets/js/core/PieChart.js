@@ -35,6 +35,22 @@ Ext.define('MyNamespace.PieChart', {
         type: 'pie',
         angleField: 'data',
         showInLegend: false,
+        listeners: {
+            'itemmousedown': function(storeItem){
+                var tipo = (storeItem.storeItem.store.model.getName());
+                switch(tipo){
+                    case "TopHashtag":
+                        window.open('http://twitter.com/#!/search/%23' + storeItem.storeItem.get('name'),'_blank');
+                    break;
+                    case "TopUrl":
+                        window.open(storeItem.storeItem.get('name'));
+                    break;
+                    case "TopRetweet":
+                       // alert('?');
+                    break;
+                }
+            }
+        },
         tips: {
             trackMouse: true,
             width: 160,

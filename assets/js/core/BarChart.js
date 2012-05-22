@@ -1,56 +1,53 @@
 /**
 * Eduardo Caracas
- * @class MyNamespace.PieChart
+ * @class MyNamespace.BarChart
  * @extends Ext.view.View
  * The BarCharts
  * @hellreuter_
  */
+/*var store = Ext.create('Ext.data.JsonStore', {
+    fields: ['name', 'sinclasificar', 'negativos'],
+    data: [
+        {name: 'blah', sinclasificar: 3400, negativos: 500},{name: 'blah2', sinclasificar: 3600, negativos: 600}
+    ]
+});*/
 Ext.define('MyNamespace.BarChart', {
     extend: 'Ext.chart.Chart',
     xtype: 'barchart',
     animate: true,
-    axes: [
-        {
-            type: 'Numeric',
-            position: 'left',
-            fields: ['data'],
-            label: {
-                renderer: Ext.util.Format.numberRenderer('0,0')
-            },
-            title: 'Sample Values',
-            grid: true,
-            minimum: 0
-        },
-        {
-            type: 'Category',
-            position: 'bottom',
-            fields: ['name'],
-            title: 'Sample Metrics'
-        }
+    shadow: true,
+    //store: store,
+    axes: [{
+        type: 'Numeric',
+        position: 'left',
+        fields: ['sinclasificar', 'negativos'],
+        title: false,
+        grid: true
+        //roundToDecimal: false
+    }, {
+        type: 'Category',
+        position: 'bottom',
+        fields: ['name'],
+        title: 'Total Tweets'
+    }
     ],
     series: [
         {
             type: 'column',
             axis: 'left',
-            highlight: true,
+            gutter: 80,
+            xField: 'name',
+            yField: ['sinclasificar', 'negativos'],
+            stacked: true,
             tips: {
                 trackMouse: true,
-                width: 140,
-                height: 28,
                 renderer: function(storeItem, item) {
-                    this.setTitle(storeItem.get('name') + ': ' + storeItem.get('data'));
+                    this.setWidth(100);
+                    this.setHeight(50);
+                    var label = item.value[1] == storeItem.data.sinclasificar ? 'Sinclasificar' : 'Negativos';
+                    this.setTitle(label + '<br />' + item.value[1]);
                 }
-            },
-            label: {
-                display: 'insideEnd',
-                'text-anchor': 'middle',
-                field: 'data',
-                renderer: Ext.util.Format.numberRenderer('0'),
-                orientation: 'vertical',
-                color: '#333'
-            },
-            xField: 'name',
-            yField: 'data'
+            }
         }
     ]
 });
