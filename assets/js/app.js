@@ -1,6 +1,9 @@
 
 Ext.onReady(function(){
 
+	//Constantes
+	var countJvm, countAmlo, countEpn, countGquadri;
+
     //--- Models ---
 
     //Tweets Model
@@ -31,8 +34,10 @@ Ext.onReady(function(){
                             dateTime = Math.ceil(Number(new Date(date)) / 1000),
                             diff = now - dateTime,
                             str;
-
-                        if (diff < 60) {
+                        if(diff <= 0){
+                        	return "Hace unos segundos";
+                        }
+                        else if(diff < 60) {
                             return String(diff) + ' s';
                         } else if (diff < 3600) {
                             str = String(Math.ceil(diff / (60)));
@@ -382,9 +387,9 @@ Ext.onReady(function(){
             params:{type:9}
         });
     };
-
-	//Update Interval
-	setInterval(function(){
+	
+	//Actiualizar contadores y totales
+	updateContadores = function(){
 		Ext.Ajax.request({
 		    url : 'politwits/api.php',
 			method:'GET',
@@ -396,9 +401,13 @@ Ext.onReady(function(){
 				Ext.each(obj,function(o){
 					switch(o.track_k){
 						case '@EPN':
-							var num = 0;
-							num = (o.no_twits * 1) - (countEpn * 1);
+							//Actualiza el total de tweets para el candidato en la etiqueta
+							Ext.fly('epntweets').update(o.no_twits);
+							//Actualiza el total de tweets Negativos para el candidato, en la etiqueta
+							Ext.fly('epnnegativos').update(o.negatives);
+							var num = (o.no_twits * 1) - ((Ext.isDefined(countEpn) ? countEpn : o.num_twits) * 1);
 							if (num > 0){
+								//Actualiza el numero de nuevos tweets en el boton
 								Ext.fly('epn').update(num+' nuevos');
 								Ext.fly('epn').on('click',function(){
 									Ext.get('epn').update('Cargando...');
@@ -413,8 +422,11 @@ Ext.onReady(function(){
 							}
 						break;
 						case '@G_quadri':
-							var num = 0;
-							num = (o.no_twits * 1) - (countGquadri * 1);
+							//Actualiza el total de tweets para el candidato, en la etiqueta
+							Ext.fly('quadritweets').update(o.no_twits);
+							//Actualiza el total de tweets Negativos para el candidato, en la etiqueta
+							Ext.fly('quadrinegativos').update(o.negatives);
+							var num = (o.no_twits * 1) - ((Ext.isDefined(countGquadri) ? countGquadri : o.num_twits) * 1);
 							if (num > 0){
 								Ext.fly('gqu').update(num+' nuevos');
 								Ext.fly('gqu').on('click',function(){
@@ -430,8 +442,11 @@ Ext.onReady(function(){
 							}
 						break;
 						case '@JosefinaVM':
-							var num = 0;
-							num = (o.no_twits * 1)  - (countJvm * 1);
+							//Actualiza el total de tweets para el candidato en la etiqueta
+							Ext.fly('jvmtweets').update(o.no_twits);
+							//Actualiza el total de tweets Negativos para el candidato, en la etiqueta
+							Ext.fly('jvmnegativos').update(o.negatives);
+							var num = (o.no_twits * 1)  - ((Ext.isEmpty(countJvm) ? countJvm : o.num_twits)  * 1);
 							if (num > 0){
 								Ext.fly('jvm').update(num+' nuevos');
 								Ext.fly('jvm').on('click',function(){
@@ -447,8 +462,11 @@ Ext.onReady(function(){
 							}
 						break;
 						case '@lopezobrador_':
-							var num = 0;
-							num = (o.no_twits * 1) - (countAmlo * 1);
+							//Actualiza el total de tweets para el candidato en la etiqueta
+							Ext.fly('obrtweets').update(o.no_twits);
+							//Actualiza el total de tweets Negativos para el candidato, en la etiqueta
+							Ext.fly('obrnegativos').update(o.negatives);
+							var num = (o.no_twits * 1) - ((Ext.isDefined(countAmlo) ? countAmlo : o.num_twits) * 1);
 							if (num > 0){
 								Ext.fly('obr').update(num+' nuevos');
 								Ext.fly('obr').on('click',function(){
@@ -467,7 +485,11 @@ Ext.onReady(function(){
 				});
 		    }
 		});
-	},8000);
+	};
+	//primera llamada para actualizar los contadores
+	updateContadores();
+	//Update Interval
+	setInterval(updateContadores,8000);
 
     renderTweet = function(tweet){
         var urlRegex = /((https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig,
@@ -564,17 +586,28 @@ Ext.onReady(function(){
 						backgroundColor:'#FFF'
 					},
 					flex:1,
+					minWidth: 260,
 					items:[{
 						xtype:'container',
 						region:'north',
-						height:95,
+						height:110,
 						html:[
-							'<div class="candidato">',
-								'<div class="img">',
-			               			'<img src="https://twimg0-a.akamaihd.net/profile_images/508228230/foto_tw_normal.jpg" />',
-								'</div>',
-				          		'<span class="label label-warning">@lopezobrador_</span>',
-								'<div id="obr" class ="btn  btn-info load">0 nuevos</div>',
+				        	'<div class="candidato">',
+				        		'<div class="contenedor-centro">',
+				        			'<div class="tweets">',
+				        				'<h3>Tweets</h3>',
+				        				'<p id="obrtweets"class="label label-warning">0</p>',
+				        			'</div>',
+				        			'<a href="https://twitter.com/#!/lopezobrador_" target="_blank"><div class="recuadro">',
+				        				'<div class="imagen obr-imagen"></div>',
+				        				'<div class="nombre"><h5>@lopezobrador_</h5></div>',
+				        			'</div></a>',
+				        			'<div class="negativos">',
+				        				'<h3>Negativos</h3>',
+				        				'<p id="obrnegativos" class="label label-warning">0</p>',
+				        			'</div>',
+				        		'</div>',
+				        		'<div id="obr" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
 					},{
 						xtype:'timeline',
@@ -589,16 +622,27 @@ Ext.onReady(function(){
 						backgroundColor:'#FFF'
 					},
 					flex:1,
+					minWidth: 260,
 					items:[{
 						xtype:'container',
 						region:'north',
-						height:95,
+						height:110,
 						html:[
 							'<div class="candidato">',
-								'<div class="img">',
-			               			'<img src="https://twimg0-a.akamaihd.net/profile_images/2031784254/GQ_NA_Recortado_normal.jpg" />',
+								'<div class="contenedor-centro">',
+									'<div class="tweets">',
+										'<h3>Tweets</h3>',
+										'<p id="quadritweets"class="label">0</p>',
+									'</div>',
+									'<a href="https://twitter.com/#!/g_quadri" target="_blank"><div class="recuadro">',
+										'<div class="imagen quadri-imagen"></div>',
+										'<div class="nombre"><h5>@g_quadri</h5></div>',
+									'</div></a>',
+									'<div class="negativos">',
+										'<h3>Negativos</h3>',
+										'<p id="quadrinegativos" class="label">0</p>',
+									'</div>',
 								'</div>',
-				          		'<span class="label">@g_quadri</span>',
 								'<div id="gqu" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
 					},{
@@ -614,16 +658,27 @@ Ext.onReady(function(){
 						backgroundColor:'#FFF'
 					},
 					flex:1,
+					minWidth: 260,
 					items:[{
 						xtype:'container',
 						region:'north',
-						height:95,
+						height:110,
 						html:[
 							'<div class="candidato">',
-								'<div class="img">',
-			               			'<img src="https://twimg0-a.akamaihd.net/profile_images/1990796199/EPN_normal.jpg" />',
+								'<div class="contenedor-centro">',
+									'<div class="tweets">',
+										'<h3>Tweets</h3>',
+										'<p id="epntweets"class="label label-success">0</p>',
+									'</div>',
+									'<a href="https://twitter.com/#!/epn" target="_blank"><div class="recuadro">',
+										'<div class="imagen epn-imagen"></div>',
+										'<div class="nombre"><h5>@epn</h5></div>',
+									'</div></a>',
+									'<div class="negativos">',
+										'<h3>Negativos</h3>',
+										'<p id="epnnegativos" class="label label-success">0</p>',
+									'</div>',
 								'</div>',
-				          		'<span class="label label-important">@EPN</span>',
 								'<div id="epn" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
 					},{
@@ -639,16 +694,27 @@ Ext.onReady(function(){
 						backgroundColor:'#FFF'
 					},
 					flex:1,
+					minWidth: 260,
 					items:[{
 						xtype:'container',
 						region:'north',
-						height:95,
+						height:110,
 						html:[
 							'<div class="candidato">',
-								'<div class="img">',
-		                			'<img src="https://twimg0-a.akamaihd.net/profile_images/2171219068/561240_10150799454499533_297028154532_9549761_222771239_n_normal.jpg" />',
+								'<div class="contenedor-centro">',
+									'<div class="tweets">',
+										'<h3>Tweets</h3>',
+										'<p id="jvmtweets"class="label label-info">0</p>',
+									'</div>',
+									'<a href="https://twitter.com/#!/josefinavm" target="_blank"><div class="recuadro">',
+										'<div class="imagen jvm-imagen"></div>',
+										'<div class="nombre"><h5>@josefinavm</h5></div>',
+									'</div></a>',
+									'<div class="negativos">',
+										'<h3>Negativos</h3>',
+										'<p id="jvmnegativos" class="label label-info">0</p>',
+									'</div>',
 								'</div>',
-				          		'<span class="label label-info">@JosefinaVM</span>',
 								'<div id="jvm" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
 					},{
