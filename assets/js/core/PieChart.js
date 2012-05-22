@@ -46,7 +46,7 @@ Ext.define('MyNamespace.PieChart', {
                         window.open(storeItem.storeItem.get('name'));
                     break;
                     case "TopRetweet":
-                       // alert('?');
+                        eval(getRetweet({'id_str': storeItem.storeItem.get('id_str')}));
                     break;
                 }
             }

@@ -74,6 +74,7 @@ Ext.onReady(function(){
             { name: 'track_k', type: 'string' },
             { name: 'name', type: 'string', mapping:'hashtag' },
             { name: 'data', type: 'integer', mapping:'total' },
+            { name: 'users', type: 'string'},
             { name: 'date', type: 'date' }
 
         ],
@@ -95,6 +96,7 @@ Ext.onReady(function(){
             { name: 'track_k', type: 'string' },
             { name: 'name', type: 'string', mapping:'retweet' },
             { name: 'data', type: 'integer', mapping: 'total' },
+            { name: 'id_str', type:'string' },
             { name: 'date', type: 'date' }
 
         ],
@@ -500,6 +502,7 @@ Ext.onReady(function(){
     };
 
     getRetweet = function (values) {
+        console.log(values);
         return "window.open('https://twitter.com/intent/retweet?tweet_id=" + values.id_str + "', '', 'width=500, height=350');";
     };
 
