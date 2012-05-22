@@ -13,25 +13,24 @@ Ext.define('MyNamespace.Chart', {
 		flex:1,
 	    axes: [
 	        {
-				title: 'Menciones',
-	            type: 'Numeric',
+				title: 'Tweets',
+	            type: 'Time',
 	            position: 'left',
-	            fields: ['negative'],
+	            fields: ['time'],
 	            label: {
 	                renderer: Ext.util.Format.numberRenderer('0,0')
-	            },	           
-	            grid: true,			
-				minimum: 0,
-				maximum: 1
+	            },
+	            grid: true
 				
 	        },
 	        {
-				title: 'Tiempo',
-	            type: 'Time',
+				title: 'Time',
+	            type: 'Numeric',
 	            position: 'bottom',
-	            fields: ['time'],	            
-				groupBy: 'minutes'
-			    //dateFormat: 'ga',
+	            fields: ['conteo'],
+				groupBy: 'hour',
+			    dateFormat: 'ga'
+                //aggregateOp: 'sum'
 				//fromDate: new Date(),
 				//toDate: new Date().add(1)
 	        }
@@ -43,15 +42,15 @@ Ext.define('MyNamespace.Chart', {
 	                size: 7,
 	                radius: 7
 	            },
-	            //axis: 'left',
-	            xField: 'time',
-	            yField: 'negative',
-	            markerConfig: {
+	            axis: 'left',
+	            xField: 'conteo',
+	            yField: 'time'
+	            /*markerConfig: {
 	                type: 'cross',
 	                size: 4,
 	                radius: 4,
 	                'stroke-width': 0
-	            }
+	            }*/
 	        }/*,
 	        {
 	            type: 'line',

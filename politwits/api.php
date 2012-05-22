@@ -85,7 +85,7 @@
             );
             echo json_encode($arr);
         }
-		
+
 		function getHowMany(){
 			$arr = array(
 				"data"=>$this->getData("select * from tracks where date=CURRENT_DATE"),

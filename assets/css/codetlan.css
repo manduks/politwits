@@ -104,3 +104,8 @@
 	right: 50%;
 	z-index: 99999;
 }
+.label-info-big {
+    background-color: #3a87ad;
+    text-align: center;
+    font-size: 20px;
+}
