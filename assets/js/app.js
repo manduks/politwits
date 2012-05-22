@@ -547,7 +547,7 @@ Ext.onReady(function(){
                         p.items.items[1].getLayout().setActiveItem(2);
                         topLists();
                     }
-                },{
+                },/*{
                     text:'<i class="icon-signal icon-white"></i> <span style="color:#FFFFFF;">Estadísticas</span>',
                     cls:'btn btn-danger',
                     handler:function(btn){
@@ -555,7 +555,7 @@ Ext.onReady(function(){
                         p.items.items[1].getLayout().setActiveItem(3);
                         barCharts();
                     }
-                },{
+                },*/{
 						text:'<i class="icon-refresh icon-white"></i> <span style="color:#FFFFFF;">Recargar</span>',
 						cls:'btn btn-warning',
 						handler:function(btn){
