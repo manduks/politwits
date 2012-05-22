@@ -8,6 +8,7 @@ Ext.onReady(function(){
 	    extend: 'Ext.data.Model',
 	    fields: [
 			{ name:'tweet_k', type:'string' },
+            { name:'id_str', type:'string' },
 	        { name:'track_k', type:'string' },
 	        { name:'tweet', type:'string' },
 			{ name:'screen_name', type:'string' },
@@ -329,10 +330,15 @@ Ext.onReady(function(){
                                             '</span>',
                                         '</div>',
                                     '</div>',
+                                    '<div class = "reply">',
+                                        '<a href="#"  onClick="',
+                                        getReply(o),
+                                        '" ><i class="icon-share-alt"></i> Reply</a>',
+                                    '</div>',
                                     '<div class = "retweet">',
-                                        '<a href = "',
+                                        '<a href="#"  onClick="',
                                         getRetweet(o),
-                                        '" target="_blank"><i class="icon-retweet"></i> Retweet</a>',
+                                        '" ><i class="icon-retweet"></i> Retweet</a>',
                                     '</div>'].join('');
                                     var infowindow = new google.maps.InfoWindow({
                                         content: content
@@ -495,13 +501,11 @@ Ext.onReady(function(){
     };
 
     getRetweet = function (values) {
-        var rt = 'RT @',
-            tweet = values.tweet.replace(/#/g, "%23");
-        if (tweet.substring(0,2) !== "RT") {
-            tweet = rt + values.screen_name + ": " + tweet;
-        }
+        return "window.open('https://twitter.com/intent/retweet?tweet_id=" + values.id_str + "', '', 'width=500, height=350');";
+    };
 
-        return "http://twitter.com/home?status=" + tweet;
+    getReply = function (values) {
+        return "window.open('https://twitter.com/intent/tweet?in_reply_to=" + values.id_str + "', '', 'width=500, height=350');";
     };
 
 	var viewport = Ext.create('Ext.Viewport', {
