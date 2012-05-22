@@ -1,9 +1,9 @@
 /**
-* Armando Gonzalez
- * @class MyNamespace.TimeLine
+* Eduardo Caracas
+ * @class MyNamespace.TopRetweet
  * @extends Ext.view.View
- * The Top Hashtags of each twitter acount
- * @manduks
+ * The Top Retweets of all analized twitter accounts
+ * @hellreuter_
  */
 Ext.define('Core.TopRetweet', {
     extend: 'Ext.view.View',
@@ -14,11 +14,24 @@ Ext.define('Core.TopRetweet', {
     config: {
 		flex:1,
 		tpl: new Ext.XTemplate(
-		    '<tpl for=".">',
-            '<div class="{[xindex % 2 == 0 ? " " : "pan"]} ">',
-            '{#}. {retweet}',
-            '</div>',
-		    '</tpl>'
+            '<table class="table table-striped">',
+                '<thead>',
+                    '<tr>',
+                        '<th>#</th>',
+                        '<th>Retweets</th>',
+                        '<th>Total</th>',
+                    '</tr>',
+                '</thead>',
+                '<tbody>',
+                    '<tpl for=".">',
+                        '<tr>',
+                            '<td>{#}</td>',
+                            '<td>{name}</td>',
+                            '<td>{data}</td>',
+                        '</tr>',
+                    '</tpl>',
+                '</tbody>',
+            '</table>'
 		),	
 		trackOver: true,
         overItemCls: 'x-item-over',

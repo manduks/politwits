@@ -11,9 +11,10 @@
     class Api extends LibMySql{
 		
 		var $sqlTweets = "select * from twits where track_k= '@user' order by tweet_k desc ";
-		var $numTweets = "select no_twits from tracks where track_k='@user' and date=CURRENT_DATE";
+		var $numTweets = "select no_twits from tracks where track_k='@user' and date=CURRENT_DATE ";
         var $sqlTotal = "select 'negativos' as name, negativos as data from(select track_k, negatives as negativos, (no_twits - negatives) as total from tracks where date=CURRENT_DATE and track_k='@user')as aux union
                           select 'total', total from(select track_k, negatives as negativos, (no_twits - negatives) as total from tracks where date=CURRENT_DATE and track_k='@user') as aux1 ";
+		
 
 		function getTrack($track,$start,$limit){
 		  $arr = array(
@@ -23,56 +24,28 @@
 			);			
 			echo json_encode($arr);
 		}
-
-        function getMapsMarkers(){
-            $arr = array(
-                "data"=>$this->getData("select * from twits where location != '' and DATE(date) = CURRENT_DATE"),
-                "success"=>true
-            );
-
-            echo json_encode($arr);
-        }
-
-        function getTweetCharts(){
-
-            /*$data = $this->getData("select track_k, date as time , count(track_k) as conteo from twits where DATE(date) = CURRENT_DATE group by round(UNIX_TIMESTAMP(date) / 3600), track_k");
-            $epn = array();
-            $amlo = array();
-            $jvm = array();
-            $quadri = array();
-            foreach ($data as $row){
-                if($row->track_k == "@EPN"){
-
-                }
-            }*/
-            $arr = array(
-                "data"=> $this->getData("select track_k, date as time , count(track_k) as conteo from twits where DATE(date) = CURRENT_DATE group by round(UNIX_TIMESTAMP(date) / 3600), track_k"),
-                "success"=>true
-            );
-
-            echo json_encode($arr);
-        }
-
-        function getPieCharts($track,$start,$limit){
-            $arr = array(
-                "data"=>$this->getData(str_replace("@user", $track, $this->sqlTotal."limit {$start},{$limit}")),
-                "success"=>true
-            );
-            echo json_encode($arr);
-        }
-
-        function getTopHashtags(){
+		
+		function getMapsMarkers(){
 			$arr = array(
-				"data"=>$this->getData("select * from hashtags order by total DESC limit 50"),
+				"data"=>$this->getData("select * from twits where location != '' and DATE(date) = CURRENT_DATE"),
 				"success"=>true
 				);
 				
 			echo json_encode($arr);
 		}
 
+        function getTopHashtags(){
+            $arr = array(
+                "data"=>$this->getData("select * from hashtags where date=CURRENT_DATE order by total DESC limit 10"),
+                "success"=>true
+            );
+
+            echo json_encode($arr);
+        }
+
         function getTopRetweets(){
             $arr = array(
-                "data"=>$this->getData("select * from retwits order by total DESC limit 50"),
+                "data"=>$this->getData("select * from retwits where date=CURRENT_DATE order by total DESC limit 10"),
                 "success"=>true
             );
 
@@ -81,13 +54,38 @@
 
         function getTopUrls(){
             $arr = array(
-                "data"=>$this->getData("select * from urls order by total DESC limit 50"),
+                "data"=>$this->getData("select * from urls where date=CURRENT_DATE order by total DESC limit 10"),
                 "success"=>true
             );
 
             echo json_encode($arr);
         }
-		
+
+        function getLineCharts(){
+            $arr = array(
+                "data"=> $this->getData("select track_k, date as time , count(track_k) as conteo from twits where DATE(date) = CURRENT_DATE group by round(UNIX_TIMESTAMP(date) / 3600), track_k"),
+                "success"=>true
+            );
+
+            echo json_encode($arr);
+        }
+
+        function getPieCharts(){
+            $arr = array(
+                "data"=>$this->getData("select track_k as name, no_twits as data from tracks where date=CURRENT_DATE"),
+                "success"=>true
+            );
+            echo json_encode($arr);
+        }
+
+        function getBarCharts($track,$start,$limit){
+            $arr = array(
+                "data"=>$this->getData(str_replace("@user", $track, $this->sqlTotal."limit {$start},{$limit}")),
+                "success"=>true
+            );
+            echo json_encode($arr);
+        }
+
 		function getHowMany(){
 			$arr = array(
 				"data"=>$this->getData("select * from tracks where date=CURRENT_DATE"),
@@ -131,16 +129,16 @@
             $api->getTopUrls();
         break;
         case '6':
-            $api->getTweetCharts();
+            $api->getLineCharts();
         break;
         case '7':
-            $candidato = $_GET['typec'];
-            $start = $_GET['start'];
-            $api->getPieCharts($c[$candidato],$start,LIMIT);
-            break;
-        case '8':
+            $api->getPieCharts();
+        break;
+		case '8':
 			$api->getMapsMarkers();
 		break;
-
+        case '9':
+            $api->getBarCharts($c[$candidato],$start,LIMIT);
+        break;
 	}
 ?>

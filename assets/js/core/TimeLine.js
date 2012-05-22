@@ -33,7 +33,7 @@ Ext.define('Core.TimeLine', {
             '</div>',
             '<div class = "retweet">',
             '<tpl for=".">',
-            '<a href = "{[this.getRetweet(values)]}" target="_blank"><i class="icon-retweet"></i> Retweet</a>',
+            '<a href="#"  onClick="{[this.getRetweet(values)]}" ><i class="icon-retweet"></i> Retweet</a>',
             '</tpl>',
             '</div>',
             '</tpl>',
@@ -48,12 +48,12 @@ Ext.define('Core.TimeLine', {
                 },
                 getRetweet : function (values) {
                     var rt = 'RT @',
-                        tweet = values.tweet.replace(/#/g, "%23");
+                        tweet = values.tweet.replace(/#/g, "%23").replace(/$/g, "%24").replace(/%/g, "%25").replace(/&/g, "%26");
                     if (tweet.substring(0,2) !== "RT") {
                         tweet = rt + values.screen_name + ": " + tweet;
                     }
 
-                    return "http://twitter.com/home?status=" + tweet;
+                    return "window.open('http://twitter.com/home?status=" + tweet + "', '','width=450,height=300');";
                 }
             }
         ),

@@ -1,9 +1,9 @@
 /**
-* Armando Gonzalez
- * @class MyNamespace.TimeLine
+* Eduardo Caracas
+ * @class MyNamespace.TopHashtag
  * @extends Ext.view.View
- * The Top Hashtags of each twitter acount
- * @manduks
+ * The Top Hashtags of all analized twitter accounts
+ * @hellreuter_
  */
 Ext.define('Core.TopHashtag', {
     extend: 'Ext.view.View',
@@ -14,11 +14,24 @@ Ext.define('Core.TopHashtag', {
     config: {
 		flex:1,
 		tpl: new Ext.XTemplate(
-		    '<tpl for=".">',
-            '<div class="{[xindex % 2 == 0 ? " " : "pan"]} ">',
-				'{#}. <a href="http://twitter.com/#!/search/%23{hashtag}">#{hashtag}</a>',
-            '</div>',
-		    '</tpl>'
+            '<table class="table table-striped">',
+                '<thead>',
+                    '<tr>',
+                        '<th>#</th>',
+                        '<th>Hashtags</th>',
+                        '<th>Total</th>',
+                    '</tr>',
+                '</thead>',
+                '<tbody>',
+                    '<tpl for=".">',
+                        '<tr>',
+                            '<td>{#}</td>',
+                            '<td><a href="http://twitter.com/#!/search/%23{name}" target="_blank">#{name}</a></td>',
+                            '<td>{data}</td>',
+                        '</tr>',
+                    '</tpl>',
+                '</tbody>',
+            '</table>'
 		),	
 		trackOver: true,
         overItemCls: 'x-item-over',
