@@ -109,3 +109,86 @@
     text-align: center;
     font-size: 20px;
 }
+
+/* @group Cabeceras de los candidatos */
+.candidato{
+	border:1px solid #dddddd;
+    background: #efefef repeat-x left top;
+	margin:0 5px 0 0;
+}
+.contenedor-centro{
+	width: 280px;
+	margin: 0 auto;
+}
+.tweets{
+	float: left;
+	width: 70px;
+	margin: 15px 10px;
+	
+}
+.tweets h3{
+	background-image: url("../img/Tweet-32.png");
+	background-repeat: no-repeat;
+	background-position: top;
+	text-indent: -9999px;
+}
+.contenedor-centro p{
+	text-align: center;
+	font-size: 20px;
+}
+.contenedor-centro .label{
+	padding: 5px 0;
+}
+.negativos{
+	float: right;
+	width: 70px;
+	margin: 12px 10px;
+}
+.negativos h3{
+	background-image: url("../img/Disapprove-48.png");
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	margin-bottom: 3px;
+	text-indent: -9999px;
+}
+.recuadro{
+	width: 100px;
+	height: 90px;
+	float: left;
+}
+.candidato .imagen {
+	height: 100%;
+	background-position: left;
+	background-repeat: no-repeat;"
+}
+.obr-imagen{background-image: url("https://twimg0-a.akamaihd.net/profile_images/508228230/foto_tw_normal.jpg");}
+.nombre{
+	color: white;
+	width: 100px;
+	position: absolute;
+	margin-top: -18px;
+	background-image:
+		linear-gradient(bottom, rgba(0,0,0,0.5) 30%,
+								rgba(190,190,190,0.3) 80%,
+								rgba(190,190,190,0) 100%);
+	background-image:
+		-o-linear-gradient(bottom,	rgba(0,0,0,0.5) 30%,
+								rgba(190,190,190,0.3) 80%,
+								rgba(190,190,190,0) 100%);
+	background-image:
+		-moz-linear-gradient(bottom, 	rgba(0,0,0,0.5) 30%,
+								rgba(190,190,190,0.3) 80%,
+								rgba(190,190,190,0) 100%);
+	background-image:
+		-webkit-linear-gradient(bottom,	rgba(0,0,0,0.5) 30%,
+								rgba(190,190,190,0.3) 80%,
+								rgba(190,190,190,0) 100%);
+	background-image:
+		-ms-linear-gradient(bottom,	rgba(0,0,0,0.5) 30%,
+								rgba(190,190,190,0.3) 80%,
+								rgba(190,190,190,0) 100%);
+	
+}
+
+/* @end */

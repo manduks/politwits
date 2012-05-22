@@ -27,8 +27,10 @@ Ext.onReady(function(){
                             dateTime = Math.ceil(Number(new Date(date)) / 1000),
                             diff = now - dateTime,
                             str;
-
-                        if (diff < 60) {
+                        if(diff <= 0){
+                        	return "Hace unos segundos";
+                        }
+                        else if(diff < 60) {
                             return String(diff) + ' s';
                         } else if (diff < 3600) {
                             str = String(Math.ceil(diff / (60)));
@@ -486,17 +488,28 @@ Ext.onReady(function(){
 						backgroundColor:'#FFF'
 					},
 					flex:1,
+					minWidth: 290,
 					items:[{
 						xtype:'container',
 						region:'north',
-						height:95,
+						height:110,
 						html:[
-							'<div class="candidato">',
-								'<div class="img">',
-			               			'<img src="https://twimg0-a.akamaihd.net/profile_images/508228230/foto_tw_normal.jpg" />',
-								'</div>',
-				          		'<span class="label label-warning">@lopezobrador_</span>',
-								'<div id="obr" class ="btn  btn-info load">0 nuevos</div>',
+				        	'<div class="candidato">',
+				        		'<div class="contenedor-centro">',
+				        			'<div class="tweets">',
+				        				'<h3>Tweets</h3>',
+				        				'<p id="obrtweets"class="label label-warning">400</p>',
+				        			'</div>',
+				        			'<div class="recuadro">',
+				        				'<div class="imagen obr-imagen"></div>',
+				        				'<div class="nombre"><h5>@lopezobrador_</h5></div>',
+				        			'</div>',
+				        			'<div class="negativos">',
+				        				'<h3>Negativos</h3>',
+				        				'<p class="label label-warning">400</p>',
+				        			'</div>',
+				        		'</div>',
+				        		'<div id="obr" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
 					},{
 						xtype:'timeline',
@@ -514,7 +527,7 @@ Ext.onReady(function(){
 					items:[{
 						xtype:'container',
 						region:'north',
-						height:95,
+						height:110,
 						html:[
 							'<div class="candidato">',
 								'<div class="img">',
@@ -539,7 +552,7 @@ Ext.onReady(function(){
 					items:[{
 						xtype:'container',
 						region:'north',
-						height:95,
+						height:110,
 						html:[
 							'<div class="candidato">',
 								'<div class="img">',
@@ -564,7 +577,7 @@ Ext.onReady(function(){
 					items:[{
 						xtype:'container',
 						region:'north',
-						height:95,
+						height:110,
 						html:[
 							'<div class="candidato">',
 								'<div class="img">',
