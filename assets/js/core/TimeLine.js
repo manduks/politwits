@@ -16,26 +16,27 @@ Ext.define('Core.TimeLine', {
         flex:1,
         tpl:new Ext.XTemplate(
             '<tpl for=".">',
-            '<div class="thumb-wrap {[xindex % 2 === 0 ? "even" : values.cls]} ">',
-            '<div class = "time-ago">',
-            '<span class="{[values.negative ? "badge badge-important badge-negative" : "positive"]}">',
-            '<i class="{[values.negative ? "icon-thumbs-down icon-white" : "positive"]}"></i></span>',
-            '{date}',
-            '</div>',
-            '<div style="clear: both">',
-            '<div class="img">',
-            '<a href = "https://twitter.com/#!/{screen_name}" target = "_blank" ><img src="{image}" width="48" height="48"/></a>',
-            '</div>',
-            '<span class="{[values.negative? "negative":"positive"]}">',
-            '<tpl for="."> {[this.getUrls(values.tweet)]} </tpl>',
-            '</span>',
-            '</div>',
-            '</div>',
-            '<div class = "retweet">',
-            '<tpl for=".">',
-            '<a href="#"  onClick="{[this.getRetweet(values)]}" ><i class="icon-retweet"></i> Retweet</a>',
-            '</tpl>',
-            '</div>',
+                '<div class="thumb-wrap {[xindex % 2 === 0 ? "even" : values.cls]} ">',
+                    '<div class = "time-ago">',
+                        '<span class="{[values.negative ? "badge badge-important badge-negative" : "positive"]}">',
+                            '<i class="{[values.negative ? "icon-thumbs-down icon-white" : "positive"]}"></i></span>',
+                        '{date}',
+                    '</div>',
+                    '<div style="clear: both">',
+                        '<div class="img">',
+                            '<a href = "https://twitter.com/#!/{screen_name}" target = "_blank" ><img src="{image}" width="48" height="48"/></a>',
+                        '</div>',
+                        '<span class="{[values.negative? "negative":"positive"]}">',
+                            '<tpl for="."> {[this.getUrls(values.tweet)]} </tpl>',
+                        '</span>',
+                    '</div>',
+                '</div>',
+                '<div class = "reply">',
+                    '<a href="#"  onClick="{[this.getReply(values)]}" ><i class="icon-share-alt"></i> Reply</a>',
+                '</div>',
+                '<div class = "retweet">',
+                    '<a href="#"  onClick="{[this.getRetweet(values)]}" ><i class="icon-retweet"></i> Retweet</a>',
+                '</div>',
             '</tpl>',
             {
                 getUrls:function (tweet) {
@@ -47,13 +48,10 @@ Ext.define('Core.TimeLine', {
 
                 },
                 getRetweet : function (values) {
-                    var rt = 'RT @',
-                        tweet = values.tweet.replace(/#/g, "%23").replace(/$/g, "%24").replace(/%/g, "%25").replace(/&/g, "%26");
-                    if (tweet.substring(0,2) !== "RT") {
-                        tweet = rt + values.screen_name + ": " + tweet;
-                    }
-
-                    return "window.open('http://twitter.com/home?status=" + tweet + "', '','width=450,height=300');";
+                    return "window.open('https://twitter.com/intent/retweet?tweet_id=" + values.id_str + "', '', 'width=500, height=350');";
+                },
+                getReply : function (values) {
+                    return "window.open('https://twitter.com/intent/tweet?in_reply_to=" + values.id_str + "', '', 'width=500, height=350');";
                 }
             }
         ),
