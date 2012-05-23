@@ -1,0 +1,107 @@
+<?php
+/**
+ * Created by CodeTlan.
+ * User: Ing. Miguel Salas
+ * Date: 5/23/12
+ * Time: 1:21 PM
+ */
+
+    include("politwits/api.php");
+
+    $result=$api->getData("select * from tracks where date=CURRENT_DATE");
+    if(count($result)!=4)
+        exit;
+?>
+
+<!doctype html>
+<html>
+<head>
+    <title>AnaliTweets</title>
+    <meta charset="utf-8" />
+    <!--link rel="stylesheet" href="http://cdn.sencha.io/ext-4.1.0-gpl/resources/css/ext-all.css" /-->
+    <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/codetlan.css" type="text/css" />
+</head>
+<body>
+    <a href="http://www.analitweets.com" target="_blank" style="text-decoration: none;">
+    <div>
+        <div class="candidato" style="float:left;">
+            <div class="contenedor-centro">
+                <div class="tweets">
+                    <h3>Tweets</h3>
+                    <p id="obrtweets" class="label label-warning"><?php echo $result[2]["no_twits"];?></p>
+                </div>
+
+                    <div class="recuadro">
+                        <div class="imagen obr-imagen"></div>
+                        <div class="nombre"><h5>@lopezobrador_</h5></div>
+                    </div>
+
+                <div class="negativos">
+                    <h3>Negativos</h3>
+                    <p id="obrnegativos" class="label label-warning"><?php echo $result[2]["negatives"];?></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="candidato" style="float:left;">
+            <div class="contenedor-centro">
+                <div class="tweets">
+                    <h3>Tweets</h3>
+                    <p id="quadritweets" class="label"><?php echo $result[3]["no_twits"];?></p>
+                </div>
+
+                    <div class="recuadro">
+                        <div class="imagen quadri-imagen"></div>
+                        <div class="nombre"><h5>@g_quadri</h5></div>
+                    </div>
+
+                <div class="negativos">
+                    <h3>Negativos</h3>
+                    <p id="quadrinegativos" class="label"><?php echo $result[3]["negatives"];?></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="candidato" style="float:left;">
+            <div class="contenedor-centro">
+                <div class="tweets">
+                    <h3>Tweets</h3>
+                    <p id="epntweets" class="label label-success"><?php echo $result[0]["no_twits"];?></p>
+                </div>
+
+                    <div class="recuadro">
+                        <div class="imagen epn-imagen"></div>
+                        <div class="nombre"><h5>@epn</h5></div>
+                    </div>
+
+                <div class="negativos">
+                    <h3>Negativos</h3>
+                    <p id="epnnegativos" class="label label-success"><?php echo $result[0]["negatives"];?></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="candidato"style="float:left;">
+            <div class="contenedor-centro">
+                <div class="tweets">
+                    <h3>Tweets</h3>
+                    <p id="jvmtweets" class="label label-info"><?php echo $result[1]["no_twits"];?></p>
+                </div>
+
+                    <div class="recuadro">
+                        <div class="imagen jvm-imagen"></div>
+                        <div class="nombre"><h5>@josefinavm</h5></div>
+                    </div>
+
+                <div class="negativos">
+                    <h3>Negativos</h3>
+                    <p id="jvmnegativos" class="label label-info"><?php echo $result[1]["negatives"];?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both; margin-left: 10px;">Powered by @codetlan</div>
+    </a>
+</body>
+</html>
