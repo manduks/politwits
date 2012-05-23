@@ -469,7 +469,7 @@ Ext.onReady(function(){
 							Ext.fly('jvmtweets').update(o.no_twits);
 							//Actualiza el total de tweets Negativos para el candidato, en la etiqueta
 							Ext.fly('jvmnegativos').update(o.negatives);
-							var num = (o.no_twits * 1)  - ((Ext.isEmpty(countJvm) ? countJvm : o.num_twits)  * 1);
+							var num = (o.no_twits * 1)  - ((Ext.isDefined(countJvm) ? countJvm : o.num_twits)  * 1);
 							if (num > 0){
 								Ext.fly('jvm').update(num+' nuevos');
 								Ext.fly('jvm').on('click',function(){
@@ -627,10 +627,10 @@ Ext.onReady(function(){
 				        				'<div class="imagen obr-imagen"></div>',
 				        				'<div class="nombre"><h5>@lopezobrador_</h5></div>',
 				        			'</div></a>',
-				        			'<div class="negativos">',
+				        			'<a data-toggle="modal" onclick="mostrarNegativos(0)" href="#"><div class="negativos">',
 				        				'<h3>Negativos</h3>',
 				        				'<p id="obrnegativos" class="label label-warning">0</p>',
-				        			'</div>',
+				        			'</div></a>',
 				        		'</div>',
 				        		'<div id="obr" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
@@ -663,10 +663,10 @@ Ext.onReady(function(){
 										'<div class="imagen quadri-imagen"></div>',
 										'<div class="nombre"><h5>@g_quadri</h5></div>',
 									'</div></a>',
-									'<div class="negativos">',
+									'<a data-toggle="modal" onclick="mostrarNegativos(1)" href="#"><div class="negativos">',
 										'<h3>Negativos</h3>',
 										'<p id="quadrinegativos" class="label">0</p>',
-									'</div>',
+									'</div></a>',
 								'</div>',
 								'<div id="gqu" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
@@ -699,10 +699,10 @@ Ext.onReady(function(){
 										'<div class="imagen epn-imagen"></div>',
 										'<div class="nombre"><h5>@epn</h5></div>',
 									'</div></a>',
-									'<div class="negativos">',
+									'<a data-toggle="modal" onclick="mostrarNegativos(2)" href="#"><div class="negativos">',
 										'<h3>Negativos</h3>',
 										'<p id="epnnegativos" class="label label-success">0</p>',
-									'</div>',
+									'</div></a>',
 								'</div>',
 								'<div id="epn" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
@@ -735,10 +735,10 @@ Ext.onReady(function(){
 										'<div class="imagen jvm-imagen"></div>',
 										'<div class="nombre"><h5>@josefinavm</h5></div>',
 									'</div></a>',
-									'<div class="negativos">',
+									'<a data-toggle="modal" onclick="mostrarNegativos(3)" href="#"><div class="negativos">',
 										'<h3>Negativos</h3>',
 										'<p id="jvmnegativos" class="label label-info">0</p>',
-									'</div>',
+									'</div></a>',
 								'</div>',
 								'<div id="jvm" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
