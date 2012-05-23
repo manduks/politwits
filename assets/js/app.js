@@ -74,6 +74,7 @@ Ext.onReady(function(){
             { name: 'track_k', type: 'string' },
             { name: 'name', type: 'string', mapping:'hashtag' },
             { name: 'data', type: 'integer', mapping:'total' },
+            { name: 'users', type: 'string'},
             { name: 'date', type: 'date' }
 
         ],
@@ -95,6 +96,7 @@ Ext.onReady(function(){
             { name: 'track_k', type: 'string' },
             { name: 'name', type: 'string', mapping:'retweet' },
             { name: 'data', type: 'integer', mapping: 'total' },
+            { name: 'id_str', type:'string' },
             { name: 'date', type: 'date' }
 
         ],
@@ -169,7 +171,8 @@ Ext.onReady(function(){
         extend: 'Ext.data.Model',
         fields: [
             {name: 'name', type: 'string'},
-            {name: 'data', type: 'integer'}
+            {name: 'sinclasificar', type: 'integer'},
+            {name: 'negativos', type: 'integer'}
         ],
         proxy:{
             type: 'ajax',
@@ -239,25 +242,10 @@ Ext.onReady(function(){
     });
 
     //BarChart AMLO Store
-    var storeBarAmlo = Ext.create('Ext.data.Store',{
+    var storeBarChartTotal = Ext.create('Ext.data.Store',{
         model: 'BarChart'
     });
 
-    //BarChart EPN Store
-    var storeBarEpn = Ext.create('Ext.data.Store',{
-        model: 'BarChart'
-    });
-
-    //BarChart JVM Store
-    var storeBarJvm = Ext.create('Ext.data.Store',{
-        model: 'BarChart'
-    });
-
-    //BarChart GQuadri Store
-    var storeBarGquadri = Ext.create('Ext.data.Store',{
-        model: 'BarChart'
-    });
-	
 	// --- Loaders ---
 
     //Tweets Loader
@@ -397,17 +385,8 @@ Ext.onReady(function(){
 
     //BarCharts Loader
     barCharts = function(){
-        storeBarAmlo.load({
-            params:{type:9, typec:2}
-        });
-        storeBarEpn.load({
-            params:{type:9, typec:0}
-        });
-        storeBarJvm.load({
-            params:{type:9, typec:1}
-        });
-        storeBarGquadri.load({
-            params:{type:9, typec:3}
+        storeBarChartTotal.load({
+            params:{type:9}
         });
     };
 	
@@ -523,6 +502,7 @@ Ext.onReady(function(){
     };
 
     getRetweet = function (values) {
+        console.log(values);
         return "window.open('https://twitter.com/intent/retweet?tweet_id=" + values.id_str + "', '', 'width=500, height=350');";
     };
 
@@ -567,18 +547,15 @@ Ext.onReady(function(){
                         p.items.items[1].getLayout().setActiveItem(2);
                         topLists();
                     }
-                }/*,{
-                    text:'<i class="icon-signal icon-white"></i> <span style="color:#FFFFFF;">Graficas</span>',
+                },/*{
+                    text:'<i class="icon-signal icon-white"></i> <span style="color:#FFFFFF;">Estadísticas</span>',
                     cls:'btn btn-danger',
-                    disabled: true,
                     handler:function(btn){
                         var p = btn.up('container').up('container');
                         p.items.items[1].getLayout().setActiveItem(3);
-                        lineCharts();
-                        pieCharts();
                         barCharts();
                     }
-                }*/,{
+                },*/{
 						text:'<i class="icon-refresh icon-white"></i> <span style="color:#FFFFFF;">Recargar</span>',
 						cls:'btn btn-warning',
 						handler:function(btn){
@@ -587,6 +564,7 @@ Ext.onReady(function(){
 							Ext.fly('jvm').update('0 nuevos');
 							Ext.fly('gqu').update('0 nuevos');
 							Ext.fly('epn').update('0 nuevos');
+                            topLists();
 						}
 				},'->',
                 '<a href="https://twitter.com/share" class="twitter-share-button" style="margin-right: 60px;">Tweet</a><script></script>',
@@ -787,7 +765,6 @@ Ext.onReady(function(){
                     },{
                         xtype:'tophashtag',
                         store:storeTopHashtag,
-                        //region: 'center',
                         region:'south',
                         padding:'10px 0 0 0'
                     }]
@@ -815,7 +792,6 @@ Ext.onReady(function(){
                     },{
                         xtype:'topretweet',
                         store: storeTopRetweet,
-                        //region:'center',
                         region: 'south',
                         padding:'10px 0 0 0'
                     }]
@@ -843,13 +819,12 @@ Ext.onReady(function(){
                     },{
                         xtype:'topurl',
                         store:storeTopUrl,
-                        //  region:'center',
                         region:'south',
                         padding:'10px 0 0 0'
                     }]
                 }]
             },{
-                xtype: 'container',//<--- Graphics Section Container
+                xtype: 'container',//<--- Statistics Section Container
                 flex: 1,
                 layout: {
                     type: 'vbox',
@@ -863,17 +838,17 @@ Ext.onReady(function(){
                         type: 'hbox',
                         align: 'stretch'
                     },
-                    items: [/*{
-                        xtype: 'linechart',
+                    items: [{
+                        xtype: 'barchart',
                         flex: 1,
                         layout: 'border',
-                        store: storeLineTweets
-                    },*//*{
-                     xtype: 'piechart',
+                        store: storeBarChartTotal
+                    },{
+                     xtype: 'linechart',
                      flex: 1,
                      layout: 'border'
                      //store: storePieTotal
-                    }*/]
+                    }]
                 }/*,{
                     xtype: 'container',
                     flex: 1,
