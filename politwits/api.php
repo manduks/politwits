@@ -36,7 +36,7 @@
 
         function getTopHashtags(){
             $arr = array(
-                "data"=>$this->getData("select * from hashtags where date=CURRENT_DATE order by total DESC limit 10"),
+                "data"=>$this->getData("select hashtag,sum(users) as users,sum(total) as total from hashtags where date=CURRENT_DATE group by hashtag order by total DESC limit 10"),
                 "success"=>true
             );
 
@@ -45,7 +45,7 @@
 
         function getTopRetweets(){
             $arr = array(
-                "data"=>$this->getData("select * from retwits where date=CURRENT_DATE order by total DESC limit 10"),
+                "data"=>$this->getData("select id_str,retweet,sum(total) as total from retwits where date=CURRENT_DATE group by retweet order by total DESC limit 10"),
                 "success"=>true
             );
 
@@ -54,7 +54,7 @@
 
         function getTopUrls(){
             $arr = array(
-                "data"=>$this->getData("select * from urls where date=CURRENT_DATE order by total DESC limit 10"),
+                "data"=>$this->getData("select url,sum(total) as total from urls where date=CURRENT_DATE group by url order by total DESC limit 10"),
                 "success"=>true
             );
 

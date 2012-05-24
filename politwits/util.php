@@ -6,7 +6,7 @@
  * Time: 7:19 PM
  */
 
-    include("/home/codetlan/system/class.phpmailer.php");
+    include("class.phpmailer.php");
 
     class Util{
 

@@ -448,7 +448,7 @@ Ext.onReady(function(){
 							Ext.fly('jvmtweets').update(o.no_twits);
 							//Actualiza el total de tweets Negativos para el candidato, en la etiqueta
 							Ext.fly('jvmnegativos').update(o.negatives);
-							var num = (o.no_twits * 1)  - ((Ext.isEmpty(countJvm) ? countJvm : o.num_twits)  * 1);
+							var num = (o.no_twits * 1)  - ((Ext.isDefined(countJvm) ? countJvm : o.num_twits)  * 1);
 							if (num > 0){
 								Ext.fly('jvm').update(num+' nuevos');
 								Ext.fly('jvm').on('click',function(){
