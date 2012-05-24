@@ -21,15 +21,20 @@
     <!--link rel="stylesheet" href="http://cdn.sencha.io/ext-4.1.0-gpl/resources/css/ext-all.css" /-->
     <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="assets/css/codetlan.css" type="text/css" />
+    <style>
+        body{
+            background-color: #000000;
+        }
+    </style>
 </head>
 <body>
     <a href="http://www.analitweets.com" target="_blank" style="text-decoration: none;">
     <div>
         <div class="candidato" style="float:left;">
-            <div class="contenedor-centro">
-                <div class="tweets">
+            <div class="contenedor-centro" style="width:210px;">
+                <div class="tweets" style="width:50px;">
                     <h3>Tweets</h3>
-                    <p id="obrtweets" class="label label-warning"><?php echo $result[2]["no_twits"];?></p>
+                    <p id="obrtweets" class="label label-warning" style="font-size:12px;"><?php echo $result[2]["no_twits"];?></p>
                 </div>
 
                     <div class="recuadro">
@@ -37,18 +42,18 @@
                         <div class="nombre"><h5>@lopezobrador_</h5></div>
                     </div>
 
-                <div class="negativos">
+                <div class="negativos" style="width:50px;">
                     <h3>Negativos</h3>
-                    <p id="obrnegativos" class="label label-warning"><?php echo $result[2]["negatives"];?></p>
+                    <p id="obrnegativos" class="label label-warning" style="font-size:12px;"><?php echo $result[2]["negatives"];?></p>
                 </div>
             </div>
         </div>
 
         <div class="candidato" style="float:left;">
-            <div class="contenedor-centro">
-                <div class="tweets">
+            <div class="contenedor-centro" style="width:210px;">
+                <div class="tweets" style="width:50px;">
                     <h3>Tweets</h3>
-                    <p id="quadritweets" class="label"><?php echo $result[3]["no_twits"];?></p>
+                    <p id="quadritweets" class="label" style="font-size:12px;"><?php echo $result[3]["no_twits"];?></p>
                 </div>
 
                     <div class="recuadro">
@@ -56,18 +61,18 @@
                         <div class="nombre"><h5>@g_quadri</h5></div>
                     </div>
 
-                <div class="negativos">
+                <div class="negativos" style="width:50px;">
                     <h3>Negativos</h3>
-                    <p id="quadrinegativos" class="label"><?php echo $result[3]["negatives"];?></p>
+                    <p id="quadrinegativos" class="label"  style="font-size:12px;"><?php echo $result[3]["negatives"];?></p>
                 </div>
             </div>
         </div>
 
         <div class="candidato" style="float:left;">
-            <div class="contenedor-centro">
-                <div class="tweets">
+            <div class="contenedor-centro" style="width:210px;">
+                <div class="tweets" style="width:50px;">
                     <h3>Tweets</h3>
-                    <p id="epntweets" class="label label-success"><?php echo $result[0]["no_twits"];?></p>
+                    <p id="epntweets" class="label label-success" style="font-size:12px;"><?php echo $result[0]["no_twits"];?></p>
                 </div>
 
                     <div class="recuadro">
@@ -75,18 +80,18 @@
                         <div class="nombre"><h5>@epn</h5></div>
                     </div>
 
-                <div class="negativos">
+                <div class="negativos" style="width:50px;">
                     <h3>Negativos</h3>
-                    <p id="epnnegativos" class="label label-success"><?php echo $result[0]["negatives"];?></p>
+                    <p id="epnnegativos" class="label label-success" style="font-size:12px;"><?php echo $result[0]["negatives"];?></p>
                 </div>
             </div>
         </div>
 
         <div class="candidato"style="float:left;">
-            <div class="contenedor-centro">
-                <div class="tweets">
+            <div class="contenedor-centro" style="width:210px;">
+                <div class="tweets" style="width:50px;">
                     <h3>Tweets</h3>
-                    <p id="jvmtweets" class="label label-info"><?php echo $result[1]["no_twits"];?></p>
+                    <p id="jvmtweets" class="label label-info" style="font-size:12px;"><?php echo $result[1]["no_twits"];?></p>
                 </div>
 
                     <div class="recuadro">
@@ -94,9 +99,9 @@
                         <div class="nombre"><h5>@josefinavm</h5></div>
                     </div>
 
-                <div class="negativos">
+                <div class="negativos" style="width:50px;">
                     <h3>Negativos</h3>
-                    <p id="jvmnegativos" class="label label-info"><?php echo $result[1]["negatives"];?></p>
+                    <p id="jvmnegativos" class="label label-info" style="font-size:12px;"><?php echo $result[1]["negatives"];?></p>
                 </div>
             </div>
         </div>
