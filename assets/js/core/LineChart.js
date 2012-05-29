@@ -30,82 +30,82 @@ Ext.define('MyNamespace.LineChart', {
             label: {
                 renderer: Ext.util.Format.numberRenderer('0,0')
             },
-            title: 'Sample Values',
+            title: 'Tweets',
             grid: true,
             minimum: 0
         },
         {
             type: 'Category',
             position: 'bottom',
-            fields: ['name'],
-            title: 'Sample Metrics'
+            fields: ['time'],
+            title: 'Hora'
         }
     ],
     series: [
         {
             type: 'line',
             highlight: {
-                size: 7,
-                radius: 7
+                size: 5,
+                radius: 3
             },
             axis: 'left',
-            xField: 'name',
+            xField: 'time',
             yField: 'data1',
             markerConfig: {
                 type: 'circle',
-                size: 4,
-                radius: 4,
+                size: 1,
+                radius: 1,
                 'stroke-width': 0
             }
         },
         {
             type: 'line',
             highlight: {
-                size: 7,
-                radius: 7
+                size: 5,
+                radius: 3
             },
             axis: 'left',
             fill: false,
-            xField: 'name',
+            xField: 'time',
             yField: 'data2',
             markerConfig: {
                 type: 'circle',
-                size: 4,
-                radius: 4,
+                size: 1,
+                radius: 1,
                 'stroke-width': 0
             }
         },
         {
             type: 'line',
             highlight: {
-                size: 7,
-                radius: 7
+                size: 5,
+                radius: 3
             },
             axis: 'left',
             fill: false,
-            xField: 'name',
+            xField: 'time',
             yField: 'data3',
             markerConfig: {
                 type: 'circle',
-                size: 4,
-                radius: 4,
+                size: 1,
+                radius: 1,
                 'stroke-width': 0
             }
         },
         {
             type: 'line',
             highlight: {
-                size: 7,
-                radius: 7
+                size: 5,
+                radius: 3
             },
             axis: 'left',
             fill: false,
-            xField: 'name',
+            xField: 'time',
             yField: 'data4',
             markerConfig: {
                 type: 'circle',
-                size: 4,
-                radius: 4,
+                size: 1,
+                radius: 1,
                 'stroke-width': 0
             }
         }

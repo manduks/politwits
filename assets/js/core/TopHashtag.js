@@ -28,7 +28,7 @@ Ext.define('Core.TopHashtag', {
                         '<tr>',
                             '<td>{#}</td>',
                             '<td><a href="http://twitter.com/#!/search/%23{name}" target="_blank">#{name}</a></td>',
-                            '<td><div style="text-align: center;" title="{users} usuarios han twiteado este Hashtag : #{name}"><a href="#">{users}</a></div></td>',
+                            '<td><div style="text-align: center;" title="{users} usuarios unicos han twiteado este Hashtag : #{name}"><a href="#">{users}</a></div></td>',
                             '<td><div style="text-align: center;" title="{data} veces se ha mencionado este Hashtag : #{name}">{data}</div></td>',
                         '</tr>',
                     '</tpl>',

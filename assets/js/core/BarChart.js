@@ -28,7 +28,7 @@ Ext.define('MyNamespace.BarChart', {
         type: 'Category',
         position: 'bottom',
         fields: ['name'],
-        title: 'Total Tweets'
+        title: 'Total Tweets: Sin Clasificar y Ofensivos'
     }
     ],
     series: [
