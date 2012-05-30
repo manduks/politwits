@@ -16,6 +16,7 @@ Ext.define('MyNamespace.BarChart', {
     xtype: 'barchart',
     animate: true,
     shadow: true,
+    theme: 'Category2',
     //store: store,
     axes: [{
         type: 'Numeric',
