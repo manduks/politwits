@@ -588,6 +588,7 @@ Ext.onReady(function(){
 				'<div class="brand"><a href="https://twitter.com/#!/analitweets" target="_blank">@Analitweets</a></div>',
 				{
 					text:'<i class="icon-comment icon-white"></i> <span style="color:#FFFFFF;">Tweets</span>',
+                    id:"tweets",
 					cls:'btn btn-primary',
 					handler:function(btn){
 						var p = btn.up('container').up('container');

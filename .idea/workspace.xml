@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c5840c97-9292-42bd-83a4-edfc3c919909" name="Default" comment="Merge branch 'master' of github.com:manduks/politwits&#10;&#10;Conflicts:&#10;&#9;assets/css/codetlan.css&#10;&#9;politwits/api.php&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/js/core/EstadisticasHashtag.js" />
+    <list default="true" id="92ef6091-8303-4fac-9973-519d70cefeac" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/js/bootstrap-tooltip.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/miguelsalasmx.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/app.js" afterPath="$PROJECT_DIR$/assets/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/core/BarChart.js" afterPath="$PROJECT_DIR$/assets/js/core/BarChart.js" />
-    </list>
-    <list id="79d56b5b-385c-4729-89b3-469732afb71d" name="ignored" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/politwits/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/bootstrap-popover.js" afterPath="$PROJECT_DIR$/assets/js/bootstrap-popover.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/codetlan.js" afterPath="$PROJECT_DIR$/assets/js/codetlan.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="politwits.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,17 +34,38 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1028" column="44" selection-start="35466" selection-end="35466" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="590" column="23" selection-start="18468" selection-end="18468" vertical-scroll-proportion="-9.730769">
+              <folding>
+                <element signature="e#153#2333#0" expanded="false" />
+                <element signature="e#2388#2961#0" expanded="false" />
+                <element signature="e#3016#3591#0" expanded="false" />
+                <element signature="e#3638#4159#0" expanded="false" />
+                <element signature="e#4213#4693#0" expanded="false" />
+                <element signature="e#4745#5086#0" expanded="false" />
+                <element signature="e#5138#5538#0" expanded="false" />
+                <element signature="e#5612#6235#0" expanded="false" />
+                <element signature="e#6321#6345#0" expanded="false" />
+                <element signature="e#6407#6431#0" expanded="false" />
+                <element signature="e#6493#6517#0" expanded="false" />
+                <element signature="e#8143#8187#0" expanded="false" />
+                <element signature="e#12028#12465#0" expanded="false" />
+                <element signature="e#12519#12597#0" expanded="false" />
+                <element signature="e#12649#12725#0" expanded="false" />
+                <element signature="e#12777#12858#0" expanded="false" />
+                <element signature="e#12933#13314#0" expanded="false" />
+                <element signature="e#13383#17084#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BarChart.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/assets/js/core/BarChart.js">
+      <file leaf-file-name="codetlan.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/js/codetlan.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="21" selection-start="503" selection-end="503" vertical-scroll-proportion="0.08916084">
-              <folding />
+            <state line="18" column="3" selection-start="407" selection-end="407" vertical-scroll-proportion="0.4272152">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -51,32 +73,36 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="76" selection-start="1560" selection-end="1560" vertical-scroll-proportion="0.0">
+            <state line="40" column="51" selection-start="2377" selection-end="2377" vertical-scroll-proportion="-9.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LineChart.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/core/LineChart.js">
+      <file leaf-file-name="jquery-1.7.2.min.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/js/jquery-1.7.2.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="4" selection-start="881" selection-end="881" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="3" column="5875" selection-start="71109" selection-end="71110" vertical-scroll-proportion="-1.7307693">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/politwits/api.php">
+      <file leaf-file-name="bootstrap-popover.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/js/bootstrap-popover.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="83" selection-start="456" selection-end="456" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="38" column="24" selection-start="1295" selection-end="1295" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="libMySql.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/politwits/libMySql.php">
+      <file leaf-file-name="codetlan.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/css/codetlan.css">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
@@ -84,38 +110,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/politwits/config.php">
+      <file leaf-file-name="bootstrap-tooltip.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/js/bootstrap-tooltip.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="20" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TopUrl.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/core/TopUrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="79" selection-start="972" selection-end="972" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PieChart.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/core/PieChart.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="28" selection-start="1124" selection-end="1124" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TopHashtag.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/core/TopHashtag.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="96" selection-start="1199" selection-end="1199" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="44" column="51" selection-start="1518" selection-end="1518" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,38 +129,25 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitLogSettings">
-    <option name="myStructureFilterPaths" />
+    <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
+    <option name="UPDATE_CHANGES_POLICY" value="STASH" />
+    <option name="LINE_SEPARATORS_CONVERSION" value="ASK" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/assets/js/core/Chart.js" />
-        <option value="$PROJECT_DIR$/assets/css/codetlan.css" />
-        <option value="$PROJECT_DIR$/assets/js/core/TimeLine.js" />
-        <option value="$PROJECT_DIR$/assets/js/core/TopRetweet.js" />
-        <option value="$PROJECT_DIR$/assets/js/core/TopUrl.js" />
-        <option value="$PROJECT_DIR$/assets/js/core/PieChart.js" />
-        <option value="$PROJECT_DIR$/assets/js/core/sample" />
-        <option value="$PROJECT_DIR$/assets/js/core/sample.js" />
-        <option value="$PROJECT_DIR$/assets/js/core/asdf" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/assets/js/core/TopHashtag.js" />
-        <option value="$PROJECT_DIR$/politwits/api.php" />
-        <option value="$PROJECT_DIR$/assets/js/core/EstadisticasHashtag.js" />
-        <option value="$PROJECT_DIR$/assets/js/core/LineChart.js" />
+        <option value="$PROJECT_DIR$/assets/js/bootstrap-popover.js" />
+        <option value="$PROJECT_DIR$/assets/js/codetlan.js" />
         <option value="$PROJECT_DIR$/assets/js/app.js" />
-        <option value="$PROJECT_DIR$/assets/js/core/BarChart.js" />
       </list>
     </option>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="width" value="1930" />
-    <option name="height" value="1050" />
+    <option name="x" value="4" />
+    <option name="y" value="22" />
+    <option name="width" value="1916" />
+    <option name="height" value="778" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -168,7 +156,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="1" id="Add" />
+    <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -187,16 +175,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -225,20 +204,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="politwits" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="politwits" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="politwits" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -260,14 +225,6 @@
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -280,6 +237,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -290,31 +251,25 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.editor" />
-    <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
+    <property name="options.lastSelected" value="preferences.sourceCode" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\wamp\www\politwits\assets\js\core" />
-    </key>
+  <component name="PublishConfig">
+    <servers>
+      <server id="bb3da5bf-5a4b-4798-9e0a-cf33a26fa1de">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+    </servers>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner scope="Class" />
-      <method>
-        <option name="PhingTarget" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
-      <method>
-        <option name="PhingTarget" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
       <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
+        <option name="engineId" />
         <option name="fileUrl" />
       </JSDebuggerConfigurationSettings>
       <method />
@@ -322,75 +277,34 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
-    <option name="LAST_MERGED_REVISION" />
-    <option name="MERGE_DRY_RUN" value="false" />
-    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
-    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
-    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="DETECT_NESTED_COPIES" value="true" />
-    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
-    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
-    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <option name="FORCE_UPDATE" value="false" />
-    <configuration useDefault="false">$USER_HOME$/.subversion_IDEA</configuration>
-    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c5840c97-9292-42bd-83a4-edfc3c919909" name="Default" comment="" />
-      <changelist id="79d56b5b-385c-4729-89b3-469732afb71d" name="ignored" comment="" />
-      <created>1337043368318</created>
-      <updated>1337043368318</updated>
+      <created>1338338026208</created>
+      <updated>1338338026208</updated>
     </task>
-    <option name="trackContextForNewChangelist" value="false" />
     <servers />
   </component>
-  <component name="TodoView" selected-index="1">
-    <todo-panel id="selected-file">
-      <are-packages-shown value="false" />
-      <are-modules-shown value="false" />
-      <flatten-packages value="false" />
-      <is-autoscroll-to-source value="false" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="false" />
-      <are-modules-shown value="false" />
-      <flatten-packages value="false" />
-      <is-autoscroll-to-source value="false" />
-    </todo-panel>
-    <todo-panel id="default-changelist">
-      <are-packages-shown value="false" />
-      <are-modules-shown value="false" />
-      <flatten-packages value="false" />
-      <is-autoscroll-to-source value="false" />
-    </todo-panel>
-  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1930" height="1050" extended-state="0" />
+    <frame x="4" y="22" width="1916" height="778" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32921347" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14415863" sideWeight="0.6707865" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.196468" sideWeight="0.49839744" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -426,12 +340,9 @@
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
-    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
-    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
     <option name="LAST_COMMIT_MESSAGE" />
-    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
@@ -448,87 +359,93 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/css/bootstrap.css">
+    <entry file="file://$PROJECT_DIR$/assets/js/jquery-1.7.2.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1841" column="0" selection-start="29398" selection-end="29398" vertical-scroll-proportion="0.0" />
+        <state line="3" column="5875" selection-start="71109" selection-end="71110" vertical-scroll-proportion="-1.7307693">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/politwits/monitor.php">
+    <entry file="file://$PROJECT_DIR$/assets/js/charts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="56" selection-start="1873" selection-end="1873" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/core/TimeLine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="54" selection-start="1797" selection-end="1797" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/codetlan.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="20" selection-start="3660" selection-end="3660" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/core/TopRetweet.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="118" selection-start="992" selection-end="992" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/core/EstadisticasHashtag.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1785" selection-end="1785" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="76" selection-start="1560" selection-end="1560" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/core/LineChart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="4" selection-start="881" selection-end="881" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/politwits/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="83" selection-start="456" selection-end="456" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/politwits/libMySql.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/politwits/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="20" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/core/TopUrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="79" selection-start="972" selection-end="972" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/core/PieChart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="28" selection-start="1124" selection-end="1124" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/core/TopHashtag.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="96" selection-start="1199" selection-end="1199" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1028" column="44" selection-start="35466" selection-end="35466" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/core/BarChart.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="21" selection-start="503" selection-end="503" vertical-scroll-proportion="0.08916084">
+        <state line="40" column="51" selection-start="2377" selection-end="2377" vertical-scroll-proportion="-9.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/bootstrap-tooltip.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="51" selection-start="1518" selection-end="1518" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/codetlan.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4401" column="14" selection-start="80580" selection-end="80593" vertical-scroll-proportion="0.3322091">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/bootstrap-popover.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="24" selection-start="1295" selection-end="1295" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="590" column="23" selection-start="18468" selection-end="18468" vertical-scroll-proportion="-9.730769">
+          <folding>
+            <element signature="e#153#2333#0" expanded="false" />
+            <element signature="e#2388#2961#0" expanded="false" />
+            <element signature="e#3016#3591#0" expanded="false" />
+            <element signature="e#3638#4159#0" expanded="false" />
+            <element signature="e#4213#4693#0" expanded="false" />
+            <element signature="e#4745#5086#0" expanded="false" />
+            <element signature="e#5138#5538#0" expanded="false" />
+            <element signature="e#5612#6235#0" expanded="false" />
+            <element signature="e#6321#6345#0" expanded="false" />
+            <element signature="e#6407#6431#0" expanded="false" />
+            <element signature="e#6493#6517#0" expanded="false" />
+            <element signature="e#8143#8187#0" expanded="false" />
+            <element signature="e#12028#12465#0" expanded="false" />
+            <element signature="e#12519#12597#0" expanded="false" />
+            <element signature="e#12649#12725#0" expanded="false" />
+            <element signature="e#12777#12858#0" expanded="false" />
+            <element signature="e#12933#13314#0" expanded="false" />
+            <element signature="e#13383#17084#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/codetlan.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="3" selection-start="407" selection-end="407" vertical-scroll-proportion="0.4272152">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
