@@ -1,7 +1,7 @@
 /*$(function() {
 	alert(2);
 	$('#logo').popover('hide')
-});*/
+});
 
 
 $(function () {
@@ -9,11 +9,11 @@ $(function () {
         $("#tweets")
             .popover({
                 placement:"bottom",
-                title:"Mierda",
-                content:"Aquí puedes dar de alta a tus clientes",
+                title:"Tweets",
+                content:"Podras observar la actividad de tweets para cada candidato.",
                 trigger:"hover",
                 delay:{ show:500, hide:100 }
             });
     });
 
-});
+});*⁄
