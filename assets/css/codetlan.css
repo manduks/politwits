@@ -63,15 +63,6 @@
 	font-size:15px;
 	position: absolute;
 }
-.retweet a{
-	float: right;
-    font-size: 0.9em;
-    color: gray;
-    margin: -20px 10px 0 0;
-}
-.retweet a:hover{
-	text-decoration: none;
-}
 .load{
 	width:100%;
 	font-size:15px;
@@ -100,6 +91,32 @@
     font-size: 20px;
 }
 
+/* @group TimeLine */
+
+.retweet a{
+	float: right;
+    font-size: 0.9em;
+    color: gray;
+    margin: -20px 10px 0 0;
+}
+.retweet a:hover{
+	text-decoration: none;
+}
+.reply a{
+    float: right;
+    font-size: 0.9em;
+    color: gray;
+    margin: -20px 80px 0 0;
+}
+.reply a:hover{
+    text-decoration: none;
+}
+.top-retweet{
+	margin-top: 30px;
+}
+
+/* @end */
+
 /* @group Cabeceras de los candidatos */
 .candidato{
 	border:1px solid #dddddd;
@@ -113,13 +130,18 @@
 .tweets{
 	float: left;
 	width: 70px;
-	margin: 15px 10px 0px;
+	margin: 13px 10px 0px;
 	
 }
+.tweets:hover{
+	text-decoration: none;
+	cursor: pointer;
+}
 .tweets h3{
-	background-image: url("../img/Tweet-32.png");
+	background-image: url("../img/Chat-32.png");
 	background-repeat: no-repeat;
 	background-position: top;
+	margin-bottom: 3px;
 	text-indent: -9999px;
 }
 .contenedor-centro p{
@@ -133,6 +155,9 @@
 	float: right;
 	width: 70px;
 	margin: 12px 10px 0px;
+}
+.negativos:hover{
+	text-decoration: none;
 }
 .negativos h3{
 	background-image: url("../img/Disapprove-48.png");
@@ -162,6 +187,8 @@
 	width: 70px;
 	position: absolute;
 	margin-top: -18px;
+	background-image: -webkit-linear-gradient(rgba(255,255,255,0.17) 0%, rgba(89,89,89,0.59) 45.36%, rgba(0,0,0,0.64) 100%);
+/*
 	background-image:
 		linear-gradient(bottom, rgba(0,0,0,0.5) 30%,
 								rgba(190,190,190,0.3) 80%,
@@ -169,12 +196,9 @@
 	background-image:
 		-o-linear-gradient(bottom,	rgba(0,0,0,0.5) 30%,
 								rgba(190,190,190,0.3) 80%,
-								rgba(190,190,190,0) 100%);
-	background-image:
-		-moz-linear-gradient(bottom, 	rgba(0,0,0,0.5) 30%,
-								rgba(190,190,190,0.3) 80%,
-								rgba(190,190,190,0) 100%);
-	background-image:
+								rgba(190,190,190,0) 100%);*/
+	background-image:		-moz-linear-gradient(rgba(255,255,255,0.17) 0%, rgba(89,89,89,0.59) 45.36%, rgba(0,0,0,0.64) 100%);
+/*	background-image:
 		-webkit-linear-gradient(bottom,	rgba(0,0,0,0.5) 30%,
 								rgba(190,190,190,0.3) 80%,
 								rgba(190,190,190,0) 100%);
@@ -182,6 +206,7 @@
 		-ms-linear-gradient(bottom,	rgba(0,0,0,0.5) 30%,
 								rgba(190,190,190,0.3) 80%,
 								rgba(190,190,190,0) 100%);
+*/
 	
 }
 .nombre h5{
@@ -190,12 +215,3 @@
 }
 
 /* @end */
-.reply a{
-    float: right;
-    font-size: 0.9em;
-    color: gray;
-    margin: -20px 80px 0 0;
-}
-.reply a:hover{
-    text-decoration: none;
-}

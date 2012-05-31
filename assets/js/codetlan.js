@@ -29,4 +29,15 @@ function mostrarNegativos(candidato){
 			$("#mostrarNegativos").modal();
 		break;		
 	}
-}
+};
+
+function activarTooltips(){
+	$(".menciones-tooltip").tooltip({
+		placement: 'bottom',
+		title: 'Número</br>de menciones'
+	});
+	$(".negativos-tooltip").tooltip({
+		placement: 'bottom',
+		title: 'Tweets ofensivos</br>[Da clic]'
+	});
+};
