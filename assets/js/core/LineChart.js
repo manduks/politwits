@@ -5,23 +5,13 @@
  * The BarCharts
  * @hellreuter_
  */
-var store = Ext.create('Ext.data.JsonStore', {
-    fields: ['name', 'data1', 'data2', 'data3', 'data4', 'data5'],
-    data: [
-        { 'name': 'metric one',   'data1': 10, 'data2': 12, 'data3': 14, 'data4': 8,  'data5': 13 },
-        { 'name': 'metric two',   'data1': 7,  'data2': 8,  'data3': 16, 'data4': 10, 'data5': 3  },
-        { 'name': 'metric three', 'data1': 5,  'data2': 2,  'data3': 14, 'data4': 12, 'data5': 7  },
-        { 'name': 'metric four',  'data1': 2,  'data2': 14, 'data3': 6,  'data4': 1,  'data5': 23 },
-        { 'name': 'metric five',  'data1': 4,  'data2': 4,  'data3': 36, 'data4': 13, 'data5': 33 }
-    ]
-});
 Ext.define('MyNamespace.LineChart', {
     extend: 'Ext.chart.Chart',
     xtype:'linechart',
     width: 500,
+    //highlight: true,
     height: 300,
     animate: true,
-    store: store,
     axes: [
         {
             type: 'Numeric',
@@ -30,26 +20,33 @@ Ext.define('MyNamespace.LineChart', {
             label: {
                 renderer: Ext.util.Format.numberRenderer('0,0')
             },
-            title: 'Sample Values',
+            title: 'Tweets',
             grid: true,
             minimum: 0
         },
         {
             type: 'Category',
             position: 'bottom',
-            fields: ['name'],
-            title: 'Sample Metrics'
+            fields: ['time'],
+            title: 'Hora'
         }
     ],
     series: [
         {
             type: 'line',
             highlight: {
-                size: 7,
-                radius: 7
+                size: 5,
+                radius: 3
             },
             axis: 'left',
-            xField: 'name',
+            style: {
+                stroke: '#00ff00',
+                'stroke-width': 10,
+                fill: '#80A080',
+                opacity: 0.2
+            },
+            fill: false,
+            xField: 'time',
             yField: 'data1',
             markerConfig: {
                 type: 'circle',
@@ -61,12 +58,12 @@ Ext.define('MyNamespace.LineChart', {
         {
             type: 'line',
             highlight: {
-                size: 7,
-                radius: 7
+                size: 5,
+                radius: 3
             },
             axis: 'left',
             fill: false,
-            xField: 'name',
+            xField: 'time',
             yField: 'data2',
             markerConfig: {
                 type: 'circle',
@@ -78,12 +75,12 @@ Ext.define('MyNamespace.LineChart', {
         {
             type: 'line',
             highlight: {
-                size: 7,
-                radius: 7
+                size: 5,
+                radius: 3
             },
             axis: 'left',
             fill: false,
-            xField: 'name',
+            xField: 'time',
             yField: 'data3',
             markerConfig: {
                 type: 'circle',
@@ -95,12 +92,12 @@ Ext.define('MyNamespace.LineChart', {
         {
             type: 'line',
             highlight: {
-                size: 7,
-                radius: 7
+                size: 5,
+                radius: 3
             },
             axis: 'left',
             fill: false,
-            xField: 'name',
+            xField: 'time',
             yField: 'data4',
             markerConfig: {
                 type: 'circle',

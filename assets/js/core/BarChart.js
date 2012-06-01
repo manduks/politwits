@@ -11,34 +11,109 @@
         {name: 'blah', sinclasificar: 3400, negativos: 500},{name: 'blah2', sinclasificar: 3600, negativos: 600}
     ]
 });*/
+var colors = ['url(#v-1)',
+    'url(#v-2)',
+    'url(#v-3)',
+    'url(#v-4)',
+    'url(#v-5)',
+    'url(#v-6)',
+    'url(#v-7)',
+    'url(#v-8)'];
+
 Ext.define('MyNamespace.BarChart', {
     extend: 'Ext.chart.Chart',
     xtype: 'barchart',
     animate: true,
     shadow: true,
+   // theme: 'Fancy',
+    //theme: 'Category2',
     //store: store,
+    gradients: [
+        {
+            'id': 'v-1',
+            angle:90,
+            stops: {
+                0:{ color: 'rgb(30,87,153)'},
+                100: {color: 'rgb(30,87,153)'}
+            }
+        },{
+            'id': 'v-2',
+            angle:90,
+            stops: {
+                0:{ color: 'rgb(210,73,67)'},
+                100: {color: 'rgb(210,73,67)'}
+            }
+        },{
+            'id': 'v-3',
+            angle:90,
+            stops: {
+                0:{ color: 'rgb(249,148,6)'},
+                100: {color: 'rgb(249,148,6)'}
+            }
+        },{
+            'id': 'v-4',
+            angle:90,
+            stops: {
+                0:{ color: 'rgb(210,73,67)'},
+                100: {color: 'rgb(210,73,67)'}
+            }
+        },{
+            'id': 'v-5',
+            angle:90,
+            stops: {
+                0:{ color: 'rgb(59,130,62)'},
+                100: {color: 'rgb(59,130,62)'}
+            }
+        },{
+            'id': 'v-6',
+            angle:90,
+            stops: {
+                0:{ color: 'rgb(210,73,67)'},
+                100: {color: 'rgb(210,73,67)'}
+            }
+        },{
+            'id': 'v-7',
+            angle:90,
+            stops: {
+                0:{ color: 'rgb(64,168,197)'},
+                100: {color: 'rgb(64,168,197)'}
+            }
+        },{
+            'id': 'v-8',
+            angle:90,
+            stops: {
+                0:{ color: 'rgb(210,73,67)'},
+                100: {color: 'rgb(210,73,67)'}
+            }
+        }
+    ],
     axes: [{
         type: 'Numeric',
         position: 'left',
         fields: ['sinclasificar', 'negativos'],
-        title: false,
+        title: true,
         grid: true
         //roundToDecimal: false
     }, {
         type: 'Category',
         position: 'bottom',
         fields: ['name'],
-        title: 'Total Tweets'
+        title: 'Total Tweets: Sin Clasificar y Ofensivos'
     }
     ],
     series: [
         {
             type: 'column',
-            axis: 'left',
+            //axis: 'left',
             gutter: 80,
             xField: 'name',
             yField: ['sinclasificar', 'negativos'],
+            //displayname: 'sinclasificar',
             stacked: true,
+            renderer: function(sprite, storeItem, barAttr, i, store) {
+                barAttr.fill = colors[i];
+                return barAttr;
+            },
             tips: {
                 trackMouse: true,
                 renderer: function(storeItem, item) {
