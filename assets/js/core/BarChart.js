@@ -48,9 +48,22 @@ Ext.define('MyNamespace.BarChart', {
                     var label = item.value[1] == storeItem.data.sinclasificar ? 'Sinclasificar' : 'Negativos';
                     this.setTitle(label + '<br />' + item.value[1]);
                 }
-            },
-            label: {
-                color: '#333'
+            }
+        },{
+            type: 'column',
+            axis: 'left',
+            gutter: 80,
+            xField: 'name',
+            yField: ['sinclasificar', 'negativos'],
+            stacked: false,
+            tips: {
+                trackMouse: true,
+                renderer: function(storeItem, item) {
+                    this.setWidth(100);
+                    this.setHeight(50);
+                    var label = item.value[1] == storeItem.data.sinclasificar ? 'Sinclasificar' : 'Negativos';
+                    this.setTitle(label + '<br />' + item.value[1]);
+                }
             }
         }
     ]
