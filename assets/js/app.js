@@ -564,13 +564,23 @@ Ext.onReady(function(){
     };
 
     getRetweet = function (values) {
-        console.log(values);
         return "window.open('https://twitter.com/intent/retweet?tweet_id=" + values.id_str + "', '', 'width=500, height=350');";
     };
 
     getReply = function (values) {
         return "window.open('https://twitter.com/intent/tweet?in_reply_to=" + values.id_str + "', '', 'width=500, height=350');";
     };
+
+    createPopover=function(id, title, text){
+        $('#'+id).popover(
+            {
+                placement:"bottom",
+                title: title,
+                content: text,
+                trigger:"hover",
+                delay:{ show:500, hide:100 }
+            }
+        )};
 
 	var viewport = Ext.create('Ext.Viewport', {
         layout: {
@@ -588,29 +598,54 @@ Ext.onReady(function(){
 				'<div class="brand"><a href="https://twitter.com/#!/analitweets" target="_blank">@Analitweets</a></div>',
 				{
 					text:'<i class="icon-comment icon-white"></i> <span style="color:#FFFFFF;">Tweets</span>',
+                    id:"tweets",
 					cls:'btn btn-primary',
 					handler:function(btn){
 						var p = btn.up('container').up('container');
 						p.items.items[1].getLayout().setActiveItem(0);
-					}
+					},
+                    listeners: {
+                        scope: this,
+                        afterrender: function(){
+                            createPopover("tweets", "Tweets", "Podras observar la actividad de tweets para cada candidato." )
+                        }
+
+                    }
 				},{
 					text:'<i class="icon-globe icon-white"></i> <span style="color:#FFFFFF;">Mapa</span>',
+                    id:"mapa",
 					cls:'btn btn-success',
 					handler:function(btn){
 						var p = btn.up('container').up('container');
 						p.items.items[1].getLayout().setActiveItem(1);
 						ponerMarcadores();
-					}
+					},
+                    listeners: {
+                        scope: this,
+                        afterrender: function(){
+                            createPopover("mapa", "Mapa", "Podras observar la geolocalización de las personas que twiteen mencionando algun candidato." )
+                        }
+
+                    }
 				},{
                     text:'<i class="icon-star icon-white"></i> <span style="color:#FFFFFF;">Top</span>',
+                    id: "top",
                     cls:'btn btn-info',
                     handler:function(btn){
                         var p = btn.up('container').up('container');
                         p.items.items[1].getLayout().setActiveItem(2);
                         topLists();
+                    },
+                    listeners: {
+                        scope: this,
+                        afterrender: function(){
+                            createPopover("top", "Top", "Podras observar el top hashtag, top retweets y top urls. " )
+                        }
+
                     }
                 },{
                     text:'<i class="icon-signal icon-white"></i> <span style="color:#FFFFFF;">Estadísticas</span>',
+                    id: "est",
                     cls:'btn btn-danger',
                     handler:function(btn){
                         var p = btn.up('container').up('container');
@@ -618,9 +653,17 @@ Ext.onReady(function(){
                         lineCharts();
                         barCharts();
                         estadisticasHashtags();
+                    },
+                    listeners: {
+                        scope: this,
+                        afterrender: function(){
+                            createPopover("est", "Estadisticas", "Podras observar una serie de estadisticas donde se pueden ver posibles bots para cada candidato." )
+                        }
+
                     }
                 },{
 						text:'<i class="icon-refresh icon-white"></i> <span style="color:#FFFFFF;">Recargar</span>',
+                        id: "recargar",
 						cls:'btn btn-warning',
 						handler:function(btn){
 							cargarStores();
@@ -629,7 +672,14 @@ Ext.onReady(function(){
 							Ext.fly('gqu').update('0 nuevos');
 							Ext.fly('epn').update('0 nuevos');
                             topLists();
-						}
+						},
+                    listeners: {
+                        scope: this,
+                        afterrender: function(){
+                            createPopover("recargar", "Recargar", "Recarga los tweets de todos los candidatos" )
+                        }
+
+                    }
 				},'->',
                 '<a href="https://twitter.com/share" class="twitter-share-button" style="margin-right: 60px;">Tweet</a><script></script>',
                 '<a href="https://twitter.com/Analitweets" class="twitter-follow-button" data-show-count="false" style="margin-right: 30px;">Follow @Analitweets</a><script></script>'
