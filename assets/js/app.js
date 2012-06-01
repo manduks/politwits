@@ -1071,12 +1071,9 @@ Ext.onReady(function(){
                         }]
                     },{
                          xtype: 'linechart',
-                        style: {
-
-                        },
                          flex: 1,
                          layout: 'border',
-                         //store: storeLineTweets
+                         store: storeLineTweets
                     }]
                 }]
             }]

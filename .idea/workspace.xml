@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5840c97-9292-42bd-83a4-edfc3c919909" name="Default" comment="Merge branch 'master' of github.com:manduks/politwits&#10;&#10;Conflicts:&#10;&#9;assets/css/codetlan.css&#10;&#9;politwits/api.php&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/js/core/EstadisticasHashtag.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/app.js" afterPath="$PROJECT_DIR$/assets/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/core/BarChart.js" afterPath="$PROJECT_DIR$/assets/js/core/BarChart.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/core/LineChart.js" afterPath="$PROJECT_DIR$/assets/js/core/LineChart.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/politwits/api.php" afterPath="$PROJECT_DIR$/politwits/api.php" />
     </list>
-    <list id="79d56b5b-385c-4729-89b3-469732afb71d" name="ignored" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/politwits/config.php" />
-    </list>
+    <list id="79d56b5b-385c-4729-89b3-469732afb71d" name="ignored" comment="" />
     <ignored path="politwits.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,7 +32,7 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1028" column="44" selection-start="35466" selection-end="35466" vertical-scroll-proportion="0.0">
+            <state line="985" column="46" selection-start="33411" selection-end="33411" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -42,7 +41,7 @@
       <file leaf-file-name="BarChart.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/js/core/BarChart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="21" selection-start="503" selection-end="503" vertical-scroll-proportion="0.08916084">
+            <state line="41" column="26" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.5842986">
               <folding />
             </state>
           </provider>
@@ -60,8 +59,10 @@
       <file leaf-file-name="LineChart.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/core/LineChart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="4" selection-start="881" selection-end="881" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="23" column="6" selection-start="887" selection-end="887" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -69,7 +70,7 @@
       <file leaf-file-name="api.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/politwits/api.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="83" selection-start="456" selection-end="456" vertical-scroll-proportion="0.0">
+            <state line="81" column="121" selection-start="4258" selection-end="4258" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -147,9 +148,9 @@
         <option value="$PROJECT_DIR$/assets/js/core/asdf" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/assets/js/core/TopHashtag.js" />
-        <option value="$PROJECT_DIR$/politwits/api.php" />
         <option value="$PROJECT_DIR$/assets/js/core/EstadisticasHashtag.js" />
         <option value="$PROJECT_DIR$/assets/js/core/LineChart.js" />
+        <option value="$PROJECT_DIR$/politwits/api.php" />
         <option value="$PROJECT_DIR$/assets/js/app.js" />
         <option value="$PROJECT_DIR$/assets/js/core/BarChart.js" />
       </list>
@@ -187,16 +188,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -281,6 +272,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -371,14 +372,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1930" height="1050" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="0" width="1930" height="1050" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32921347" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0988764" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14415863" sideWeight="0.6707865" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14737406" sideWeight="0.9011236" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.196468" sideWeight="0.49839744" order="7" side_tool="true" content_ui="tabs" />
@@ -483,16 +484,6 @@
         <state line="29" column="76" selection-start="1560" selection-end="1560" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/core/LineChart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="4" selection-start="881" selection-end="881" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/politwits/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="83" selection-start="456" selection-end="456" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/politwits/libMySql.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -518,16 +509,32 @@
         <state line="30" column="96" selection-start="1199" selection-end="1199" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/core/LineChart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="6" selection-start="887" selection-end="887" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/politwits/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="121" selection-start="4258" selection-end="4258" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1028" column="44" selection-start="35466" selection-end="35466" vertical-scroll-proportion="0.0">
+        <state line="985" column="46" selection-start="33411" selection-end="33411" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/core/BarChart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="21" selection-start="503" selection-end="503" vertical-scroll-proportion="0.08916084">
+        <state line="41" column="26" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.5842986">
           <folding />
         </state>
       </provider>

@@ -79,7 +79,7 @@
                                             select pre4.time, pre4.conteo as conteo4 from
                                                 (select track_k, round(DATE_FORMAT(date, '%H%i'), -2) as time , count(track_k) as conteo from twits where DATE(date) = CURRENT_DATE and track_k='@lopezobrador_'group by round(UNIX_TIMESTAMP(date) / 1800), track_k) as pre4
                                             ) as aux4
-                                        ) where aux1.time = aux2.time and aux1.time = aux3.time and aux1.time = aux4.time and aux4.time <= 900 group by time "),
+                                        ) where aux1.time = aux2.time and aux1.time = aux3.time and aux1.time = aux4.time group by time "),
                 "success"=>true
             );
 
