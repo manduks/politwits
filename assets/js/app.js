@@ -135,9 +135,11 @@ Ext.onReady(function(){
     Ext.define('LineChart', {
         extend: 'Ext.data.Model',
         fields: [
-            {name: 'track_k', type: 'string'},
-            {name: 'time', type: 'date'},
-            {name: 'conteo', type: 'integer'}
+            {name: 'time', type: 'string'},
+            {name: 'data1', type: 'integer'},
+            {name: 'data2', type: 'integer'},
+            {name: 'data3', type: 'integer'},
+            {name: 'data4', type: 'integer'}
         ],
         proxy:{
             type: 'ajax',
@@ -173,6 +175,29 @@ Ext.onReady(function(){
             {name: 'name', type: 'string'},
             {name: 'sinclasificar', type: 'integer'},
             {name: 'negativos', type: 'integer'}
+        ],
+        proxy:{
+            type: 'ajax',
+            url : 'politwits/api.php',
+            reader:{
+                type:'json',
+                root:'data'
+            }
+        }
+    });
+
+    //Estadisticas Hashtag Model
+    Ext.define('EstadisticasHashtag',{
+        extend: 'Ext.data.Model',
+        fields: [
+            { name: 'hashtag_k', type: 'integer' },
+            { name: 'track_k', type: 'string' },
+            { name: 'name', type: 'string', mapping:'hashtag' },
+            { name: 'data', type: 'integer', mapping:'total' },
+            { name: 'users', type: 'string'},
+            { name: 'porcentaje', type: 'float'},
+            { name: 'date', type: 'date' }
+
         ],
         proxy:{
             type: 'ajax',
@@ -244,6 +269,26 @@ Ext.onReady(function(){
     //BarChart AMLO Store
     var storeBarChartTotal = Ext.create('Ext.data.Store',{
         model: 'BarChart'
+    });
+
+    //Estadisticas Hashtag AMLO Store
+    var storeEstadisticasHashtagAmlo = Ext.create('Ext.data.Store', {
+        model: 'EstadisticasHashtag'
+    });
+
+    //Estadisticas Hashtag EPN Store
+    var storeEstadisticasHashtagEpn = Ext.create('Ext.data.Store', {
+        model: 'EstadisticasHashtag'
+    });
+
+    //Estadisticas Hashtag JVM Store
+    var storeEstadisticasHashtagJvm = Ext.create('Ext.data.Store', {
+        model: 'EstadisticasHashtag'
+    });
+
+    //Estadisticas Hashtag GQuadri Store
+    var storeEstadisticasHashtagGquadri = Ext.create('Ext.data.Store', {
+        model: 'EstadisticasHashtag'
     });
 
 	// --- Loaders ---
@@ -389,8 +434,25 @@ Ext.onReady(function(){
             params:{type:9}
         });
     };
+
+    //Estadisticas Hashtags Loader
+    estadisticasHashtags = function(){
+        storeEstadisticasHashtagAmlo.load({
+            params:{type:10,typec:2}
+        });
+        storeEstadisticasHashtagEpn.load({
+            params:{type:10,typec:0}
+        });
+        storeEstadisticasHashtagJvm.load({
+            params:{type:10,typec:1}
+
+        });
+        storeEstadisticasHashtagGquadri.load({
+            params:{type:10,typec:3}
+        });
+    };
 	
-	//Actiualizar contadores y totales
+	//Actualizar contadores y totales
 	updateContadores = function(){
 		Ext.Ajax.request({
 		    url : 'politwits/api.php',
@@ -488,7 +550,7 @@ Ext.onReady(function(){
 		    }
 		});
 	};
-	//primera llamada para actualizar los contadores
+	//Primera llamada para actualizar los contadores
 	updateContadores();
 	//Update Interval
 	setInterval(updateContadores,8000);
@@ -502,7 +564,6 @@ Ext.onReady(function(){
     };
 
     getRetweet = function (values) {
-        console.log(values);
         return "window.open('https://twitter.com/intent/retweet?tweet_id=" + values.id_str + "', '', 'width=500, height=350');";
     };
 
@@ -512,6 +573,17 @@ Ext.onReady(function(){
     	console.log(str);
         return str
     };
+
+    createPopover=function(id, title, text){
+        $('#'+id).popover(
+            {
+                placement:"bottom",
+                title: title,
+                content: text,
+                trigger:"hover",
+                delay:{ show:500, hide:100 }
+            }
+        )};
 
 	var viewport = Ext.create('Ext.Viewport', {
         layout: {
@@ -529,37 +601,72 @@ Ext.onReady(function(){
 				'<div class="brand"><a href="https://twitter.com/#!/analitweets" target="_blank">@Analitweets</a></div>',
 				{
 					text:'<i class="icon-comment icon-white"></i> <span style="color:#FFFFFF;">Tweets</span>',
+                    id:"tweets",
 					cls:'btn btn-primary',
 					handler:function(btn){
 						var p = btn.up('container').up('container');
 						p.items.items[1].getLayout().setActiveItem(0);
-					}
+					},
+                    listeners: {
+                        scope: this,
+                        afterrender: function(){
+                            createPopover("tweets", "Tweets", "Podras observar la actividad de tweets para cada candidato." )
+                        }
+
+                    }
 				},{
 					text:'<i class="icon-globe icon-white"></i> <span style="color:#FFFFFF;">Mapa</span>',
+                    id:"mapa",
 					cls:'btn btn-success',
 					handler:function(btn){
 						var p = btn.up('container').up('container');
 						p.items.items[1].getLayout().setActiveItem(1);
 						ponerMarcadores();
-					}
+					},
+                    listeners: {
+                        scope: this,
+                        afterrender: function(){
+                            createPopover("mapa", "Mapa", "Podras observar la geolocalización de las personas que twiteen mencionando algun candidato." )
+                        }
+
+                    }
 				},{
                     text:'<i class="icon-star icon-white"></i> <span style="color:#FFFFFF;">Top</span>',
+                    id: "top",
                     cls:'btn btn-info',
                     handler:function(btn){
                         var p = btn.up('container').up('container');
                         p.items.items[1].getLayout().setActiveItem(2);
                         topLists();
+                    },
+                    listeners: {
+                        scope: this,
+                        afterrender: function(){
+                            createPopover("top", "Top", "Podras observar el top hashtag, top retweets y top urls. " )
+                        }
+
                     }
-                },/*{
+                },{
                     text:'<i class="icon-signal icon-white"></i> <span style="color:#FFFFFF;">Estadísticas</span>',
+                    id: "est",
                     cls:'btn btn-danger',
                     handler:function(btn){
                         var p = btn.up('container').up('container');
                         p.items.items[1].getLayout().setActiveItem(3);
+                        lineCharts();
                         barCharts();
+                        estadisticasHashtags();
+                    },
+                    listeners: {
+                        scope: this,
+                        afterrender: function(){
+                            createPopover("est", "Estadisticas", "Podras observar una serie de estadisticas donde se pueden ver posibles bots para cada candidato." )
+                        }
+
                     }
-                },*/{
+                },{
 						text:'<i class="icon-refresh icon-white"></i> <span style="color:#FFFFFF;">Recargar</span>',
+                        id: "recargar",
 						cls:'btn btn-warning',
 						handler:function(btn){
 							cargarStores();
@@ -568,7 +675,14 @@ Ext.onReady(function(){
 							Ext.fly('gqu').update('0 nuevos');
 							Ext.fly('epn').update('0 nuevos');
                             topLists();
-						}
+						},
+                    listeners: {
+                        scope: this,
+                        afterrender: function(){
+                            createPopover("recargar", "Recargar", "Recarga los tweets de todos los candidatos" )
+                        }
+
+                    }
 				},'->',
                 '<a href="https://twitter.com/share" class="twitter-share-button" style="margin-right: 60px;">Tweet</a><script></script>',
                 '<a href="https://twitter.com/Analitweets" class="twitter-follow-button" data-show-count="false" style="margin-right: 30px;">Follow @Analitweets</a><script></script>'
@@ -857,7 +971,7 @@ Ext.onReady(function(){
                 xtype: 'container',//<--- Statistics Section Container
                 flex: 1,
                 layout: {
-                    type: 'vbox',
+                    type: 'hbox',
                     padding: '5',
                     align: 'stretch'
                 },
@@ -865,51 +979,186 @@ Ext.onReady(function(){
                     xtype: 'container',
                     flex: 1,
                     layout: {
-                        type: 'hbox',
+                        type: 'vbox',
                         align: 'stretch'
                     },
                     items: [{
-                        xtype: 'barchart',
+                        xtype: 'container',
                         flex: 1,
-                        layout: 'border',
-                        store: storeBarChartTotal
+                        layout: {
+                            type: 'hbox',
+                            align: 'stretch'
+                        },
+                        items:[{
+                            xtype: 'container',
+                            flex: 1,
+                            layout: {
+                                type: 'vbox',
+                                align: 'stretch'
+                            },
+                            region: 'east',
+                            items:[{
+                                xtype:'container',
+                                region:'north',
+                                height:73,
+                                html:[
+                                    '<div class="candidato">',
+                                    '<div class="contenedor-centro">',
+                                    '<div class="tweets">',
+                                    '<h3>Tweets</h3>',
+                                    '<p id="obrtweets"class="label label-warning">0</p>',
+                                    '</div>',
+                                    '<a href="https://twitter.com/#!/lopezobrador_" target="_blank"><div class="recuadro">',
+                                    '<div class="imagen obr-imagen"></div>',
+                                    '<div class="nombre"><h5>@lopezobrador_</h5></div>',
+                                    '</div></a>',
+                                    '<div class="negativos">',
+                                    '<h3>Negativos</h3>',
+                                    '<p id="obrnegativos" class="label label-warning">0</p>',
+                                    '</div>',
+                                    '</div>'].join('')
+                            },{
+                                xtype: 'estadisticashashtag',
+                                region: 'south',
+                                store:storeEstadisticasHashtagAmlo,
+                                padding:'5px 5 5 5'
+                            }]
+                        },{
+                            xtype: 'container',
+                            flex: 1,
+                            layout: {
+                                type: 'vbox',
+                                align: 'stretch'
+                            },
+                            region: 'west',
+                            items:[{
+                                xtype:'container',
+                                region:'north',
+                                height:73,
+                                html:[
+                                    '<div class="candidato">',
+                                    '<div class="contenedor-centro">',
+                                    '<div class="tweets">',
+                                    '<h3>Tweets</h3>',
+                                    '<p id="quadritweets"class="label">0</p>',
+                                    '</div>',
+                                    '<a href="https://twitter.com/#!/g_quadri" target="_blank"><div class="recuadro">',
+                                    '<div class="imagen quadri-imagen"></div>',
+                                    '<div class="nombre"><h5>@g_quadri</h5></div>',
+                                    '</div></a>',
+                                    '<div class="negativos">',
+                                    '<h3>Negativos</h3>',
+                                    '<p id="quadrinegativos" class="label">0</p>',
+                                    '</div>',
+                                    '</div>'].join('')
+                            },{
+                                xtype: 'estadisticashashtag',
+                                region: 'south',
+                                store: storeEstadisticasHashtagGquadri,
+                                padding:'5px 5 5 5'
+                            }]
+
+                        }]
                     },{
-                     xtype: 'linechart',
+                     xtype: 'barchart',
                      flex: 1,
-                     layout: 'border'
-                     //store: storePieTotal
+                     layout: 'border',
+                     store: storeBarChartTotal
                     }]
-                }/*,{
+                },{
                     xtype: 'container',
                     flex: 1,
                     layout: {
-                        type: 'hbox',
+                        type: 'vbox',
                         align: 'stretch'
                     },
                     items: [{
-                        xtype: 'barchart',
+                        xtype: 'container',
                         flex: 1,
-                        layout: 'border',
-                        store: storeBarAmlo
-                    },{
-                        xtype: 'barchart',
-                        flex: 1,
-                        layout: 'border',
-                        store: storeBarGquadri
+                        layout: {
+                            type: 'hbox',
+                            align: 'stretch'
+                        },
+                        items:[{
+                            xtype: 'container',
+                            flex: 1,
+                            layout: {
+                                type: 'vbox',
+                                align: 'stretch'
+                            },
+                            region: 'east',
+                            items:[{
+                                xtype:'container',
+                                region:'north',
+                                height:73,
+                                html:[
+                                    '<div class="candidato">',
+                                    '<div class="contenedor-centro">',
+                                    '<div class="tweets">',
+                                    '<h3>Tweets</h3>',
+                                    '<p id="epntweets"class="label label-success">0</p>',
+                                    '</div>',
+                                    '<a href="https://twitter.com/#!/epn" target="_blank"><div class="recuadro">',
+                                    '<div class="imagen epn-imagen"></div>',
+                                    '<div class="nombre"><h5>@epn</h5></div>',
+                                    '</div></a>',
+                                    '<div class="negativos">',
+                                    '<h3>Negativos</h3>',
+                                    '<p id="epnnegativos" class="label label-success">0</p>',
+                                    '</div>',
+                                    '</div>'].join('')
+                            },{
+                                xtype: 'estadisticashashtag',
+                                region: 'south',
+                                store:storeEstadisticasHashtagEpn,
+                                padding:'5px 5 5 5'
+                            }]
+                        },{
+                            xtype: 'container',
+                            flex: 1,
+                            layout: {
+                                type: 'vbox',
+                                align: 'stretch'
+                            },
+                            region: 'west',
+                            items:[{
+                                xtype:'container',
+                                region:'north',
+                                height:73,
+                                html:[
+                                    '<div class="candidato">',
+                                    '<div class="contenedor-centro">',
+                                    '<div class="tweets">',
+                                    '<h3>Tweets</h3>',
+                                    '<p id="jvmtweets"class="label label-info">0</p>',
+                                    '</div>',
+                                    '<a href="https://twitter.com/#!/josefinavm" target="_blank"><div class="recuadro">',
+                                    '<div class="imagen jvm-imagen"></div>',
+                                    '<div class="nombre"><h5>@josefinavm</h5></div>',
+                                    '</div></a>',
+                                    '<div class="negativos">',
+                                    '<h3>Negativos</h3>',
+                                    '<p id="jvmnegativos" class="label label-info">0</p>',
+                                    '</div>',
+                                    '</div>'].join('')
+                            },{
+                                xtype: 'estadisticashashtag',
+                                region: 'south',
+                                store: storeEstadisticasHashtagJvm,
+                                padding:'5px 5 5 5'
+                            }]
 
+                        }]
                     },{
-                        xtype: 'barchart',
-                        flex: 1,
-                        layout: 'border',
-                        store: storeBarEpn
+                         xtype: 'linechart',
+                        style: {
 
-                    },{
-                        xtype: 'barchart',
-                        flex: 1,
-                        layout: 'border',
-                        store: storeBarJvm
+                        },
+                         flex: 1,
+                         layout: 'border'
+                         //store: storeLineTweets
                     }]
-                }*/]
+                }]
             }]
 		}],
         listeners:{
@@ -940,4 +1189,5 @@ Ext.onReady(function(){
 
 
     );
+
 });
