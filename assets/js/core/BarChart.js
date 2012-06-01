@@ -16,7 +16,7 @@ Ext.define('MyNamespace.BarChart', {
     xtype: 'barchart',
     animate: true,
     shadow: true,
-    theme: 'Category2',
+    //theme: 'Category2',
     //store: store,
     axes: [{
         type: 'Numeric',
@@ -39,7 +39,23 @@ Ext.define('MyNamespace.BarChart', {
             gutter: 80,
             xField: 'name',
             yField: ['sinclasificar', 'negativos'],
-            stacked: true,
+            stacked: false,
+            tips: {
+                trackMouse: true,
+                renderer: function(storeItem, item) {
+                    this.setWidth(100);
+                    this.setHeight(50);
+                    var label = item.value[1] == storeItem.data.sinclasificar ? 'Sinclasificar' : 'Negativos';
+                    this.setTitle(label + '<br />' + item.value[1]);
+                }
+            }
+        },{
+            type: 'column',
+            axis: 'left',
+            gutter: 80,
+            xField: 'name',
+            yField: ['sinclasificar', 'negativos'],
+            stacked: false,
             tips: {
                 trackMouse: true,
                 renderer: function(storeItem, item) {

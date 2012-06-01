@@ -1151,12 +1151,9 @@ Ext.onReady(function(){
                         }]
                     },{
                          xtype: 'linechart',
-                        style: {
-
-                        },
                          flex: 1,
-                         layout: 'border'
-                         //store: storeLineTweets
+                         layout: 'border',
+                         store: storeLineTweets
                     }]
                 }]
             }]
@@ -1189,5 +1186,4 @@ Ext.onReady(function(){
 
 
     );
-
 });

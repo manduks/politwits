@@ -5,7 +5,7 @@
  * The BarCharts
  * @hellreuter_
  */
-var store = Ext.create('Ext.data.JsonStore', {
+/*var store = Ext.create('Ext.data.JsonStore', {
     fields: ['name', 'data1', 'data2', 'data3', 'data4'],
     data: [
         { 'name': '0011',   'data1': 5, 'data2': 12, 'data3': 1, 'data4': 7 },   //data1 = azul, data2 = verde, data3 = rojo, data4 = amarillo
@@ -15,13 +15,13 @@ var store = Ext.create('Ext.data.JsonStore', {
         { 'name': 'metric five',  'data1': 5,  'data2': 12,  'data3': 1, 'data4': 7 }
     ]
 });
-Ext.define('MyNamespace.LineChart', {
+*/Ext.define('MyNamespace.LineChart', {
     extend: 'Ext.chart.Chart',
     xtype:'linechart',
     width: 500,
     height: 300,
     animate: true,
-    store: store,
+    //store: store,
     axes: [
         {
             type: 'Numeric',
