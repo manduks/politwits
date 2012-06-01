@@ -40,8 +40,8 @@ Ext.define('MyNamespace.BarChart', {
             'id': 'v-2',
             angle:90,
             stops: {
-                0:{ color: 'rgb(0,0,0)'},
-                100: {color: 'rgb(0,0,0)'}
+                0:{ color: 'rgb(210,73,67)'},
+                100: {color: 'rgb(210,73,67)'}
             }
         },{
             'id': 'v-3',
@@ -54,22 +54,22 @@ Ext.define('MyNamespace.BarChart', {
             'id': 'v-4',
             angle:90,
             stops: {
-                0:{ color: 'rgb(0,0,0)'},
-                100: {color: 'rgb(0,0,0)'}
+                0:{ color: 'rgb(210,73,67)'},
+                100: {color: 'rgb(210,73,67)'}
             }
         },{
             'id': 'v-5',
             angle:90,
             stops: {
-                0:{ color: 'rgb(181,9,0)'},
-                100: {color: 'rgb(181,9,0)'}
+                0:{ color: 'rgb(59,130,62)'},
+                100: {color: 'rgb(59,130,62)'}
             }
         },{
             'id': 'v-6',
             angle:90,
             stops: {
-                0:{ color: 'rgb(0,0,0)'},
-                100: {color: 'rgb(0,0,0)'}
+                0:{ color: 'rgb(210,73,67)'},
+                100: {color: 'rgb(210,73,67)'}
             }
         },{
             'id': 'v-7',
@@ -82,8 +82,8 @@ Ext.define('MyNamespace.BarChart', {
             'id': 'v-8',
             angle:90,
             stops: {
-                0:{ color: 'rgb(0,0,0)'},
-                100: {color: 'rgb(0,0,0)'}
+                0:{ color: 'rgb(210,73,67)'},
+                100: {color: 'rgb(210,73,67)'}
             }
         }
     ],
@@ -111,7 +111,6 @@ Ext.define('MyNamespace.BarChart', {
             //displayname: 'sinclasificar',
             stacked: true,
             renderer: function(sprite, storeItem, barAttr, i, store) {
-                console.log(i);
                 barAttr.fill = colors[i];
                 return barAttr;
             },
