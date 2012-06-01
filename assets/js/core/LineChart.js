@@ -5,23 +5,13 @@
  * The BarCharts
  * @hellreuter_
  */
-/*var store = Ext.create('Ext.data.JsonStore', {
-    fields: ['name', 'data1', 'data2', 'data3', 'data4'],
-    data: [
-        { 'name': '0011',   'data1': 5, 'data2': 12, 'data3': 1, 'data4': 7 },   //data1 = azul, data2 = verde, data3 = rojo, data4 = amarillo
-        { 'name': 'metric two',   'data1': 5,  'data2': 12,  'data3': 1, 'data4': 7 },
-        { 'name': 'metric three', 'data1': 5,  'data2': 12,  'data3': 1, 'data4': 7 },
-        { 'name': 'metric four',  'data1': 5,  'data2': 12, 'data3': 1,  'data4': 7 },
-        { 'name': 'metric five',  'data1': 5,  'data2': 12,  'data3': 1, 'data4': 7 }
-    ]
-});
-*/Ext.define('MyNamespace.LineChart', {
+Ext.define('MyNamespace.LineChart', {
     extend: 'Ext.chart.Chart',
     xtype:'linechart',
     width: 500,
+    //highlight: true,
     height: 300,
     animate: true,
-    //store: store,
     axes: [
         {
             type: 'Numeric',
@@ -49,12 +39,19 @@
                 radius: 3
             },
             axis: 'left',
+            style: {
+                stroke: '#00ff00',
+                'stroke-width': 10,
+                fill: '#80A080',
+                opacity: 0.2
+            },
+            fill: false,
             xField: 'time',
             yField: 'data1',
             markerConfig: {
                 type: 'circle',
-                size: 1,
-                radius: 1,
+                size: 4,
+                radius: 4,
                 'stroke-width': 0
             }
         },
@@ -70,8 +67,8 @@
             yField: 'data2',
             markerConfig: {
                 type: 'circle',
-                size: 1,
-                radius: 1,
+                size: 4,
+                radius: 4,
                 'stroke-width': 0
             }
         },
@@ -87,8 +84,8 @@
             yField: 'data3',
             markerConfig: {
                 type: 'circle',
-                size: 1,
-                radius: 1,
+                size: 4,
+                radius: 4,
                 'stroke-width': 0
             }
         },
@@ -104,8 +101,8 @@
             yField: 'data4',
             markerConfig: {
                 type: 'circle',
-                size: 1,
-                radius: 1,
+                size: 4,
+                radius: 4,
                 'stroke-width': 0
             }
         }
