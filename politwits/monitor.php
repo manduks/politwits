@@ -8,22 +8,24 @@
 
     //define("PATH","/home/miguelsalasmx/public_html/politwits/politwits/");
     //define("PATH","/home/codetlan/system/");
-    //define("PATH",str_replace("--path=","",$argv[4]));
+    define("PATH",str_replace("--path=","",$argv[4]));
 
-    include("config.php");
-    include("libMySql.php");
-    include("util.php");
-    include("wordlist.php");
+    include(PATH."config.php");
+    include(PATH."libMySql.php");
+    include(PATH."util.php");
+    include(PATH."wordlist.php");
+
+
 
     class Monitor Extends LibMySql{
 
         //Valida que los los parametros sean los necesarios antes de iniciar cualquier conexion con Twitter Streaming
         function __construct($argv){
 
-            if(count($argv) == 4){
+            if(count($argv) == 5){
                 $util = new Util();
                 $args = $util->getArgs($argv);
-                if(array_key_exists('track',$args) && array_key_exists('user',$args) && array_key_exists('pass',$args)){
+                if(array_key_exists('track',$args) && array_key_exists('user',$args) && array_key_exists('pass',$args) && array_key_exists('path',$args)){
                     $this->start($args['track'],$args['user'],$args['pass']);
                 }
                 else
@@ -31,6 +33,7 @@
             }
             else
                 echo "0";
+            exit;
         }
 
         //Inicia el streaming con el API de Twitter
