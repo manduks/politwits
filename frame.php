@@ -10,7 +10,7 @@
 
     date_default_timezone_set("America/Mexico_City");
 
-    $result=$api->getData("select * from tracks where date=CURRENT_DATE");
+    $result=$api->getData("select * from tracks where date=CURRENT_DATE order by track_k");
     if(count($result)!=4)
         exit;
 ?>
@@ -53,7 +53,7 @@
             <div class="contenedor-centro" style="width:210px;">
                 <div class="tweets" style="width:50px;">
                     <h3>Tweets</h3>
-                    <p id="obrtweets" class="label label-warning" style="font-size:12px;"><?php echo $result[2]["no_twits"];?></p>
+                    <p id="obrtweets" class="label label-warning" style="font-size:12px;"><?php echo $result[3]["no_twits"];?></p>
                 </div>
 
                     <div class="recuadro">
@@ -63,7 +63,7 @@
 
                 <div class="negativos" style="width:50px;">
                     <h3>Negativos</h3>
-                    <p id="obrnegativos" class="label label-warning" style="font-size:12px;"><?php echo $result[2]["negatives"];?></p>
+                    <p id="obrnegativos" class="label label-warning" style="font-size:12px;"><?php echo $result[3]["negatives"];?></p>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
             <div class="contenedor-centro" style="width:210px;">
                 <div class="tweets" style="width:50px;">
                     <h3>Tweets</h3>
-                    <p id="quadritweets" class="label" style="font-size:12px;"><?php echo $result[3]["no_twits"];?></p>
+                    <p id="quadritweets" class="label" style="font-size:12px;"><?php echo $result[1]["no_twits"];?></p>
                 </div>
 
                     <div class="recuadro">
@@ -82,7 +82,7 @@
 
                 <div class="negativos" style="width:50px;">
                     <h3>Negativos</h3>
-                    <p id="quadrinegativos" class="label"  style="font-size:12px;"><?php echo $result[3]["negatives"];?></p>
+                    <p id="quadrinegativos" class="label"  style="font-size:12px;"><?php echo $result[1]["negatives"];?></p>
                 </div>
             </div>
         </div>
@@ -110,7 +110,7 @@
             <div class="contenedor-centro" style="width:210px;">
                 <div class="tweets" style="width:50px;">
                     <h3>Tweets</h3>
-                    <p id="jvmtweets" class="label label-info" style="font-size:12px;"><?php echo $result[1]["no_twits"];?></p>
+                    <p id="jvmtweets" class="label label-info" style="font-size:12px;"><?php echo $result[2]["no_twits"];?></p>
                 </div>
 
                     <div class="recuadro">
@@ -120,7 +120,7 @@
 
                 <div class="negativos" style="width:50px;">
                     <h3>Negativos</h3>
-                    <p id="jvmnegativos" class="label label-info" style="font-size:12px;"><?php echo $result[1]["negatives"];?></p>
+                    <p id="jvmnegativos" class="label label-info" style="font-size:12px;"><?php echo $result[2]["negatives"];?></p>
                 </div>
             </div>
         </div>
