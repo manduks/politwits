@@ -5,19 +5,13 @@
  * The BarCharts
  * @hellreuter_
  */
-/*var store = Ext.create('Ext.data.JsonStore', {
-    fields: ['name', 'sinclasificar', 'negativos'],
-    data: [
-        {name: 'blah', sinclasificar: 3400, negativos: 500},{name: 'blah2', sinclasificar: 3600, negativos: 600}
-    ]
-});*/
-var colors = ['url(#v-1)',
+var colors = ['url(#@EPN)',
     'url(#v-2)',
-    'url(#v-3)',
+    'url(#@lopezobrador_)',
     'url(#v-4)',
-    'url(#v-5)',
+    'url(#@JosefinaVM)',
     'url(#v-6)',
-    'url(#v-7)',
+    'url(#@G_quadri)',
     'url(#v-8)'];
 
 Ext.define('MyNamespace.BarChart', {
@@ -25,16 +19,13 @@ Ext.define('MyNamespace.BarChart', {
     xtype: 'barchart',
     animate: true,
     shadow: true,
-   // theme: 'Fancy',
-    //theme: 'Category2',
-    //store: store,
     gradients: [
         {
-            'id': 'v-1',
+            'id': '@EPN',
             angle:90,
             stops: {
-                0:{ color: 'rgb(30,87,153)'},
-                100: {color: 'rgb(30,87,153)'}
+                0:{ color: 'rgb(59,130,62)'},
+                100: {color: 'rgb(59,130,62)'}
             }
         },{
             'id': 'v-2',
@@ -44,7 +35,7 @@ Ext.define('MyNamespace.BarChart', {
                 100: {color: 'rgb(210,73,67)'}
             }
         },{
-            'id': 'v-3',
+            'id': '@G_quadri',
             angle:90,
             stops: {
                 0:{ color: 'rgb(249,148,6)'},
@@ -58,11 +49,11 @@ Ext.define('MyNamespace.BarChart', {
                 100: {color: 'rgb(210,73,67)'}
             }
         },{
-            'id': 'v-5',
+            'id': '@JosefinaVM',
             angle:90,
             stops: {
-                0:{ color: 'rgb(59,130,62)'},
-                100: {color: 'rgb(59,130,62)'}
+                0:{ color: 'rgb(30,87,153)'},
+                100: {color: 'rgb(30,87,153)'}
             }
         },{
             'id': 'v-6',
@@ -72,7 +63,7 @@ Ext.define('MyNamespace.BarChart', {
                 100: {color: 'rgb(210,73,67)'}
             }
         },{
-            'id': 'v-7',
+            'id': '@lopezobrador_',
             angle:90,
             stops: {
                 0:{ color: 'rgb(64,168,197)'},
@@ -93,7 +84,6 @@ Ext.define('MyNamespace.BarChart', {
         fields: ['sinclasificar', 'negativos'],
         title: true,
         grid: true
-        //roundToDecimal: false
     }, {
         type: 'Category',
         position: 'bottom',
@@ -104,13 +94,13 @@ Ext.define('MyNamespace.BarChart', {
     series: [
         {
             type: 'column',
-            //axis: 'left',
             gutter: 80,
             xField: 'name',
             yField: ['sinclasificar', 'negativos'],
-            //displayname: 'sinclasificar',
             stacked: true,
             renderer: function(sprite, storeItem, barAttr, i, store) {
+                //valor = storeItem.data.name;
+                //console.log(valor);
                 barAttr.fill = colors[i];
                 return barAttr;
             },

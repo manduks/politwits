@@ -435,6 +435,8 @@ Ext.onReady(function(){
         });
     };
 
+
+
     //Estadisticas Hashtags Loader
     estadisticasHashtags = function(){
         storeEstadisticasHashtagAmlo.load({
@@ -466,9 +468,9 @@ Ext.onReady(function(){
 					switch(o.track_k){
 						case '@EPN':
 							//Actualiza el total de tweets para el candidato en la etiqueta
-							Ext.fly('epntweets').update(o.no_twits);
+							Ext.select('.epntweets').update(o.no_twits);
 							//Actualiza el total de tweets Negativos para el candidato, en la etiqueta
-							Ext.fly('epnnegativos').update(o.negatives);
+							Ext.select('.epnnegativos').update(o.negatives);
 							var num = (o.no_twits * 1) - ((Ext.isDefined(countEpn) ? countEpn : o.num_twits) * 1);
 							if (num > 0){
 								//Actualiza el numero de nuevos tweets en el boton
@@ -568,7 +570,10 @@ Ext.onReady(function(){
     };
 
     getReply = function (values) {
-        return "window.open('https://twitter.com/intent/tweet?in_reply_to=" + values.id_str + "', '', 'width=500, height=350');";
+    	console.log(values.id_str);
+    	var str = "window.open('https://twitter.com/intent/tweet?in_reply_to=" + values.id_str + "', '', 'width=500, height=350');";
+    	console.log(str);
+        return str
     };
 
     createPopover=function(id, title, text){
@@ -667,11 +672,14 @@ Ext.onReady(function(){
 						cls:'btn btn-warning',
 						handler:function(btn){
 							cargarStores();
+                            topLists();
+                            estadisticasHashtags();
+                            barCharts();
+                            lineCharts();
 							Ext.fly('obr').update('0 nuevos');
 							Ext.fly('jvm').update('0 nuevos');
 							Ext.fly('gqu').update('0 nuevos');
 							Ext.fly('epn').update('0 nuevos');
-                            topLists();
 						},
                     listeners: {
                         scope: this,
@@ -689,6 +697,9 @@ Ext.onReady(function(){
 			layout:'card',
 			region:'center',
 			activeItem:0,
+			listeners: {
+				afterrender: function(){activarTooltips();}
+			},
 			items:[{
 				xtype:'container',
 				layout: {
@@ -711,18 +722,24 @@ Ext.onReady(function(){
 						html:[
 				        	'<div class="candidato">',
 				        		'<div class="contenedor-centro">',
-				        			'<div class="tweets">',
-				        				'<h3>Tweets</h3>',
-				        				'<p id="obrtweets"class="label label-warning">0</p>',
-				        			'</div>',
-				        			'<a href="https://twitter.com/#!/lopezobrador_" target="_blank"><div class="recuadro">',
-				        				'<div class="imagen obr-imagen"></div>',
-				        				'<div class="nombre"><h5>@lopezobrador_</h5></div>',
-				        			'</div></a>',
-				        			'<div class="negativos">',
-				        				'<h3>Negativos</h3>',
-				        				'<p id="obrnegativos" class="label label-warning">0</p>',
-				        			'</div>',
+									'<a class="tweets menciones-tooltip">',
+				        				'<div>',
+					        				'<h3>Tweets</h3>',
+					        				'<p id="obrtweets"class="label label-warning">0</p>',
+					        			'</div>',
+					        		'</a>',
+				        			'<a href="https://twitter.com/#!/lopezobrador_" target="_blank">',
+				        				'<div class="recuadro">',
+					        				'<div class="imagen obr-imagen"></div>',
+					        				'<div class="nombre"><h5>@lopezobrador_</h5></div>',
+				        				'</div>',
+				        			'</a>',
+				        			'<a data-toggle="modal" onclick="mostrarNegativos(0)" href="#" class="negativos negativos-tooltip">',
+					        			'<div>',
+					        				'<h3>Negativos</h3>',
+					        				'<p id="obrnegativos" class="label label-warning">0</p>',
+					        			'</div>',
+				        			'</a>',
 				        		'</div>',
 				        		'<div id="obr" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
@@ -747,18 +764,24 @@ Ext.onReady(function(){
 						html:[
 							'<div class="candidato">',
 								'<div class="contenedor-centro">',
-									'<div class="tweets">',
-										'<h3>Tweets</h3>',
-										'<p id="quadritweets"class="label">0</p>',
-									'</div>',
-									'<a href="https://twitter.com/#!/g_quadri" target="_blank"><div class="recuadro">',
-										'<div class="imagen quadri-imagen"></div>',
-										'<div class="nombre"><h5>@g_quadri</h5></div>',
-									'</div></a>',
-									'<div class="negativos">',
-										'<h3>Negativos</h3>',
-										'<p id="quadrinegativos" class="label">0</p>',
-									'</div>',
+									'<a class="tweets menciones-tooltip">',
+										'<div>',
+											'<h3>Tweets</h3>',
+											'<p id="quadritweets"class="label">0</p>',
+										'</div>',
+									'</a>',
+									'<a href="https://twitter.com/#!/g_quadri" target="_blank">',
+										'<div class="recuadro">',
+											'<div class="imagen quadri-imagen"></div>',
+											'<div class="nombre"><h5>@g_quadri</h5></div>',
+										'</div>',
+									'</a>',
+									'<a data-toggle="modal" onclick="mostrarNegativos(1)" href="#" class="negativos negativos-tooltip">',
+										'<div>',
+											'<h3>Negativos</h3>',
+											'<p id="quadrinegativos" class="label">0</p>',
+										'</div>',
+									'</a>',
 								'</div>',
 								'<div id="gqu" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
@@ -783,18 +806,24 @@ Ext.onReady(function(){
 						html:[
 							'<div class="candidato">',
 								'<div class="contenedor-centro">',
-									'<div class="tweets">',
-										'<h3>Tweets</h3>',
-										'<p id="epntweets"class="label label-success">0</p>',
-									'</div>',
-									'<a href="https://twitter.com/#!/epn" target="_blank"><div class="recuadro">',
-										'<div class="imagen epn-imagen"></div>',
-										'<div class="nombre"><h5>@epn</h5></div>',
-									'</div></a>',
-									'<div class="negativos">',
-										'<h3>Negativos</h3>',
-										'<p id="epnnegativos" class="label label-success">0</p>',
-									'</div>',
+									'<a class="tweets menciones-tooltip">',
+										'<div>',
+											'<h3>Tweets</h3>',
+											'<p class="epntweets label label-success">0</p>',
+										'</div>',
+									'</a>',
+									'<a href="https://twitter.com/#!/epn" target="_blank">',
+										'<div class="recuadro">',
+											'<div class="imagen epn-imagen"></div>',
+											'<div class="nombre"><h5>@epn</h5></div>',
+										'</div>',
+									'</a>',
+									'<a data-toggle="modal" onclick="mostrarNegativos(2)" href="#" class="negativos negativos-tooltip">',
+										'<div>',
+											'<h3>Negativos</h3>',
+											'<p class="epnnegativos label label-success">0</p>',
+										'</div>',
+									'</a>',
 								'</div>',
 								'<div id="epn" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
@@ -819,18 +848,24 @@ Ext.onReady(function(){
 						html:[
 							'<div class="candidato">',
 								'<div class="contenedor-centro">',
-									'<div class="tweets">',
-										'<h3>Tweets</h3>',
-										'<p id="jvmtweets"class="label label-info">0</p>',
-									'</div>',
-									'<a href="https://twitter.com/#!/josefinavm" target="_blank"><div class="recuadro">',
-										'<div class="imagen jvm-imagen"></div>',
-										'<div class="nombre"><h5>@josefinavm</h5></div>',
-									'</div></a>',
-									'<div class="negativos">',
-										'<h3>Negativos</h3>',
-										'<p id="jvmnegativos" class="label label-info">0</p>',
-									'</div>',
+									'<a class="tweets menciones-tooltip">',
+										'<div>',
+											'<h3>Tweets</h3>',
+											'<p id="jvmtweets"class="label label-info">0</p>',
+										'</div>',
+									'</a>',
+									'<a href="https://twitter.com/#!/josefinavm" target="_blank">',
+										'<div class="recuadro">',
+											'<div class="imagen jvm-imagen"></div>',
+											'<div class="nombre"><h5>@josefinavm</h5></div>',
+										'</div>',
+									'</a>',
+									'<a data-toggle="modal" onclick="mostrarNegativos(3)" href="#" class="negativos negativos-tooltip">',
+										'<div>',
+											'<h3>Negativos</h3>',
+											'<p id="jvmnegativos" class="label label-info">0</p>',
+										'</div>',
+									'</a>',
 								'</div>',
 								'<div id="jvm" class ="btn  btn-info load">0 nuevos</div>',
 				        	'</div>'].join('')
@@ -1066,7 +1101,7 @@ Ext.onReady(function(){
                                     '<div class="contenedor-centro">',
                                     '<div class="tweets">',
                                     '<h3>Tweets</h3>',
-                                    '<p id="epntweets"class="label label-success">0</p>',
+                                    '<p class="epntweets label label-success">0</p>',
                                     '</div>',
                                     '<a href="https://twitter.com/#!/epn" target="_blank"><div class="recuadro">',
                                     '<div class="imagen epn-imagen"></div>',
@@ -1074,7 +1109,7 @@ Ext.onReady(function(){
                                     '</div></a>',
                                     '<div class="negativos">',
                                     '<h3>Negativos</h3>',
-                                    '<p id="epnnegativos" class="label label-success">0</p>',
+                                    '<p class="epnnegativos label label-success">0</p>',
                                     '</div>',
                                     '</div>'].join('')
                             },{

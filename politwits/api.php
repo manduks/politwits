@@ -96,7 +96,7 @@
 
         function getBarCharts(){
             $arr = array(
-                "data"=>$this->getData("SELECT track_k as name, (no_twits-negatives) as sinclasificar, negatives as negativos FROM tracks where date = CURRENT_DATE;"),
+                "data"=>$this->getData("SELECT track_k as name, (no_twits-negatives) as sinclasificar, negatives as negativos FROM tracks where date = CURRENT_DATE order by track_k;"),
                 "success"=>true
             );
             echo json_encode($arr);
