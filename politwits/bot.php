@@ -6,8 +6,8 @@
  * Time: 1:05 AM
  */
 
-    define("PATH","/home/miguelsalasmx/public_html/politwits/politwits/");
-    //define("PATH","/home/codetlan/system/");
+    //define('PATH','/home/miguelsalasmx/public_html/multihilos/');
+    define("PATH","/home/codetlan/system/");
 
     include(PATH."config.php");
     include(PATH."libMySql.php");

@@ -435,6 +435,8 @@ Ext.onReady(function(){
         });
     };
 
+
+
     //Estadisticas Hashtags Loader
     estadisticasHashtags = function(){
         storeEstadisticasHashtagAmlo.load({
@@ -670,11 +672,14 @@ Ext.onReady(function(){
 						cls:'btn btn-warning',
 						handler:function(btn){
 							cargarStores();
+                            topLists();
+                            estadisticasHashtags();
+                            barCharts();
+                            lineCharts();
 							Ext.fly('obr').update('0 nuevos');
 							Ext.fly('jvm').update('0 nuevos');
 							Ext.fly('gqu').update('0 nuevos');
 							Ext.fly('epn').update('0 nuevos');
-                            topLists();
 						},
                     listeners: {
                         scope: this,

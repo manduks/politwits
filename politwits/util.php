@@ -6,7 +6,7 @@
  * Time: 7:19 PM
  */
 
-    include("class.phpmailer.php");
+    include(PATH."class.phpmailer.php");
 
     class Util{
 
@@ -65,9 +65,9 @@
             $mail->Username = EMAIL;
             $mail->Password = EMAILPASS;
             $mail->From = "politwitsmx@gmail.com";
-            $mail->FromName = "Sistema Politwits";
+            $mail->FromName = "Analitweets";
             $mail->AddAddress($to,$to);
-            $mail->AddReplyTo(EMAIL,"Sistema Politwits");
+            $mail->AddReplyTo(EMAIL,"Analitweets");
             $mail->Subject = $subject;
             $mail->Body = $body;
             $mail->Send();

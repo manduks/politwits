@@ -8,6 +8,8 @@
 
     include("politwits/api.php");
 
+    date_default_timezone_set("America/Mexico_City");
+
     $result=$api->getData("select * from tracks where date=CURRENT_DATE");
     if(count($result)!=4)
         exit;
@@ -34,10 +36,15 @@
         })();
 
     </script>
+    <style>
+        body{
+            background-color: #000000;
+        }
+    </style>
 </head>
 <body>
     <script type="text/javascript">
-        document.body.style.backgroundColor=parent.document.getElementById("analitweets").style.backgroundColor;
+        //document.body.style.backgroundColor=parent.document.getElementById("analitweets").style.backgroundColor;
         setTimeout("location.reload(true);",20000);
     </script>
     <a href="http://www.analitweets.com" target="_blank" style="text-decoration: none;">
@@ -118,7 +125,7 @@
             </div>
         </div>
     </div>
-    <div style="clear:both; margin-left: 10px;">Powered by @codetlan</div>
+    <div style="clear:both; margin-left: 10px;">An&aacute;lisis de Tweets por dia. Powered by @codetlan</div>
     </a>
 
 </body>

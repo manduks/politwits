@@ -9,7 +9,8 @@ Ext.define('MyNamespace.LineChart', {
     extend: 'Ext.chart.Chart',
     xtype:'linechart',
     width: 500,
-    //highlight: true,
+    highlight: true,
+    showMarkers: true,
     height: 300,
     animate: true,
     axes: [
@@ -28,6 +29,12 @@ Ext.define('MyNamespace.LineChart', {
             type: 'Category',
             position: 'bottom',
             fields: ['time'],
+            label: {
+                renderer: function(v){
+                    var a = v/100 + ':00';
+                    return a;
+                }
+            },
             title: 'Hora'
         }
     ],
@@ -44,6 +51,14 @@ Ext.define('MyNamespace.LineChart', {
                 'stroke-width': 10,
                 fill: '#80A080',
                 opacity: 0.2
+            },
+            tips: {
+                trackMouse: true,
+                width: 140,
+                renderer: function(storeItem, item) {
+                    var horaint = storeItem.get('time')/100;
+                    this.setTitle(storeItem.get('data1') + ' Tweets mencionando: @JosefinaVM' + ' a las ' + horaint + ':00hrs' );
+                }
             },
             fill: false,
             xField: 'time',
@@ -62,6 +77,14 @@ Ext.define('MyNamespace.LineChart', {
                 radius: 3
             },
             axis: 'left',
+            tips: {
+                trackMouse: true,
+                width: 140,
+                renderer: function(storeItem, item) {
+                    var horaint = storeItem.get('time')/100;
+                    this.setTitle(storeItem.get('data2') + ' Tweets mencionando: @G_quadri' + ' a las ' + horaint + ':00hrs' );
+                }
+            },
             fill: false,
             xField: 'time',
             yField: 'data2',
@@ -80,6 +103,14 @@ Ext.define('MyNamespace.LineChart', {
             },
             axis: 'left',
             fill: false,
+            tips: {
+                trackMouse: true,
+                width: 140,
+                renderer: function(storeItem, item) {
+                    var horaint = storeItem.get('time')/100;
+                    this.setTitle(storeItem.get('data3') + ' Tweets mencionando: @EPN' + ' a las ' + horaint + ':00hrs' );
+                }
+            },
             xField: 'time',
             yField: 'data3',
             markerConfig: {
@@ -97,6 +128,14 @@ Ext.define('MyNamespace.LineChart', {
             },
             axis: 'left',
             fill: false,
+            tips: {
+                trackMouse: true,
+                width: 140,
+                renderer: function(storeItem, item) {
+                    var horaint = storeItem.get('time')/100;
+                    this.setTitle(storeItem.get('data4') + ' Tweets mencionando: @lopezobrador_' + ' a las ' + horaint + ':00hrs' );
+                }
+            },
             xField: 'time',
             yField: 'data4',
             markerConfig: {
