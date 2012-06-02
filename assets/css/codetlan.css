@@ -135,7 +135,6 @@
 }
 .tweets:hover{
 	text-decoration: none;
-	cursor: pointer;
 }
 .tweets h3{
 	background-image: url("../img/Chat-32.png");

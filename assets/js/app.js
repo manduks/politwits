@@ -466,9 +466,9 @@ Ext.onReady(function(){
 					switch(o.track_k){
 						case '@EPN':
 							//Actualiza el total de tweets para el candidato en la etiqueta
-							Ext.fly('epntweets').update(o.no_twits);
+							Ext.select('.epntweets').update(o.no_twits);
 							//Actualiza el total de tweets Negativos para el candidato, en la etiqueta
-							Ext.fly('epnnegativos').update(o.negatives);
+							Ext.select('.epnnegativos').update(o.negatives);
 							var num = (o.no_twits * 1) - ((Ext.isDefined(countEpn) ? countEpn : o.num_twits) * 1);
 							if (num > 0){
 								//Actualiza el numero de nuevos tweets en el boton
@@ -804,7 +804,7 @@ Ext.onReady(function(){
 									'<a class="tweets menciones-tooltip">',
 										'<div>',
 											'<h3>Tweets</h3>',
-											'<p id="epntweets"class="label label-success">0</p>',
+											'<p class="epntweets label label-success">0</p>',
 										'</div>',
 									'</a>',
 									'<a href="https://twitter.com/#!/epn" target="_blank">',
@@ -816,7 +816,7 @@ Ext.onReady(function(){
 									'<a data-toggle="modal" onclick="mostrarNegativos(2)" href="#" class="negativos negativos-tooltip">',
 										'<div>',
 											'<h3>Negativos</h3>',
-											'<p id="epnnegativos" class="label label-success">0</p>',
+											'<p class="epnnegativos label label-success">0</p>',
 										'</div>',
 									'</a>',
 								'</div>',
@@ -1096,7 +1096,7 @@ Ext.onReady(function(){
                                     '<div class="contenedor-centro">',
                                     '<div class="tweets">',
                                     '<h3>Tweets</h3>',
-                                    '<p id="epntweets"class="label label-success">0</p>',
+                                    '<p class="epntweets label label-success">0</p>',
                                     '</div>',
                                     '<a href="https://twitter.com/#!/epn" target="_blank"><div class="recuadro">',
                                     '<div class="imagen epn-imagen"></div>',
@@ -1104,7 +1104,7 @@ Ext.onReady(function(){
                                     '</div></a>',
                                     '<div class="negativos">',
                                     '<h3>Negativos</h3>',
-                                    '<p id="epnnegativos" class="label label-success">0</p>',
+                                    '<p class="epnnegativos label label-success">0</p>',
                                     '</div>',
                                     '</div>'].join('')
                             },{
