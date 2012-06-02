@@ -601,7 +601,6 @@ Ext.onReady(function(){
 			baseCls:'navbar navbar-fixed-top',
 			items:[
 				'<div class="brand"><a href="https://twitter.com/#!/analitweets" target="_blank">@Analitweets</a></div>',
-				'<div><a href="http://www.codetlan.com" target="_blank"><img src="assets/img/logo.png" alt="" /></a></div>','-',
 				{
 					text:'<i class="icon-comment icon-white"></i> <span style="color:#FFFFFF;">Tweets</span>',
                     id:"tweets",
@@ -689,7 +688,9 @@ Ext.onReady(function(){
                         }
 
                     }
-				},'->',
+				},
+				'<div><a href="http://www.codetlan.com" target="_blank"><img src="assets/img/logo.png" alt="" /></a></div>',
+				'->',
                 '<a href="https://twitter.com/share" class="twitter-share-button" style="margin-right: 60px;">Tweet</a><script></script>',
                 '<a href="https://twitter.com/Analitweets" class="twitter-follow-button" data-show-count="false" style="margin-right: 30px;">Follow @Analitweets</a><script></script>'
                 ]
