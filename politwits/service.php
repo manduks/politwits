@@ -6,7 +6,7 @@
  * Time: 7:19 PM
  */
 
-    //define('PATH','/home/miguelsalasmx/public_html/multihilos/');
+    //define('PATH','/home/miguelsalasmx/public_html/politwits/politwits/');
     define("PATH","/home/codetlan/system/");
 
     require_once( PATH.'config.php' );
@@ -80,12 +80,12 @@
                     sleep(1);
 
                     //Valida si un demonio esta caido
-                    if(!$v[0]->isAlive()){
+                    if(!$threads[$k][0]->isAlive()){
 
                         //Reinicia un demonio
-                        $v[0]->start($v[2],PATH,$v[1]['USER'],$v[1]['PASS']);
+                        $threads[$k][0]->start($threads[$k][2],PATH,$threads[$k][1]['USER'],$threads[$k][1]['PASS']);
 
-                        $i = "Restarting daemon...\tPID: ".$v[0]->getPid()."\tTrack: $v[2]\tAccount: ".$v[1]['USER']."\n";
+                        $i = "Restarting daemon...\tPID: ".$threads[$k][0]->getPid()."\tTrack: ".$threads[$k][2]."\tAccount: ".$threads[$k][1]['USER']."\n";
                         echo $i;
 
                         //Envia correo que un daemon se ha reiniciado
