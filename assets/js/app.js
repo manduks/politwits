@@ -435,8 +435,6 @@ Ext.onReady(function(){
         });
     };
 
-    lineCharts();
-    barCharts();
 
 
     //Estadisticas Hashtags Loader
@@ -455,7 +453,6 @@ Ext.onReady(function(){
             params:{type:10,typec:3}
         });
     };
-    estadisticasHashtags();
 	
 	//Actualizar contadores y totales
 	updateContadores = function(){
@@ -672,11 +669,14 @@ Ext.onReady(function(){
 						cls:'btn btn-warning',
 						handler:function(btn){
 							cargarStores();
+                            topLists();
+                            estadisticasHashtags();
+                            barCharts();
+                            lineCharts();
 							Ext.fly('obr').update('0 nuevos');
 							Ext.fly('jvm').update('0 nuevos');
 							Ext.fly('gqu').update('0 nuevos');
 							Ext.fly('epn').update('0 nuevos');
-                            topLists();
 						},
                     listeners: {
                         scope: this,
@@ -693,7 +693,7 @@ Ext.onReady(function(){
 			xtype:'container',
 			layout:'card',
 			region:'center',
-			activeItem:3,
+			activeItem:0,
 			items:[{
 				xtype:'container',
 				layout: {
