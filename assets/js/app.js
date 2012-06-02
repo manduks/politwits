@@ -489,9 +489,9 @@ Ext.onReady(function(){
 						break;
 						case '@G_quadri':
 							//Actualiza el total de tweets para el candidato, en la etiqueta
-							Ext.fly('quadritweets').update(o.no_twits);
+							Ext.select('.quadritweets').update(o.no_twits);
 							//Actualiza el total de tweets Negativos para el candidato, en la etiqueta
-							Ext.fly('quadrinegativos').update(o.negatives);
+							Ext.select('.quadrinegativos').update(o.negatives);
 							var num = (o.no_twits * 1) - ((Ext.isDefined(countGquadri) ? countGquadri : o.num_twits) * 1);
 							if (num > 0){
 								Ext.fly('gqu').update(num+' nuevos');
@@ -509,9 +509,9 @@ Ext.onReady(function(){
 						break;
 						case '@JosefinaVM':
 							//Actualiza el total de tweets para el candidato en la etiqueta
-							Ext.fly('jvmtweets').update(o.no_twits);
+							Ext.select('.jvmtweets').update(o.no_twits);
 							//Actualiza el total de tweets Negativos para el candidato, en la etiqueta
-							Ext.fly('jvmnegativos').update(o.negatives);
+							Ext.select('.jvmnegativos').update(o.negatives);
 							var num = (o.no_twits * 1)  - ((Ext.isDefined(countJvm) ? countJvm : o.num_twits)  * 1);
 							if (num > 0){
 								Ext.fly('jvm').update(num+' nuevos');
@@ -529,9 +529,9 @@ Ext.onReady(function(){
 						break;
 						case '@lopezobrador_':
 							//Actualiza el total de tweets para el candidato en la etiqueta
-							Ext.fly('obrtweets').update(o.no_twits);
+							Ext.select('.obrtweets').update(o.no_twits);
 							//Actualiza el total de tweets Negativos para el candidato, en la etiqueta
-							Ext.fly('obrnegativos').update(o.negatives);
+							Ext.select('.obrnegativos').update(o.negatives);
 							var num = (o.no_twits * 1) - ((Ext.isDefined(countAmlo) ? countAmlo : o.num_twits) * 1);
 							if (num > 0){
 								Ext.fly('obr').update(num+' nuevos');
@@ -725,7 +725,7 @@ Ext.onReady(function(){
 									'<a class="tweets menciones-tooltip">',
 				        				'<div>',
 					        				'<h3>Tweets</h3>',
-					        				'<p id="obrtweets"class="label label-warning">0</p>',
+					        				'<p class="obrtweets label label-warning">0</p>',
 					        			'</div>',
 					        		'</a>',
 				        			'<a href="https://twitter.com/#!/lopezobrador_" target="_blank">',
@@ -737,7 +737,7 @@ Ext.onReady(function(){
 				        			'<a data-toggle="modal" onclick="mostrarNegativos(0)" href="#" class="negativos negativos-tooltip">',
 					        			'<div>',
 					        				'<h3>Negativos</h3>',
-					        				'<p id="obrnegativos" class="label label-warning">0</p>',
+					        				'<p class="obrnegativos label label-warning">0</p>',
 					        			'</div>',
 				        			'</a>',
 				        		'</div>',
@@ -767,7 +767,7 @@ Ext.onReady(function(){
 									'<a class="tweets menciones-tooltip">',
 										'<div>',
 											'<h3>Tweets</h3>',
-											'<p id="quadritweets"class="label">0</p>',
+											'<p class="quadritweets label">0</p>',
 										'</div>',
 									'</a>',
 									'<a href="https://twitter.com/#!/g_quadri" target="_blank">',
@@ -779,7 +779,7 @@ Ext.onReady(function(){
 									'<a data-toggle="modal" onclick="mostrarNegativos(1)" href="#" class="negativos negativos-tooltip">',
 										'<div>',
 											'<h3>Negativos</h3>',
-											'<p id="quadrinegativos" class="label">0</p>',
+											'<p class="quadrinegativos label">0</p>',
 										'</div>',
 									'</a>',
 								'</div>',
@@ -851,7 +851,7 @@ Ext.onReady(function(){
 									'<a class="tweets menciones-tooltip">',
 										'<div>',
 											'<h3>Tweets</h3>',
-											'<p id="jvmtweets"class="label label-info">0</p>',
+											'<p class="jvmtweets label label-info">0</p>',
 										'</div>',
 									'</a>',
 									'<a href="https://twitter.com/#!/josefinavm" target="_blank">',
@@ -863,7 +863,7 @@ Ext.onReady(function(){
 									'<a data-toggle="modal" onclick="mostrarNegativos(3)" href="#" class="negativos negativos-tooltip">',
 										'<div>',
 											'<h3>Negativos</h3>',
-											'<p id="jvmnegativos" class="label label-info">0</p>',
+											'<p class="jvmnegativos label label-info">0</p>',
 										'</div>',
 									'</a>',
 								'</div>',
@@ -1011,7 +1011,7 @@ Ext.onReady(function(){
                                     '<div class="contenedor-centro">',
                                     '<div class="tweets">',
                                     '<h3>Tweets</h3>',
-                                    '<p id="obrtweets"class="label label-warning">0</p>',
+                                    '<p class="obrtweets label label-warning">0</p>',
                                     '</div>',
                                     '<a href="https://twitter.com/#!/lopezobrador_" target="_blank"><div class="recuadro">',
                                     '<div class="imagen obr-imagen"></div>',
@@ -1019,7 +1019,7 @@ Ext.onReady(function(){
                                     '</div></a>',
                                     '<div class="negativos">',
                                     '<h3>Negativos</h3>',
-                                    '<p id="obrnegativos" class="label label-warning">0</p>',
+                                    '<p class="obrnegativos label label-warning">0</p>',
                                     '</div>',
                                     '</div>'].join('')
                             },{
@@ -1045,7 +1045,7 @@ Ext.onReady(function(){
                                     '<div class="contenedor-centro">',
                                     '<div class="tweets">',
                                     '<h3>Tweets</h3>',
-                                    '<p id="quadritweets"class="label">0</p>',
+                                    '<p class="quadritweets label">0</p>',
                                     '</div>',
                                     '<a href="https://twitter.com/#!/g_quadri" target="_blank"><div class="recuadro">',
                                     '<div class="imagen quadri-imagen"></div>',
@@ -1053,7 +1053,7 @@ Ext.onReady(function(){
                                     '</div></a>',
                                     '<div class="negativos">',
                                     '<h3>Negativos</h3>',
-                                    '<p id="quadrinegativos" class="label">0</p>',
+                                    '<p class="quadrinegativos label">0</p>',
                                     '</div>',
                                     '</div>'].join('')
                             },{
@@ -1135,7 +1135,7 @@ Ext.onReady(function(){
                                     '<div class="contenedor-centro">',
                                     '<div class="tweets">',
                                     '<h3>Tweets</h3>',
-                                    '<p id="jvmtweets"class="label label-info">0</p>',
+                                    '<p class="jvmtweets label label-info">0</p>',
                                     '</div>',
                                     '<a href="https://twitter.com/#!/josefinavm" target="_blank"><div class="recuadro">',
                                     '<div class="imagen jvm-imagen"></div>',
@@ -1143,7 +1143,7 @@ Ext.onReady(function(){
                                     '</div></a>',
                                     '<div class="negativos">',
                                     '<h3>Negativos</h3>',
-                                    '<p id="jvmnegativos" class="label label-info">0</p>',
+                                    '<p class="jvmnegativos label label-info">0</p>',
                                     '</div>',
                                     '</div>'].join('')
                             },{
