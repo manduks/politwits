@@ -601,6 +601,7 @@ Ext.onReady(function(){
 			baseCls:'navbar navbar-fixed-top',
 			items:[
 				'<div class="brand"><a href="https://twitter.com/#!/analitweets" target="_blank">@Analitweets</a></div>',
+				'<a href="http://www.codetlan.com" target="_blank"><img src="assets/img/logo.png" alt="" /></a>','-',
 				{
 					text:'<i class="icon-comment icon-white"></i> <span style="color:#FFFFFF;">Tweets</span>',
                     id:"tweets",
