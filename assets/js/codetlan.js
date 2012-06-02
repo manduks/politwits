@@ -1,4 +1,4 @@
-function mostrarNegativos(candidato){
+function mostrarNegativos(candidato){/*
 	switch (candidato) {
 		case 0:
 //			var el = $('<tr>').append( $('<td>').text('test') );
@@ -29,7 +29,7 @@ function mostrarNegativos(candidato){
 			$("#mostrarNegativos").modal();
 		break;		
 	}
-};
+*/};
 
 function activarTooltips(){
 	$(".menciones-tooltip").tooltip({
@@ -38,6 +38,6 @@ function activarTooltips(){
 	});
 	$(".negativos-tooltip").tooltip({
 		placement: 'bottom',
-		title: 'Tweets ofensivos</br>[Da clic]'
+		title: 'Tweets ofensivos'//</br>[Da clic]'
 	});
 };
