@@ -48,8 +48,8 @@
                 )
             );
             $context = stream_context_create($opts);
-            $instream = fopen('https://'.$user.':'.$pass.'@'.TWSERVER.''.TWSERVICE,'r' ,false, $context);
-            while(! feof($instream)) {
+            $instream = @fopen('https://'.$user.':'.$pass.'@'.TWSERVER.''.TWSERVICE,'r' ,false, $context);
+            while($instream && !feof($instream)) {
                 if(! ($line = stream_get_line($instream, 20000, "\n"))) {
                     continue;
                 }else{
@@ -88,6 +88,7 @@
                     flush();
                 }
             }
+            exit;
         }
 
         //Valida que un tweet contenga hashtags (ht), urls (u), que sea un retweet (rt) o que tenga solo una mension (um)
