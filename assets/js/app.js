@@ -435,6 +435,10 @@ Ext.onReady(function(){
         });
     };
 
+    lineCharts();
+    barCharts();
+
+
     //Estadisticas Hashtags Loader
     estadisticasHashtags = function(){
         storeEstadisticasHashtagAmlo.load({
@@ -451,6 +455,7 @@ Ext.onReady(function(){
             params:{type:10,typec:3}
         });
     };
+    estadisticasHashtags();
 	
 	//Actualizar contadores y totales
 	updateContadores = function(){
@@ -688,7 +693,7 @@ Ext.onReady(function(){
 			xtype:'container',
 			layout:'card',
 			region:'center',
-			activeItem:0,
+			activeItem:3,
 			items:[{
 				xtype:'container',
 				layout: {
